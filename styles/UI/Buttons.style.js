@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
+import breakpoints from '../breakpoints';
+
 export const Button = styled.a`
-    display: inline-block;
+    display: flex;
+    column-gap: 10px;
     text-decoration: none;
     cursor: pointer;
     padding: 20px;

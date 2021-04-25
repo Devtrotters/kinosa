@@ -4,7 +4,7 @@ import { BigText, MediumText, Subtitle, Text, Title } from 'styles/UI/Texts.styl
 
 // TODO : Delete all ui pages
 
-export default function ui() {
+export default function ui({ data }) {
     return (
         <Container>
             <Title>H1</Title>

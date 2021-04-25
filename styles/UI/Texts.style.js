@@ -3,13 +3,9 @@ import styled from 'styled-components';
 import breakpoints from '../breakpoints';
 
 export const Title = styled.h1`
-    font-size: 30px;
+    font-size: 40px;
     font-weight: normal;
     color: ${(props) => props.theme.color.green.default};
-
-    @media all and (${breakpoints.device.s}) {
-        font-size: 40px;
-    }
 `;
 
 export const Subtitle = styled.h2`

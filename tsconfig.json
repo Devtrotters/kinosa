@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "styles/Concept/Presentation/PlatformLogo.style.js"  ],
   "exclude": [
     "node_modules"
   ]

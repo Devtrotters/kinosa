@@ -34,7 +34,6 @@ export default function Menu({ categories, products }) {
                 });
                 carteTemp[categoryId].produits.push(product);
             });
-            console.log(carteTemp);
             setCarte(() => carteTemp);
         };
         fillCarte();

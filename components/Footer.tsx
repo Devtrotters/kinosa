@@ -60,8 +60,6 @@ export default function Footer({ data, menu }) {
         setInput(value);
     };
 
-    console.log(menu);
-
     return (
         <footer>
             {/* Kin'feed */}

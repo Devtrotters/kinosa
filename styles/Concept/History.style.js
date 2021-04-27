@@ -10,10 +10,10 @@ export const HistorySection = styled.section`
         padding: 0 45px;
     }
     @media screen and (${breakpoint.device.m}) {
-        padding: 0 165px;
+        padding: 0 230px;
     }
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0 220px;
+        padding: 0 260px;
     }
 `;
 

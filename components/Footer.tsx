@@ -30,7 +30,7 @@ import {
 } from 'styles/Footer.style';
 import { Title } from 'styles/UI/Texts.style';
 
-export default function Footer({ data }) {
+export default function Footer({ data, menu }) {
     const [input, setInput] = useState('');
     const [links, setLinks] = useState([]);
 
@@ -49,49 +49,6 @@ export default function Footer({ data }) {
         getFromInstagram();
     }, []);
 
-    const menu = [
-        {
-            id: 7,
-            texte: 'Accueil',
-            lien: '/'
-        },
-        {
-            id: 8,
-            texte: 'Concept',
-            lien: '/'
-        },
-        {
-            id: 9,
-            texte: 'Menu',
-            lien: '/'
-        },
-        {
-            id: 10,
-            texte: 'Jus',
-            lien: '/'
-        },
-        {
-            id: 11,
-            texte: 'Traiteur',
-            lien: '/'
-        },
-        {
-            id: 12,
-            texte: 'Contact',
-            lien: '/'
-        },
-        {
-            id: 13,
-            texte: 'Mentions Légales',
-            lien: '/'
-        },
-        {
-            id: 14,
-            texte: 'Blog',
-            lien: '/'
-        }
-    ];
-
     const horaires = {
         titre: 'Horaires',
         ouverture: 'Lundi au Vendredi : 11h-14h',
@@ -102,6 +59,8 @@ export default function Footer({ data }) {
         e.preventDefault();
         setInput(value);
     };
+
+    console.log(menu);
 
     return (
         <footer>
@@ -266,7 +225,6 @@ export default function Footer({ data }) {
                 <SocialSection>
                     <SocialText>{data.social.titre}</SocialText>
                     <SocialLogoContainer>
-                        {/* display : grid */}
                         {data.social.social.map((logo) => (
                             <SocialLogo key={logo.id} name={logo.nom} isFooter isMenu={false} />
                         ))}
@@ -282,8 +240,8 @@ export default function Footer({ data }) {
                 </MapContainer>
                 <MenuContainer>
                     {menu.map((el: any) => (
-                        <Link key={el.id} href={el.lien}>
-                            <MenuText>{el.texte}</MenuText>
+                        <Link key={el.id} href={el.slug}>
+                            <MenuText>{el.titre}</MenuText>
                         </Link>
                     ))}
                 </MenuContainer>

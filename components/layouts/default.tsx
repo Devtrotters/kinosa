@@ -13,7 +13,7 @@ export default function DefaultLayout({ children, title, footer, pages }) {
             <>
                 <Menu data={pages} social={footer.social.social} />
                 <main>{children}</main>
-                <Footer data={footer} />
+                <Footer data={footer} menu={pages} />
             </>
         </>
     );

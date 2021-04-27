@@ -5,6 +5,7 @@ import Concept from 'components/Concept/Concept';
 import Header from 'components/Concept/Header';
 import History from 'components/Concept/History';
 import Presentation from 'components/Concept/Presentation';
+import Slider from 'components/Concept/Slider';
 import DefaultLayout from 'components/layouts/default';
 
 export default function concept({ data }) {
@@ -20,6 +21,7 @@ export default function concept({ data }) {
             <Presentation data={data.allConceptPresentations} />
             <Concept data={data.allConceptConcepts} />
             <History data={data.conceptHistoire} />
+            <Slider data={data.conceptSlider.image} />
         </DefaultLayout>
     );
 }
@@ -107,6 +109,13 @@ export async function getStaticProps() {
                         lien
                     }
                 }
+                conceptSlider {
+                    image {
+                        id
+                        url
+                        alt
+                    }
+                }
                 instagram {
                     titre
                     texteLien
@@ -128,6 +137,13 @@ export async function getStaticProps() {
                         id
                         nom
                         lien
+                    }
+                }
+                page {
+                    pages {
+                        id
+                        titre
+                        slug
                     }
                 }
             }

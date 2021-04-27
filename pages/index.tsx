@@ -175,6 +175,13 @@ export async function getStaticProps() {
                         lien
                     }
                 }
+                page {
+                    pages {
+                        id
+                        titre
+                        slug
+                    }
+                }
             }
         `
     });

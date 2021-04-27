@@ -4,7 +4,7 @@ import { Text, Title } from 'styles/UI/Texts.style';
 export const HeaderContainer = styled.section.attrs((props) => {})`
     height: 575px;
 
-    margin-top: 50px;
+    margin-top: 60px;
     padding: 0 15px 40px 15px;
 
     display: flex;
@@ -30,16 +30,16 @@ export const HeaderContainer = styled.section.attrs((props) => {})`
 
     @media screen and (${breakpoint.device.s}) {
         background-image: url(${(props) => props.url});
-        padding: 0 400px 60px 75px;
-        margin: 50px 40px 0 40px;
+        padding: 0 0 60px 75px;
+        margin: 60px 40px 0 40px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        margin: 50px 165px 0 165px;
+        margin: 60px 230px 0 230px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        margin: 50px 220px 0 220px;
+        margin: 60px 260px 0 260px;
     }
 `;
 
@@ -49,6 +49,7 @@ export const HeaderTitle = styled(Title)`
 `;
 
 export const HeaderText = styled(Text)`
+    width: 60%;
     margin-top: 10px;
     color: ${(props) => props.theme.color.white};
 

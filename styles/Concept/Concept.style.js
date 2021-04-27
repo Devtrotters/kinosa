@@ -15,10 +15,10 @@ export const ConceptSection = styled.section`
         padding: 0 45px;
     }
     @media screen and (${breakpoint.device.m}) {
-        padding: 0px 165px;
+        padding: 0px 230px;
     }
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0px 220px;
+        padding: 0px 260px;
     }
 `;
 

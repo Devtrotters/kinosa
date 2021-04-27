@@ -18,11 +18,11 @@ export const PresentationContainer = styled.section`
         padding: 60px 45px;
     }
     @media screen and (${breakpoint.device.m}) {
-        padding: 60px 95px;
-        margin: 0 165px;
+        padding: 60px 65px;
+        margin: 60px 165px 0 165px;
     }
     @media screen and (${breakpoint.device.lg}) {
-        margin: 0 220px;
+        padding: 60px 95px;
     }
 `;
 

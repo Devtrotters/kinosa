@@ -5,6 +5,11 @@ export const Svg = styled.svg`
 
     transition: all 0.3s linear;
 
+    &:hover {
+        cursor: pointer;
+    }
+
+
     &:not(.footer):hover {
         > path {
             fill: ${(props) => props.theme.color.green.default};

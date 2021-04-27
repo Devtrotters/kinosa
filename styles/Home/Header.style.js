@@ -27,11 +27,12 @@ export const HeaderContainer = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 60px 165px 0 165px;
+        padding: 60px 65px 0 65px;
+        margin: 0 165px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 60px 220px 0 220px;
+        padding: 60px 95px 0 95px;
     }
 `;
 
@@ -39,13 +40,23 @@ export const HeaderTitle = styled(Title)`
     margin: 0 15px;
     @media screen and (${breakpoint.device.s}) {
         margin: 0;
+        grid-column: 1 / span 2;
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        grid-column: 1;
+        margin-right: 10px;
     }
 `;
 
 export const HookContainer = styled.article`
-    margin-top: 60px;
     @media screen and (${breakpoint.device.s}) {
-        display: flex;
+        display: grid;
+        row-gap: 60px;
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        row-gap: 110px;
     }
 `;
 
@@ -81,12 +92,12 @@ export const Hook = styled.div.attrs((props) => {})`
     }
 
     &:first-of-type {
+        margin-top: 60px;
         border-radius: 10px 10px 0px 0px;
         &::before {
             border-radius: 10px 10px 0px 0px;
         }
     }
-
     &:hover {
         &::before {
             background-color: rgba(0, 0, 0, 0.1);
@@ -94,6 +105,7 @@ export const Hook = styled.div.attrs((props) => {})`
     }
 
     @media screen and (${breakpoint.device.s}) {
+        grid-row: 2;
         border-radius: 10px 10px 10px 0px;
         &::before {
             border-radius: 10px 10px 10px 0px;
@@ -105,6 +117,13 @@ export const Hook = styled.div.attrs((props) => {})`
             &::before {
                 border-radius: 10px 10px 0px 10px;
             }
+        }
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        &:last-of-type {
+            grid-row: 1 / span 2;
+            height: 100%;
         }
     }
 `;
@@ -119,7 +138,7 @@ export const HookText = styled(HookTitle).attrs({ as: 'p' })`
     margin-top: 10px;
     font-size: 14px;
     @media screen and (${breakpoint.device.s}) {
-        width: 60%;
+        width: 75%;
         min-height: 64px;
         text-align: justify;
     }

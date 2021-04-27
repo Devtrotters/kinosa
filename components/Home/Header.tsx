@@ -11,8 +11,8 @@ import {
 export default function Header({ data }) {
     return (
         <HeaderContainer>
-            <HeaderTitle>{data.titre}</HeaderTitle>
             <HookContainer>
+                <HeaderTitle>{data.titre}</HeaderTitle>
                 {data.hook.map((el: any) => (
                     <Hook key={el.id} url={el.image.url}>
                         <HookTitle>{el.titre}</HookTitle>

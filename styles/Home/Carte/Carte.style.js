@@ -4,22 +4,23 @@ import { Button } from 'styles/UI/Buttons.style';
 import { Text } from 'styles/UI/Texts.style';
 
 export const CarteSection = styled.section`
-    padding: 30px 15px 60px 15px;
-    margin-top: 60px;
+    padding: 60px 15px 60px 15px;
+    margin-top: 100px;
 
     position: relative;
     background-color: ${(props) => props.theme.color.beige};
 
     @media screen and (${breakpoint.device.s}) {
-        padding: 30px 40px 60px 40px;
+        padding: 100px 40px 100px 40px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 30px 165px 60px 165px;
+        padding: 100px 65px 100px 65px;
+        margin: 100px 165px 0 165px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 30px 220px 60px 220px;
+        padding: 100px 95px 100px 95px;
     }
 `;
 

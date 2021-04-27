@@ -13,12 +13,12 @@ export const Feed = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 100px 95px;
+        padding: 100px 65px;
         margin: 100px 165px 0 165px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        margin: 100px 220px 0 220px;
+        padding: 100px 95px;
     }
 `;
 
@@ -160,6 +160,9 @@ export const NewsLetterButton = styled.input`
 
     text-align: center;
 
+    &:hover {
+        cursor: pointer;
+    }
     @media screen and (${breakpoint.device.s}) {
         margin: 0;
         width: 100%;
@@ -182,11 +185,11 @@ export const FooterContainer = styled.footer`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 60px 165px;
+        padding: 60px 230px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 60px 220px;
+        padding: 60px 260px;
     }
 `;
 
@@ -275,4 +278,9 @@ export const MenuContainer = styled.section`
 export const MenuText = styled.a`
     font-size: 30px;
     color: ${(props) => props.theme.color.white};
+
+    &:hover {
+        cursor: pointer;
+        color: ${(props) => props.theme.color.orange};
+    }
 `;

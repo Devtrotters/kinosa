@@ -4,22 +4,24 @@ import { Button } from 'styles/UI/Buttons.style';
 import { Subtitle, Text } from 'styles/UI/Texts.style';
 
 export const ConceptSection = styled.section`
-    margin-top: 60px;
+    margin-top: 100px;
     padding: 0 15px;
 
     @media screen and (${breakpoint.device.s}) {
+        padding: 0 40px;
+        margin-top: 100px;
+
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 80px;
-        padding: 0 40px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 0 165px;
+        padding: 0 230px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0 220px;
+        padding: 0 260px;
     }
 `;
 

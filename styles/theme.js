@@ -9,3 +9,4 @@ export const theme = {
         beige: '#FFFBEF'
     }
 };
+

@@ -5,7 +5,14 @@ export const Svg = styled.svg`
 
     transition: all 0.3s linear;
 
-    &:hover {
-        fill: ${(props) => props.theme.color.green.dark};
+    &:not(.footer):hover {
+        > path {
+            fill: ${(props) => props.theme.color.green.default};
+        }
+    }
+    &.menu {
+        > path {
+            fill: #fff;
+        }
     }
 `;

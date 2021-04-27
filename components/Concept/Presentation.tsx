@@ -33,7 +33,7 @@ export default function Presentation({ data }) {
                                     href={social.lien}
                                     target="_blank"
                                     rel="noreferrer">
-                                    <SocialLogo name={social.nom} />
+                                    <SocialLogo name={social.nom} isFooter={false} isMenu={false} />
                                 </a>
                             ))}
                         </SocialContainer>

@@ -268,7 +268,7 @@ export default function Footer({ data }) {
                     <SocialLogoContainer>
                         {/* display : grid */}
                         {data.social.social.map((logo) => (
-                            <SocialLogo key={logo.id} name={logo.nom} />
+                            <SocialLogo key={logo.id} name={logo.nom} isFooter isMenu={false} />
                         ))}
                     </SocialLogoContainer>
                 </SocialSection>

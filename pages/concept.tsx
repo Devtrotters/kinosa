@@ -14,7 +14,7 @@ export default function concept({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout title="concept" footer={footerData}>
+        <DefaultLayout pages={data.page.pages} footer={footerData} title="concept">
             <Header data={data.conceptHeader} />
             <Citation data={data.conceptCitation} />
             <Presentation data={data.allConceptPresentations} />
@@ -46,6 +46,13 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                page {
+                    pages {
+                        id
+                        slug
+                        titre
+                    }
+                }
                 conceptCitation {
                     citation
                     auteur

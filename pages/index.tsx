@@ -16,11 +16,7 @@ export default function Home({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout footer={footerData} title="home">
-            <Link href="/concept">
-                <a>Concept</a>
-            </Link>
-
+        <DefaultLayout pages={data.page.pages} footer={footerData} title="home">
             <Header data={data.homeHeader} />
             <>
                 <Command command={data.commande} ExternalData={data.plateforme} />
@@ -57,6 +53,13 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                page {
+                    pages {
+                        id
+                        slug
+                        titre
+                    }
+                }
                 homeHeader {
                     titre
                     hook {

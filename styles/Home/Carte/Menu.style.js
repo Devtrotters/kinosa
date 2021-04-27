@@ -15,7 +15,6 @@ export const MenuTitleContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
-
     position: relative;
 
     > div:first-of-type {

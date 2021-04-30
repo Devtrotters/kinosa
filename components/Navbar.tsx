@@ -26,7 +26,7 @@ export default function Navbar({ data, social }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setClassname('');
-        }, 200);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);

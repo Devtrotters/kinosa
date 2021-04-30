@@ -33,8 +33,8 @@ export const CreationsText = styled(Text)`
 export const CreationsSliderHeaderContainer = styled.header`
     display: flex;
     width: 100%;
-    justify-content: space-between;
-
+    justify-content: center;
+    column-gap: 60px;
     @media screen and (${breakpoint.device.s}) {
         margin: 0 285px;
         width: 80%;
@@ -45,14 +45,11 @@ export const CreationsSliderTextContainer = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    justify-content: space-between;
-    min-width: 280px;
+    justify-content: center;
+    column-gap: 40px;
 
     @media screen and (${breakpoint.device.s}) {
         overflow: visible;
-        width: 100%;
-        row-gap: 40px;
-        margin: 0 30px;
     }
 `;
 export const CreationsSliderText = styled(BigText)`

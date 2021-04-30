@@ -19,7 +19,10 @@ export default function Presentation({ data }) {
             {data.map((gerant: any) => (
                 <GerantContainer key={gerant.id}>
                     <GerantImgWrapper className="image">
-                        <GerantImg src={gerant.image.url} alt={gerant.image.alt} />
+                        <GerantImg
+                            src={gerant.image.url}
+                            alt={gerant.image.alt || 'image du site'}
+                        />
                     </GerantImgWrapper>
                     <GerantPresentationContainer>
                         <GerantNameContainer>

@@ -5,14 +5,13 @@ export const Svg = styled.svg`
         fill: ${(props) => props.theme.color.orange};
     }
 
-    transition: all 0.3s linear;
-
     &:hover {
         cursor: pointer;
     }
 
     &:not(.footer):hover {
         > path {
+            transition: all 0.3s linear;
             fill: ${(props) => props.theme.color.green.default};
         }
     }

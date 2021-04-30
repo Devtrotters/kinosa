@@ -35,7 +35,7 @@ export default function Slider({ data }) {
                     <Img
                         key={image.id}
                         src={image.url}
-                        alt={image.alt}
+                        alt={image.alt || 'image du site'}
                         onClick={() => slideHandler(index + i)}
                     />
                 ))}

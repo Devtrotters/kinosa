@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
     HeaderContainer,
     HeaderTitle,
@@ -17,10 +18,12 @@ export default function Header({ data }) {
                     <Hook key={el.id} url={el.image.url}>
                         <HookTitle>{el.titre}</HookTitle>
                         <HookText>{el.sousTitre}</HookText>
-                        <HookButton>
-                            {el.button}
-                            <span>{'>'}</span>
-                        </HookButton>
+                        <Link href={el.lien}>
+                            <HookButton>
+                                {el.button}
+                                <span>{'>'}</span>
+                            </HookButton>
+                        </Link>
                     </Hook>
                 ))}
             </HookContainer>

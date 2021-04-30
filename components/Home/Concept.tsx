@@ -41,7 +41,7 @@ export default function Concept({ data, ExternalData }) {
                             <GerantImg
                                 className={selected === gerant.id ? 'selected' : ''}
                                 src={gerant.image.url}
-                                alt={gerant.image.alt}
+                                alt={gerant.image.alt || 'image du site'}
                                 onClick={(e) => handleClick(e, gerant.id)}
                             />
                         </GerantImgContainer>

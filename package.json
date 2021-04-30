@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.14",
+    "@sendgrid/mail": "^7.4.2",
     "axios": "^0.21.1",
     "graphql": "^15.5.0",
     "html-react-parser": "^1.2.4",

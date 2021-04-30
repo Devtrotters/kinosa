@@ -69,7 +69,7 @@ export default function Concept({ data }) {
                         {bloc.texte.map((text: any) => (
                             <BlocText key={text.id}>{text.texte}</BlocText>
                         ))}
-                        <BlocImg src={bloc.image.url} alt={bloc.image.alt} />
+                        <BlocImg src={bloc.image.url} alt={bloc.image.alt || 'image du site'} />
                     </Bloc>
                 ))}
             </ConceptContainer>

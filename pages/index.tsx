@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 // TODO : Delete all images in public
 //TODO: mettre favicon
+
 export default function Home({ data }) {
     const footerData = {
         feed: data.instagram,
@@ -19,7 +20,11 @@ export default function Home({ data }) {
         <DefaultLayout pages={data.page.pages} footer={footerData} title="home">
             <Header data={data.homeHeader} />
             <>
-                <Command command={data.commande} ExternalData={data.plateforme} />
+                <Command
+                    data={data.homeCommande}
+                    command={data.commande}
+                    ExternalData={data.plateforme}
+                />
                 <Carte
                     data={data.homeCarte}
                     products={data.allProduits}
@@ -69,7 +74,15 @@ export async function getStaticProps() {
                             url
                         }
                         button
+                        lien
                         id
+                    }
+                }
+                homeCommande {
+                    titre
+                    texte {
+                        id
+                        texte
                     }
                 }
                 homeCarte {
@@ -147,6 +160,7 @@ export async function getStaticProps() {
                         id
                         titre
                         button
+                        lien
                         image {
                             url
                         }
@@ -173,13 +187,6 @@ export async function getStaticProps() {
                         id
                         nom
                         lien
-                    }
-                }
-                page {
-                    pages {
-                        id
-                        titre
-                        slug
                     }
                 }
             }

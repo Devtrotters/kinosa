@@ -32,6 +32,8 @@ export const CreationsText = styled(Text)`
 
 export const CreationsSliderHeaderContainer = styled.header`
     display: flex;
+    width: 100%;
+    justify-content: space-between;
 
     @media screen and (${breakpoint.device.s}) {
         margin: 0 285px;
@@ -43,7 +45,6 @@ export const CreationsSliderTextContainer = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    margin: 0 60px;
     justify-content: space-between;
     min-width: 280px;
 

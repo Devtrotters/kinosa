@@ -80,12 +80,16 @@ export const MenuContainer = styled.section`
 `;
 
 export const NavContainer = styled.nav`
+    &.none {
+        display: none;
+    }
+    transform: translateX(100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 40px;
-
     position: fixed;
+
     z-index: 99;
     top: 0;
     left: 0;
@@ -94,8 +98,7 @@ export const NavContainer = styled.nav`
 
     background: ${(props) => props.theme.color.orange};
 
-    transform: translateX(100%);
-    transition: all 1s linear;
+    transition: transform 1s linear, left 1s linear;
 
     &.open {
         transform: translateX(0);
@@ -112,13 +115,10 @@ export const NavContainer = styled.nav`
         flex-direction: row;
         align-items: center;
         column-gap: 30px;
-
         width: inherit;
         height: 100%;
-
         position: static;
         transform: translateX(0);
-
         background: inherit;
     }
 `;

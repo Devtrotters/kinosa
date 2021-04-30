@@ -1,5 +1,5 @@
 import Footer from 'components/Footer';
-import Menu from 'components/Menu';
+import Navbar from 'components/Navbar';
 import Head from 'next/head';
 
 export default function DefaultLayout({ children, title, footer, pages }) {
@@ -11,7 +11,7 @@ export default function DefaultLayout({ children, title, footer, pages }) {
             </Head>
 
             <>
-                <Menu data={pages} social={footer.social.social} />
+                <Navbar data={pages} social={footer.social.social} />
                 <main>{children}</main>
                 <Footer data={footer} menu={pages} />
             </>

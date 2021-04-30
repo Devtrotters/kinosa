@@ -1,7 +1,7 @@
 import SocialLogo from 'components/SocialLogo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     DisplayMobileButton,
     HeaderMobileMenu,
@@ -11,17 +11,25 @@ import {
     NavContainer,
     NavText,
     SocialLogoContainer
-} from 'styles/Menu.style';
+} from 'styles/Navbar.style';
 
-export default function Menu({ data, social }) {
+export default function Navbar({ data, social }) {
     const [buttonText, setButtonText] = useState('Blog');
-    const [displayMenu, setDisplayMenu] = useState(false);
+    const [className, setClassname] = useState('none');
     const router = useRouter();
 
     const handleMouseOver = () => {
         if (buttonText === 'Blog') setButtonText('Soon');
         else setButtonText('Blog');
     };
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setClassname('');
+        }, 200);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <header>
@@ -53,12 +61,12 @@ export default function Menu({ data, social }) {
                         </svg>
                     </a>
                 </Link>
-                <NavContainer className={`${displayMenu ? 'open' : ''}`}>
+                <NavContainer className={className}>
                     <HeaderMobileMenu>
                         <h1>Kinosa</h1>
                         <DisplayMobileButton
                             onClick={() => {
-                                setDisplayMenu(() => false);
+                                setClassname(() => '');
                             }}
                             width="25"
                             height="25"
@@ -91,7 +99,7 @@ export default function Menu({ data, social }) {
                 </NavContainer>
                 <DisplayMobileButton
                     onClick={() => {
-                        setDisplayMenu(() => true);
+                        setClassname(() => 'open');
                     }}
                     width="30"
                     height="20"

@@ -3,6 +3,7 @@ import SocialLogo from 'components/SocialLogo';
 import formatText from 'lib/formatText';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import {
     Feed,
     FeedLink,
@@ -49,6 +50,16 @@ export default function Footer({ data, menu }) {
         };
         getFromInstagram();
     }, []);
+
+    const Kinosa = () => {
+        return (
+            <MessengerCustomerChat
+                language="fr_FR"
+                shouldShowDialog={true}
+                pageId="104172444836368"
+            />
+        );
+    };
 
     const horaires = {
         titre: 'Horaires',
@@ -258,6 +269,7 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
+                <Kinosa />
             </FooterContainer>
         </footer>
     );

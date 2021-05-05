@@ -269,7 +269,11 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <Kinosa />
+                <MessengerCustomerChat
+                    language="fr_FR"
+                    shouldShowDialog={true}
+                    pageId="104172444836368"
+                />
             </FooterContainer>
         </footer>
     );

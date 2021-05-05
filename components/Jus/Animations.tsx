@@ -39,7 +39,7 @@ export default function Animations({ data }) {
                         <AnimationsImage
                             key={el.image.id}
                             src={el.image.url}
-                            alt={el.image.alt ? el.image.alt : 'image du site'}
+                            alt={el.image.alt || 'image du site'}
                         />
                     </AnimationsSubContainer>
                 ))}

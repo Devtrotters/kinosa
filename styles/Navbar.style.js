@@ -28,7 +28,7 @@ export const MobileMenu = styled.section`
 export const HeaderMobileMenu = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 57px 30px 0 30px;
+    padding: 20px 30px 0 30px;
     width: 100%;
 
     > h1 {
@@ -87,7 +87,7 @@ export const NavContainer = styled.nav`
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 40px;
+    row-gap: 30px;
     position: fixed;
 
     z-index: 99;
@@ -105,9 +105,9 @@ export const NavContainer = styled.nav`
     }
 
     @media screen and (${breakpoint.device.s}) {
+        left: 50%;
         &.open {
             transform: translateX(0);
-            left: 50%;
         }
     }
 
@@ -125,7 +125,7 @@ export const NavContainer = styled.nav`
 
 export const NavText = styled.a`
     color: ${(props) => props.theme.color.green.default};
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
 
     &.active {
@@ -174,7 +174,7 @@ export const NavButton = styled(Button)`
     padding: 15px 20px;
 
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 20px;
 
     color: ${(props) => props.theme.color.white};
     background: ${(props) => props.theme.color.green.default};

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { keyframes } from 'styled-components';
 import breakpoint from 'styles/breakpoints';
 import { BigText, MediumText, Text, Title } from 'styles/UI/Texts.style';
 
@@ -33,8 +32,8 @@ export const CreationsText = styled(Text)`
 export const CreationsSliderHeaderContainer = styled.header`
     display: flex;
     width: 100%;
-    justify-content: center;
-    column-gap: 60px;
+    justify-content: space-between;
+
     @media screen and (${breakpoint.device.s}) {
         margin: 0 285px;
         width: 80%;
@@ -45,8 +44,8 @@ export const CreationsSliderTextContainer = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    justify-content: center;
-    column-gap: 40px;
+    justify-content: space-between;
+    column-gap: 35px;
 
     @media screen and (${breakpoint.device.s}) {
         overflow: visible;
@@ -64,6 +63,7 @@ export const CreationsSliderText = styled(BigText)`
         position: relative;
         left: 0;
     }
+
     &.selected {
         color: ${(props) => props.theme.color.orange};
     }
@@ -105,6 +105,7 @@ export const CreationItem = styled.div`
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         column-gap: 30px;
+        width: 100%;
     }
 `;
 
@@ -134,7 +135,7 @@ export const CreationsImage = styled.img`
     transition: opacity 0.3s linear;
 
     &:hover {
-        opacity: 1;
+        opacity: 0.8;
     }
     @media screen and (${breakpoint.device.m}) {
         height: 400px;

@@ -1,21 +1,21 @@
 import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Animations from 'components/Jus/Animations';
-import Creations from 'components/Jus/Creations';
-import Header from 'components/Jus/Header';
 import DefaultLayout from 'components/layouts/default';
+import Confiance from 'components/Traiteur/Confiance';
+import Header from 'components/Traiteur/Header';
+import Prestations from 'components/Traiteur/Prestations';
 
-export default function jus({ data }) {
+export default function traiteur({ data }) {
     const footerData = {
         feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="jus">
-            <Header data={data.jusSmoothie} />
-            <Animations data={data.jusAnimation} />
-            <Creations headerData={data.creationHeader} data={data.allCreationSaisons} />
+        <DefaultLayout pages={data.page.pages} footer={footerData} title="traiteur">
+            <Header data={data.traiteurHeader} />
+            <Prestations data={data.allTraiteurPrestations} />
+            <Confiance ExternalData={data.partenaire} />
         </DefaultLayout>
     );
 }
@@ -42,30 +42,33 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
-                creationHeader {
+                traiteurHeader {
                     id
-                    sousTitre
                     titre
-                }
-                allCreationSaisons {
-                    id
-                    saison
-                    produits {
+                    texte {
                         id
-                        produit {
-                            id
-                            nom
-                            fruits {
-                                nom
-                                id
-                            }
-                            image {
-                                url
-                                id
-                                alt
-                            }
-                        }
-                        periode
+                        texte
+                    }
+                    image {
+                        url
+                        id
+                        alt
+                    }
+                }
+                allTraiteurPrestations {
+                    titre
+                    titreSlug
+                    slug
+                    id
+                    contenu {
+                        id
+                        texte
+                        titre
+                    }
+                    images {
+                        alt
+                        id
+                        url
                     }
                 }
                 page {
@@ -75,35 +78,7 @@ export async function getStaticProps() {
                         titre
                     }
                 }
-                jusSmoothie {
-                    images {
-                        url
-                        id
-                        alt
-                    }
-                    presentation {
-                        texte
-                        titre
-                        id
-                    }
-                    texte
-                    titre
-                    id
-                }
-                jusAnimation {
-                    contenu {
-                        titre
-                        texte
-                        image {
-                            url
-                            id
-                            alt
-                        }
-                        id
-                    }
-                    id
-                    titre
-                }
+
                 instagram {
                     titre
                     texteLien
@@ -125,6 +100,26 @@ export async function getStaticProps() {
                         id
                         nom
                         lien
+                    }
+                }
+                page {
+                    pages {
+                        id
+                        titre
+                        slug
+                    }
+                }
+                partenaire {
+                    titre
+                    sousTitre
+                    liste {
+                        id
+                        lien
+                        nom
+                        logo {
+                            alt
+                            url
+                        }
                     }
                 }
             }

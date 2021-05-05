@@ -31,7 +31,8 @@ import {
 import { Title } from 'styles/UI/Texts.style';
 
 export default function Footer({ data, menu }) {
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState({ email: '' });
+    const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
 
     useEffect(() => {
@@ -57,9 +58,22 @@ export default function Footer({ data, menu }) {
 
     const changeHandler = (e: any, value: string) => {
         e.preventDefault();
-        setInput(value);
+        setInput({ email: value });
     };
 
+    const submitHandler = async (e: any) => {
+        e.preventDefault();
+
+        if (input.email != '') {
+            await axios.post('/api/newsletter', { input }).then((res) => {
+                setbuttonText(res.data.text);
+                setTimeout(() => {
+                    setbuttonText(data.newsletter.bouton);
+                    setInput({ email: '' });
+                }, 3000);
+            });
+        }
+    };
     return (
         <footer>
             {/* Kin'feed */}
@@ -85,14 +99,15 @@ export default function Footer({ data, menu }) {
                     <NewsLetterWrapper>
                         <NewsLetterTitle>{formatText(data.newsletter.titre)}</NewsLetterTitle>
                         <NewsLetterText>{formatText(data.newsletter.texte)}</NewsLetterText>
-                        <NewsLetterForm>
+                        <NewsLetterForm onSubmit={(e) => submitHandler(e)}>
                             <NewsLetterInput
                                 type="email"
+                                name="email"
                                 placeholder="Example@mail.com"
-                                value={input}
+                                value={input.email}
                                 onChange={(e) => changeHandler(e, e.target.value)}
                             />
-                            <NewsLetterButton type="submit" value={data.newsletter.bouton} />
+                            <NewsLetterButton type="submit" value={buttonText} />
                         </NewsLetterForm>
                     </NewsLetterWrapper>
                 </NewsLetterContainer>

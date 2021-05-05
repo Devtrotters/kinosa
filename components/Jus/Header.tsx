@@ -65,11 +65,7 @@ export default function Header({ data }) {
             </div>
             <HeaderImageContainer>
                 {data.images.map((img: any) => (
-                    <HeaderImage
-                        key={img.id}
-                        src={img.url}
-                        alt={img.alt ? img.alt : 'image du site'}
-                    />
+                    <HeaderImage key={img.id} src={img.url} alt={img.alt || 'image du site'} />
                 ))}
             </HeaderImageContainer>
         </HeaderContainer>

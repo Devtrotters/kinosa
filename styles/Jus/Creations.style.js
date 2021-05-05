@@ -35,8 +35,7 @@ export const CreationsSliderHeaderContainer = styled.header`
     justify-content: space-between;
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 0 285px;
-        width: 80%;
+        justify-content: center;
     }
 `;
 

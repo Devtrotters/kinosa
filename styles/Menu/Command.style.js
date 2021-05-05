@@ -1,0 +1,23 @@
+import styled from 'styled-components';
+import breakpoint from 'styles/breakpoints';
+import { BigText } from 'styles/UI/Texts.style';
+
+export const CommandSection = styled.section`
+    margin-top: 80px;
+    padding: 0 15px;
+
+    @media screen and (${breakpoint.device.s}) {
+        padding: 0 40px;
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        padding: 0 230px;
+    }
+    @media screen and (${breakpoint.device.lg}) {
+        padding: 0 260px;
+    }
+`;
+
+export const CommandText = styled(BigText)`
+    color: ${(props) => props.theme.color.green.default};
+`;

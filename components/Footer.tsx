@@ -1,6 +1,6 @@
 import axios from 'axios';
 import SocialLogo from 'components/SocialLogo';
-import parse from 'html-react-parser';
+import formatText from 'lib/formatText';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
@@ -64,9 +64,9 @@ export default function Footer({ data, menu }) {
         <footer>
             {/* Kin'feed */}
             <Feed>
-                <Title>{data.feed.titre}</Title>
+                <Title>{formatText(data.feed.titre)}</Title>
                 <FeedLink href={data.feed.lien} target="_blank">
-                    {data.feed.textLien}
+                    {formatText(data.feed.texteLien)}
                 </FeedLink>
                 <Instagram>
                     {data.feed.image.map((img: any, i: number) => (
@@ -83,8 +83,8 @@ export default function Footer({ data, menu }) {
             <NewsLetter>
                 <NewsLetterContainer>
                     <NewsLetterWrapper>
-                        <NewsLetterTitle>{parse(data.newsletter.titre)}</NewsLetterTitle>
-                        <NewsLetterText>{data.newsletter.texte}</NewsLetterText>
+                        <NewsLetterTitle>{formatText(data.newsletter.titre)}</NewsLetterTitle>
+                        <NewsLetterText>{formatText(data.newsletter.texte)}</NewsLetterText>
                         <NewsLetterForm>
                             <NewsLetterInput
                                 type="email"
@@ -216,14 +216,14 @@ export default function Footer({ data, menu }) {
                     />
                 </svg>
                 <HorairesSection>
-                    <HorairesText>{horaires.titre}</HorairesText>
-                    <HorairesText>{horaires.ouverture}</HorairesText>
-                    <HorairesText>{horaires.joignable}</HorairesText>
+                    <HorairesText>{formatText(horaires.titre)}</HorairesText>
+                    <HorairesText>{formatText(horaires.ouverture)}</HorairesText>
+                    <HorairesText>{formatText(horaires.joignable)}</HorairesText>
                 </HorairesSection>
                 <SocialSection>
-                    <SocialText>{data.social.titre}</SocialText>
+                    <SocialText>{formatText(data.social.titre)}</SocialText>
                     <SocialLogoContainer>
-                        {data.social.social.map((logo) => (
+                        {data.social.social.map((logo: any) => (
                             <SocialLogo key={logo.id} name={logo.nom} isFooter isMenu={false} />
                         ))}
                     </SocialLogoContainer>
@@ -239,7 +239,7 @@ export default function Footer({ data, menu }) {
                 <MenuContainer>
                     {menu.map((el: any) => (
                         <Link key={el.id} href={el.slug}>
-                            <MenuText>{el.titre}</MenuText>
+                            <MenuText>{formatText(el.titre)}</MenuText>
                         </Link>
                     ))}
                 </MenuContainer>

@@ -1,4 +1,5 @@
-import parse from 'html-react-parser';
+import formatText from 'lib/formatText';
+import Link from 'next/link';
 import {
     BlocPlat,
     BlocPlatContainer,
@@ -19,13 +20,15 @@ export default function Carte({ data, products, categories }) {
             <CarteWrapper>
                 <CarteTextContainer>
                     <div>
-                        <Title>{data.titre}</Title>
-                        <CarteSubTitle>{data.sousTitre}</CarteSubTitle>
+                        <Title>{formatText(data.titre)}</Title>
+                        <CarteSubTitle>{formatText(data.sousTitre)}</CarteSubTitle>
                     </div>
-                    <CarteButton>
-                        {data.button}
-                        <span>{'>'}</span>
-                    </CarteButton>
+                    <Link href={data.lienBouton}>
+                        <CarteButton>
+                            {formatText(data.button)}
+                            <span>{'>'}</span>
+                        </CarteButton>
+                    </Link>
                 </CarteTextContainer>
                 <BlocPlatContainer>
                     {data.presentation.map((blocPlat: any) => (
@@ -34,7 +37,7 @@ export default function Carte({ data, products, categories }) {
                                 src={blocPlat.image.url}
                                 alt={blocPlat.image.alt || 'image du site'}
                             />
-                            <Text>{parse(blocPlat.texte)}</Text>
+                            <Text>{formatText(blocPlat.texte)}</Text>
                         </BlocPlat>
                     ))}
                 </BlocPlatContainer>

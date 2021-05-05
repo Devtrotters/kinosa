@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
@@ -22,10 +23,14 @@ export default function Menu({ categories, products }) {
                 const data = {
                     name: '',
                     id: '',
+                    link: null,
+                    linkText: '',
                     produits: []
                 };
                 data.name = category.nom;
                 data.id = category.id;
+                data.link = category.lien;
+                data.linkText = category.texteLien;
                 carteTemp.push(data);
             });
             products.forEach((product: any) => {
@@ -50,7 +55,7 @@ export default function Menu({ categories, products }) {
                 <MenuWrapper key={menu.id}>
                     <MenuTitleContainer>
                         <div>
-                            <Title>{menu.name}</Title>
+                            <Title>{formatText(menu.name)}</Title>
                             <Svg
                                 data-v-74d53e62=""
                                 width="14"
@@ -81,7 +86,7 @@ export default function Menu({ categories, products }) {
                         <div>
                             {menu.link && (
                                 <Link href={menu.link}>
-                                    <MenuLink>Découvrez nos méthodes de fabrication !</MenuLink>
+                                    <MenuLink>{formatText(menu.linkText)}</MenuLink>
                                 </Link>
                             )}
                         </div>
@@ -90,9 +95,9 @@ export default function Menu({ categories, products }) {
                     <DropDown className={open === menu.id ? 'open' : ''}>
                         {menu.produits.map((el: any) => (
                             <DropDownItem key={el.id}>
-                                <DropDownText>{el.nom}</DropDownText>
-                                <DropDownText>{el.prix + ' €'}</DropDownText>
-                                <MediumText>{el.composition}</MediumText>
+                                <DropDownText>{formatText(el.nom)}</DropDownText>
+                                <DropDownText>{formatText(el.prix + ' €')}</DropDownText>
+                                <MediumText>{formatText(el.composition)}</MediumText>
                             </DropDownItem>
                         ))}
                     </DropDown>

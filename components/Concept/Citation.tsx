@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import {
     Bubules,
     CitationAuthor,
@@ -42,8 +43,8 @@ export default function Citation({ data }) {
                     </svg>
                 </Bubules>
                 <aside>
-                    <CitationText>{data.citation}</CitationText>
-                    <CitationAuthor>{data.auteur}</CitationAuthor>
+                    <CitationText>{formatText(data.citation)}</CitationText>
+                    <CitationAuthor>{formatText(data.auteur)}</CitationAuthor>
                 </aside>
                 <Bubules>
                     <svg

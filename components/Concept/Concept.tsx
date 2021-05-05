@@ -43,7 +43,7 @@ export default function Concept({ data }) {
         <ConceptSection>
             <div>
                 <Menu>
-                    {data.map((bloc: any, i: number) => (
+                    {data.map((bloc: any) => (
                         <Link key={bloc.id} href={'#' + bloc.slug}>
                             <MenuLink>
                                 <MenuWrapper>

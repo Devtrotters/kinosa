@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import {
     GerantContainer,
     GerantImg,
@@ -26,8 +27,8 @@ export default function Presentation({ data }) {
                     </GerantImgWrapper>
                     <GerantPresentationContainer>
                         <GerantNameContainer>
-                            <GerantName>{gerant.nom}</GerantName>
-                            <Text>{gerant.fonction}</Text>
+                            <GerantName>{formatText(gerant.nom)}</GerantName>
+                            <Text>{formatText(gerant.fonction)}</Text>
                         </GerantNameContainer>
                         <SocialContainer>
                             {gerant.social.map((social: any) => (
@@ -41,7 +42,7 @@ export default function Presentation({ data }) {
                             ))}
                         </SocialContainer>
                         <aside>
-                            <GerantText>{gerant.presentation}</GerantText>
+                            <GerantText>{formatText(gerant.presentation)}</GerantText>
                         </aside>
                     </GerantPresentationContainer>
                 </GerantContainer>

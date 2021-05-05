@@ -5,7 +5,6 @@ import Command from 'components/Home/Command';
 import Concept from 'components/Home/Concept';
 import Header from 'components/Home/Header';
 import DefaultLayout from 'components/layouts/default';
-import Link from 'next/link';
 
 // TODO : Delete all images in public
 //TODO: mettre favicon
@@ -85,10 +84,18 @@ export async function getStaticProps() {
                         texte
                     }
                 }
+                homeCommande {
+                    titre
+                    texte {
+                        id
+                        texte
+                    }
+                }
                 homeCarte {
                     titre
                     sousTitre
                     button
+                    lienBouton
                     presentation {
                         image {
                             url
@@ -132,6 +139,7 @@ export async function getStaticProps() {
                         texte
                     }
                     bouton
+                    lienBouton
                     gerant {
                         id
                         image {
@@ -144,6 +152,8 @@ export async function getStaticProps() {
                 allCategorieProduits {
                     id
                     nom
+                    lien
+                    texteLien
                 }
                 allProduits(first: 100) {
                     id

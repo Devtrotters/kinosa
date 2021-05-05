@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import { useState } from 'react';
 import {
     HeaderButton,
@@ -26,8 +27,8 @@ export default function Header({ data }) {
     return (
         <HeaderContainer key={data.id}>
             <div>
-                <HeaderTitle>{data.titre}</HeaderTitle>
-                <HeaderText>{data.texte}</HeaderText>
+                <HeaderTitle>{formatText(data.titre)}</HeaderTitle>
+                <HeaderText>{formatText(data.texte)}</HeaderText>
 
                 {data.presentation.map((el: any) => (
                     <HeaderSubContainer key={el.id}>
@@ -57,7 +58,7 @@ export default function Header({ data }) {
                             </HeaderButton>
                         </HeaderSubTitle>
                         <HeaderSubText className={subtextOpen === el.id ? 'open' : ''}>
-                            {el.texte}
+                            {formatText(el.texte)}
                         </HeaderSubText>
                     </HeaderSubContainer>
                 ))}

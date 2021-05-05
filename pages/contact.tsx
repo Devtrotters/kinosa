@@ -2,6 +2,7 @@ import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client
 import { setContext } from '@apollo/client/link/context';
 import axios from 'axios';
 import DefaultLayout from 'components/layouts/default';
+import formatText from 'lib/formatText';
 import { useState } from 'react';
 import {
     ContactSection,
@@ -77,18 +78,11 @@ export default function contact({ data }) {
 
     const submitHandler = (e: any) => {
         e.preventDefault();
-        console.log(e.target);
         axios({
             method: 'post',
             url: '/api/mail',
             data: inputData
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        });
     };
 
     const invalidHandler = (e: any) => {
@@ -102,9 +96,9 @@ export default function contact({ data }) {
             <ContactSection>
                 <FormContainer>
                     <div>
-                        <Title>{data.contact.titre}</Title>
+                        <Title>{formatText(data.contact.titre)}</Title>
                         {data.contact.texte.map((text: any) => (
-                            <ContactText key={text.id}>{text.texte}</ContactText>
+                            <ContactText key={text.id}>{formatText(text.texte)}</ContactText>
                         ))}
                     </div>
                     <Form onSubmit={(e) => submitHandler(e)}>

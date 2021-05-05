@@ -50,6 +50,9 @@ export const MenuText = styled(Text)`
     &.displayed {
         color: ${(props) => props.theme.color.orange};
     }
+    &:hover {
+        color: ${(props) => props.theme.color.orange};
+    }
 `;
 export const Square = styled.div`
     @media screen and (${breakpoint.device.s}) {

@@ -69,15 +69,27 @@ export const GerantArticle = styled.article`
 `;
 
 export const GerantWrapper = styled.div`
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr fit-content(10%);
-    row-gap: 15px;
+    row-gap: 15px; */
+
+    position: relative;
+
+    &:hover {
+        > div > img {
+            filter: grayscale(0%);
+        }
+        > p {
+            display: inline;
+        }
+    }
 `;
 
 export const GerantImgContainer = styled.div`
-    border-radius: 10px;
+    height: 100%;
 
+    border-radius: 10px;
     overflow: hidden;
 `;
 
@@ -89,10 +101,6 @@ export const GerantImg = styled.img`
     filter: grayscale(100%);
 
     transition: all 0.3s linear;
-
-    &.selected {
-        filter: grayscale(0%);
-    }
 
     &:last-of-type {
         grid-row: 1 / 1;
@@ -106,7 +114,10 @@ export const GerantText = styled(Text)`
 
     display: none;
 
-    &.selected {
-        display: inline;
-    }
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+
+    color: ${(props) => props.theme.color.white};
 `;

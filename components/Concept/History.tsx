@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import {
     Bloc,
     BlocContainer,
@@ -12,17 +13,17 @@ import { Subtitle, Title } from 'styles/UI/Texts.style';
 export default function History({ data }) {
     return (
         <HistorySection>
-            <Title>{data.titre}</Title>
+            <Title>{formatText(data.titre)}</Title>
             <BlocContainer>
                 <BlocWrapper>
-                    {data.section.map((bloc: any, i) => {
+                    {data.section.map((bloc: any, i: number) => {
                         if (i < 2) {
                             return (
                                 <Bloc key={bloc.id}>
                                     <Square />
                                     <BlocTextContainer>
-                                        <Subtitle>{bloc.titre}</Subtitle>
-                                        <BlocText>{bloc.texte}</BlocText>
+                                        <Subtitle>{formatText(bloc.titre)}</Subtitle>
+                                        <BlocText>{formatText(bloc.texte)}</BlocText>
                                     </BlocTextContainer>
                                 </Bloc>
                             );
@@ -30,14 +31,14 @@ export default function History({ data }) {
                     })}
                 </BlocWrapper>
                 <BlocWrapper>
-                    {data.section.map((bloc: any, i) => {
+                    {data.section.map((bloc: any, i: number) => {
                         if (i >= 2) {
                             return (
                                 <Bloc key={bloc.id}>
                                     <Square />
                                     <BlocTextContainer>
-                                        <Subtitle>{bloc.titre}</Subtitle>
-                                        <BlocText>{bloc.texte}</BlocText>
+                                        <Subtitle>{formatText(bloc.titre)}</Subtitle>
+                                        <BlocText>{formatText(bloc.texte)}</BlocText>
                                     </BlocTextContainer>
                                 </Bloc>
                             );

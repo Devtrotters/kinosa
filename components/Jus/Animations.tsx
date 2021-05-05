@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import { useState } from 'react';
 import {
     AnimationsContainer,
@@ -29,10 +30,10 @@ export default function Animations({ data }) {
                 {data.contenu.map((el: any) => (
                     <AnimationsSubContainer key={el.id}>
                         <AnimationsSubTitle className={subtextOpen === el.id ? 'open' : ''}>
-                            {el.titre}
+                            {formatText(el.titre)}
                         </AnimationsSubTitle>
                         <AnimationsSubText className={subtextOpen === el.id ? 'open' : ''}>
-                            {el.texte}
+                            {formatText(el.texte)}
                         </AnimationsSubText>
 
                         <AnimationsImage

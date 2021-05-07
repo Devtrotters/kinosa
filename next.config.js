@@ -2,11 +2,11 @@ module.exports = {
     async headers() {
         return [
             {
-                source: 'https://www.facebook.com/',
+                source: '/*',
                 headers: [
                     {
                         key: 'frame-ancestors',
-                        value: 'self'
+                        value: 'https://www.facebook.com/'
                     }
                 ]
             }

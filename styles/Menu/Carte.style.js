@@ -90,6 +90,10 @@ export const CarteWrapper = styled.div`
                         &:last-of-type {
                             grid-column: 1;
                             grid-row: 1 / span 4;
+                            > div > p {
+                                right: auto;
+                                left: 15px;
+                            }
                         }
                     }
                 }
@@ -185,7 +189,7 @@ export const Container = styled.article`
     }
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 0 40px;
+        margin: 0 40px 0 0;
         padding: 0;
 
         &::before {
@@ -255,6 +259,10 @@ export const ProdutTypeTitle = styled(Text)`
     color: ${(props) => props.theme.color.orange};
 `;
 
+export const ImageContainer = styled.div`
+    position: relative;
+`;
+
 export const Img = styled.img`
     width: 100%;
     margin-top: 10px;
@@ -262,6 +270,21 @@ export const Img = styled.img`
     height: 300px;
     border-radius: 10px;
     object-fit: cover;
+`;
+
+export const Price = styled.p`
+    padding: 15px 25px;
+
+    color: ${(props) => props.theme.color.green.default};
+    background-color: ${(props) => props.theme.color.orange};
+    border-radius: 10px;
+
+    /* font-weight: bold; */
+    font-size: 18px;
+
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
 `;
 
 export const SucreWrapper = styled.article`

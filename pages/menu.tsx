@@ -69,6 +69,7 @@ export async function getStaticProps() {
                 allProduits(first: 100) {
                     id
                     nom
+                    prix
                     categorie {
                         nom
                         id

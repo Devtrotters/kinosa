@@ -181,7 +181,10 @@ export default function contact({ data }) {
                     </Form>
                 </FormContainer>
                 <article>
-                    <Img src="contact_manon.6014c0ce.webp" alt="contact" />
+                    <Img
+                        src={data.contact.image.url}
+                        alt={data.contact.image.alt || 'img du site'}
+                    />
                 </article>
                 <MapContainer>
                     {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
@@ -230,6 +233,10 @@ export async function getStaticProps() {
                     texte {
                         id
                         texte
+                    }
+                    image {
+                        url
+                        alt
                     }
                 }
                 instagram {

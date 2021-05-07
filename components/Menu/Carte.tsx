@@ -11,10 +11,12 @@ import {
     CarteWrapper,
     CategoryContainer,
     Container,
+    ImageContainer,
     Img,
     Menu,
     MenuButton,
     MenuContainer,
+    Price,
     ProdutTypeTitle,
     SaleWrapper,
     SucreWrapper
@@ -162,94 +164,101 @@ export default function Carte({ categories, products }) {
                         </article>
                         <Container>
                             {category.produits.map((product: any, i: number) => {
-                                if (product.typeDeProduit[0].__typename === 'ProduitSaleRecord') {
-                                    return (
-                                        <CategoryContainer
-                                            key={i}
-                                            className={
-                                                displayedMenus[getIndexByCategory(category.id)]
-                                                    .displayedId === product.id
-                                                    ? 'displayed'
-                                                    : ''
-                                            }>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Base</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].base.map((base) => (
-                                                    <Text key={base.id}>
-                                                        {formatText(base.nom)}
-                                                    </Text>
-                                                ))}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Protéine</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].proteine.map(
-                                                    (protein: any) => (
-                                                        <Text key={protein.id}>
-                                                            {formatText(protein.nom)}
+                                switch (product.typeDeProduit[0].__typename) {
+                                    case 'ProduitSaleRecord':
+                                        return (
+                                            <CategoryContainer
+                                                key={i}
+                                                className={
+                                                    displayedMenus[getIndexByCategory(category.id)]
+                                                        .displayedId === product.id
+                                                        ? 'displayed'
+                                                        : ''
+                                                }>
+                                                <SaleWrapper>
+                                                    <ProdutTypeTitle>Base</ProdutTypeTitle>
+                                                    {product.typeDeProduit[0].base.map((base) => (
+                                                        <Text key={base.id}>
+                                                            {formatText(base.nom)}
                                                         </Text>
-                                                    )
-                                                )}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>
-                                                    formatText(Ingrédients
-                                                </ProdutTypeTitle>
-                                                {product.typeDeProduit[0].ingredient.map(
-                                                    (ingredient: any) => (
-                                                        <Text key={ingredient.id}>
-                                                            {formatText(ingredient.nom)}
+                                                    ))}
+                                                </SaleWrapper>
+                                                <SaleWrapper>
+                                                    <ProdutTypeTitle>Protéine</ProdutTypeTitle>
+                                                    {product.typeDeProduit[0].proteine.map(
+                                                        (protein: any) => (
+                                                            <Text key={protein.id}>
+                                                                {formatText(protein.nom)}
+                                                            </Text>
+                                                        )
+                                                    )}
+                                                </SaleWrapper>
+                                                <SaleWrapper>
+                                                    <ProdutTypeTitle>Ingrédients</ProdutTypeTitle>
+                                                    {product.typeDeProduit[0].ingredient.map(
+                                                        (ingredient: any) => (
+                                                            <Text key={ingredient.id}>
+                                                                {formatText(ingredient.nom)}
+                                                            </Text>
+                                                        )
+                                                    )}
+                                                </SaleWrapper>
+                                                <SaleWrapper>
+                                                    <ProdutTypeTitle>
+                                                        Accompagnement(s)
+                                                    </ProdutTypeTitle>
+                                                    {product.typeDeProduit[0].accompagnement.map(
+                                                        (accompagnement: any) => (
+                                                            <Text key={accompagnement.id}>
+                                                                {formatText(accompagnement.nom)}
+                                                            </Text>
+                                                        )
+                                                    )}
+                                                </SaleWrapper>
+                                                <SaleWrapper>
+                                                    <ProdutTypeTitle>Présentation</ProdutTypeTitle>
+                                                    <Text>{formatText(product.presentation)}</Text>
+                                                    <ImageContainer>
+                                                        <Img
+                                                            src={product.image.url}
+                                                            alt={product.image.alt || 'img du site'}
+                                                        />
+                                                        <Price>{product.prix + ' €'}</Price>
+                                                    </ImageContainer>
+                                                </SaleWrapper>
+                                            </CategoryContainer>
+                                        );
+                                    case 'ProduitSucreRecord':
+                                        return (
+                                            <CategoryContainer
+                                                key={i}
+                                                className={
+                                                    displayedMenus[getIndexByCategory(category.id)]
+                                                        .displayedId === product.id
+                                                        ? 'displayed'
+                                                        : ''
+                                                }>
+                                                <SucreWrapper>
+                                                    <ProdutTypeTitle>Composition</ProdutTypeTitle>
+                                                    {product.typeDeProduit[0].fruit.map((fruit) => (
+                                                        <Text key={fruit.id}>
+                                                            {formatText(fruit.nom)}
                                                         </Text>
-                                                    )
-                                                )}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Accompagnement(s)</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].accompagnement.map(
-                                                    (accompagnement: any) => (
-                                                        <Text key={accompagnement.id}>
-                                                            {formatText(accompagnement.nom)}
-                                                        </Text>
-                                                    )
-                                                )}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Présentation</ProdutTypeTitle>
-                                                <Text>{formatText(product.presentation)}</Text>
-                                                <Img
-                                                    src={product.image.url}
-                                                    alt={product.image.alt}
-                                                />
-                                            </SaleWrapper>
-                                        </CategoryContainer>
-                                    );
-                                } else {
-                                    return (
-                                        <CategoryContainer
-                                            key={i}
-                                            className={
-                                                displayedMenus[getIndexByCategory(category.id)]
-                                                    .displayedId === product.id
-                                                    ? 'displayed'
-                                                    : ''
-                                            }>
-                                            <SucreWrapper>
-                                                <ProdutTypeTitle>Composition</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].fruit.map((fruit) => (
-                                                    <Text key={fruit.id}>
-                                                        {formatText(fruit.nom)}
-                                                    </Text>
-                                                ))}
-                                            </SucreWrapper>
-                                            <SucreWrapper>
-                                                <ProdutTypeTitle>Présentation</ProdutTypeTitle>
-                                                <Text>{formatText(product.presentation)}</Text>
-                                                <Img
-                                                    src={product.image.url}
-                                                    alt={product.image.alt}
-                                                />
-                                            </SucreWrapper>
-                                        </CategoryContainer>
-                                    );
+                                                    ))}
+                                                </SucreWrapper>
+                                                <SucreWrapper>
+                                                    <ProdutTypeTitle>Présentation</ProdutTypeTitle>
+                                                    <Text>{formatText(product.presentation)}</Text>
+                                                    <ImageContainer>
+                                                        <Img
+                                                            src={product.image.url}
+                                                            alt={product.image.alt || 'img du site'}
+                                                        />
+                                                        <Price>{product.prix + ' €'}</Price>
+                                                    </ImageContainer>
+                                                </SucreWrapper>
+                                            </CategoryContainer>
+                                        );
                                 }
                             })}
                         </Container>

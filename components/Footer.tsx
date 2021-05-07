@@ -269,11 +269,9 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <MessengerCustomerChat
-                    language="fr_FR"
-                    shouldShowDialog={true}
-                    pageId="104172444836368"
-                />
+                <div id="fb-root"></div>
+
+                <div className="fb-customerchat" data-page_id="104172444836368"></div>
             </FooterContainer>
         </footer>
     );

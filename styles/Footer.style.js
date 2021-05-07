@@ -85,9 +85,6 @@ export const NewsLetterContainer = styled.div`
     @media screen and (${breakpoint.device.m}) {
         margin: 0 165px;
     }
-    @media screen and (${breakpoint.device.lg}) {
-        margin: 0 220px;
-    }
 `;
 
 export const NewsLetterWrapper = styled.article`

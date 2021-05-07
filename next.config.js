@@ -1,8 +1,9 @@
 module.exports = {
+    target: 'serverless',
     async headers() {
         return [
             {
-                source: '/:path*',
+                source: '/(.*)',
                 headers: [
                     {
                         key: 'frame-ancestors',

@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 
 export default function DefaultLayout({ children, title, footer, pages }) {
     ReactGA.initialize('UA-000000-01');
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.pageview('/*');
 
     return (
         <>

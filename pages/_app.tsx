@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'styles/GlobalStyle';
 import { theme } from 'styles/theme';
 
+import * as fbq from '../lib/fpixel';
 import * as gtag from '../lib/gtag';
 
 function MyApp({ Component, pageProps }) {
@@ -11,6 +12,7 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         const handleRouteChange = (url: any) => {
             gtag.pageview(url);
+            fbq.pageview();
         };
         router.events.on('routeChangeComplete', handleRouteChange);
         return () => {

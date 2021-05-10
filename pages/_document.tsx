@@ -62,7 +62,7 @@ class MyDocument extends Document {
                 n.queue=[];t=b.createElement(e);t.async=!0;
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
+                'https://connect.facebook.net/fr_FR/fbevents.js');
                 fbq('init', ${FB_PIXEL_ID});
               `
                         }}

@@ -93,6 +93,10 @@ export const CarteWrapper = styled.div`
                             > div > p {
                                 right: auto;
                                 left: 15px;
+                                &:last-of-type {
+                                    left: auto;
+                                    right: 15px;
+                                }
                             }
                         }
                     }
@@ -285,6 +289,13 @@ export const Price = styled.p`
     position: absolute;
     bottom: 15px;
     right: 15px;
+`;
+
+export const SousCategorie = styled(Price)`
+    bottom: auto;
+    top: 15px;
+    left: 15px;
+    right: auto;
 `;
 
 export const SucreWrapper = styled.article`

@@ -19,6 +19,7 @@ import {
     Price,
     ProdutTypeTitle,
     SaleWrapper,
+    SousCategorie,
     SucreWrapper
 } from 'styles/Menu/Carte.style';
 import { Text } from 'styles/UI/Texts.style';
@@ -224,6 +225,11 @@ export default function Carte({ categories, products }) {
                                                             alt={product.image.alt || 'img du site'}
                                                         />
                                                         <Price>{product.prix + ' €'}</Price>
+                                                        {product.sousCategorie && (
+                                                            <SousCategorie>
+                                                                {product.sousCategorie.nom}
+                                                            </SousCategorie>
+                                                        )}
                                                     </ImageContainer>
                                                 </SaleWrapper>
                                             </CategoryContainer>
@@ -255,6 +261,11 @@ export default function Carte({ categories, products }) {
                                                             alt={product.image.alt || 'img du site'}
                                                         />
                                                         <Price>{product.prix + ' €'}</Price>
+                                                        {product.sousCategorie && (
+                                                            <SousCategorie>
+                                                                {product.sousCategorie.nom}
+                                                            </SousCategorie>
+                                                        )}
                                                     </ImageContainer>
                                                 </SucreWrapper>
                                             </CategoryContainer>

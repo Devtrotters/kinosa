@@ -74,6 +74,9 @@ export async function getStaticProps() {
                         nom
                         id
                     }
+                    sousCategorie {
+                        nom
+                    }
                     presentation
                     image {
                         url

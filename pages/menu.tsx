@@ -109,6 +109,13 @@ export async function getStaticProps() {
                                 nom
                             }
                         }
+                        ... on ProduitCollationRecord {
+                            id
+                            composition {
+                                id
+                                nom
+                            }
+                        }
                     }
                 }
                 commande {

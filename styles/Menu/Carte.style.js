@@ -93,9 +93,9 @@ export const CarteWrapper = styled.div`
                             > div > p {
                                 right: auto;
                                 left: 15px;
-                                &:last-of-type {
-                                    left: auto;
+                                &.sousCategorie {
                                     right: 15px;
+                                    left: auto;
                                 }
                             }
                         }
@@ -109,6 +109,9 @@ export const CarteWrapper = styled.div`
 export const CarteTitle = styled(Title)`
     margin: 0 15px;
 
+    @media screen and (${breakpoint.device.s}) {
+        margin: 0 40px;
+    }
     @media screen and (${breakpoint.device.menu}) {
         margin: 0;
     }
@@ -193,12 +196,16 @@ export const Container = styled.article`
     }
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 0 40px 0 0;
+        margin: 0 40px;
         padding: 0;
 
         &::before {
             display: none;
         }
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin: 0 40px 0 0;
     }
 
     @media screen and (${breakpoint.device.m}) {
@@ -215,13 +222,23 @@ export const CategoryContainer = styled.section`
     padding-top: 20px;
 
     display: none;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     row-gap: 25px;
-
-    text-align: justify;
 
     &.displayed {
         display: grid;
+    }
+
+    &.sale {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    > article {
+        &:last-of-type {
+            > h3 {
+                text-align: justify;
+            }
+        }
     }
 
     @media screen and (${breakpoint.device.s}) {
@@ -233,8 +250,6 @@ export const CategoryContainer = styled.section`
 `;
 
 export const SaleWrapper = styled.article`
-    max-width: 160px;
-
     display: flex;
     flex-direction: column;
 
@@ -257,6 +272,10 @@ export const SaleWrapper = styled.article`
             }
         }
     }
+
+    @media screen and (${breakpoint.device.s}) {
+        max-width: 160px;
+    }
 `;
 
 export const ProdutTypeTitle = styled(Text)`
@@ -264,14 +283,16 @@ export const ProdutTypeTitle = styled(Text)`
 `;
 
 export const ImageContainer = styled.div`
+    margin-top: 10px;
     position: relative;
 `;
 
 export const Img = styled.img`
     width: 100%;
-    margin-top: 10px;
-
     height: 300px;
+
+    display: block;
+
     border-radius: 10px;
     object-fit: cover;
 `;
@@ -301,8 +322,6 @@ export const SousCategorie = styled(Price)`
 export const SucreWrapper = styled.article`
     grid-column: 1 / span 2;
 
-    max-width: 160px;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
 
@@ -325,6 +344,7 @@ export const SucreWrapper = styled.article`
 
     @media screen and (${breakpoint.device.s}) {
         grid-template-columns: 1fr;
+        max-width: 160px;
         > p {
             grid-column: 1;
         }

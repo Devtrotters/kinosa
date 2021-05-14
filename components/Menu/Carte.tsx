@@ -173,8 +173,8 @@ export default function Carte({ categories, products }) {
                                                 className={
                                                     displayedMenus[getIndexByCategory(category.id)]
                                                         .displayedId === product.id
-                                                        ? 'displayed'
-                                                        : ''
+                                                        ? 'displayed sale'
+                                                        : 'sale'
                                                 }>
                                                 <SaleWrapper>
                                                     <ProdutTypeTitle>Base</ProdutTypeTitle>
@@ -226,7 +226,7 @@ export default function Carte({ categories, products }) {
                                                         />
                                                         <Price>{product.prix + ' €'}</Price>
                                                         {product.sousCategorie && (
-                                                            <SousCategorie>
+                                                            <SousCategorie className="sousCategorie">
                                                                 {product.sousCategorie.nom}
                                                             </SousCategorie>
                                                         )}
@@ -235,6 +235,7 @@ export default function Carte({ categories, products }) {
                                             </CategoryContainer>
                                         );
                                     case 'ProduitSucreRecord':
+                                    case 'ProduitCollationRecord':
                                         return (
                                             <CategoryContainer
                                                 key={i}
@@ -246,11 +247,24 @@ export default function Carte({ categories, products }) {
                                                 }>
                                                 <SucreWrapper>
                                                     <ProdutTypeTitle>Composition</ProdutTypeTitle>
-                                                    {product.typeDeProduit[0].fruit.map((fruit) => (
-                                                        <Text key={fruit.id}>
-                                                            {formatText(fruit.nom)}
-                                                        </Text>
-                                                    ))}
+                                                    {product.typeDeProduit[0].__typename ===
+                                                        'ProduitSucreRecord' &&
+                                                        product.typeDeProduit[0].fruit.map(
+                                                            (fruit: any) => (
+                                                                <Text key={fruit.id}>
+                                                                    {formatText(fruit.nom)}
+                                                                </Text>
+                                                            )
+                                                        )}
+                                                    {product.typeDeProduit[0].__typename ===
+                                                        'ProduitCollationRecord' &&
+                                                        product.typeDeProduit[0].composition.map(
+                                                            (fruit: any) => (
+                                                                <Text key={fruit.id}>
+                                                                    {formatText(fruit.nom)}
+                                                                </Text>
+                                                            )
+                                                        )}
                                                 </SucreWrapper>
                                                 <SucreWrapper>
                                                     <ProdutTypeTitle>Présentation</ProdutTypeTitle>
@@ -262,7 +276,7 @@ export default function Carte({ categories, products }) {
                                                         />
                                                         <Price>{product.prix + ' €'}</Price>
                                                         {product.sousCategorie && (
-                                                            <SousCategorie>
+                                                            <SousCategorie className="sousCategorie">
                                                                 {product.sousCategorie.nom}
                                                             </SousCategorie>
                                                         )}

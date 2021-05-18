@@ -282,6 +282,48 @@ export const ProdutTypeTitle = styled(Text)`
     color: ${(props) => props.theme.color.orange};
 `;
 
+export const AccompagnementContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr fit-content(100%);
+    column-gap: 10px;
+    row-gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+    > p {
+        &:first-of-type {
+            grid-column: 1 / span 2;
+        }
+    }
+`;
+
+export const SauceToppingButton = styled.svg`
+    fill: ${(props) => props.theme.color.green.default};
+    transition: all 0.3s linear;
+    cursor: pointer;
+
+    &.open {
+        transform: rotate(-180deg);
+        > circle {
+            fill: ${(props) => props.theme.color.orange};
+        }
+    }
+`;
+
+export const DropDown = styled.div`
+    height: 0;
+
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: all 0.3s linear;
+
+    grid-column: 1 / span 2;
+
+    &.open {
+        height: 100%;
+        transform: scaleY(1);
+    }
+`;
+
 export const ImageContainer = styled.div`
     margin-top: 10px;
     position: relative;
@@ -304,7 +346,6 @@ export const Price = styled.p`
     background-color: ${(props) => props.theme.color.orange};
     border-radius: 10px;
 
-    /* font-weight: bold; */
     font-size: 18px;
 
     position: absolute;

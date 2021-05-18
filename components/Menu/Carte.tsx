@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { MenuLink, MenuText, MenuWrapper, Square } from 'styles/Concept/Concept.style';
 import {
+    AccompagnementContainer,
     CarteButton,
     CarteButtonContainer,
     CarteContainer,
@@ -11,6 +12,7 @@ import {
     CarteWrapper,
     CategoryContainer,
     Container,
+    DropDown,
     ImageContainer,
     Img,
     Menu,
@@ -19,6 +21,7 @@ import {
     Price,
     ProdutTypeTitle,
     SaleWrapper,
+    SauceToppingButton,
     SousCategorie,
     SucreWrapper
 } from 'styles/Menu/Carte.style';
@@ -30,6 +33,20 @@ export default function Carte({ categories, products }) {
     const [selected, setSelected] = useState(
         categories[0].slug !== 'formules' ? categories[0].slug : categories[1].slug
     );
+    const [openSauce, setOpenSauce] = useState([]);
+    const [openTopping, setOpenTopping] = useState([]);
+
+    const openS = [],
+        openT = [];
+    categories.forEach((cat: any) => {
+        openS.push(false);
+        openT.push(false);
+    });
+
+    useEffect(() => {
+        setOpenSauce(openS);
+        setOpenTopping(openT);
+    }, []);
 
     useEffect(() => {
         const fillCarte = function () {
@@ -83,7 +100,7 @@ export default function Carte({ categories, products }) {
                 });
             },
             {
-                rootMargin: '0px 0px -80% 0px',
+                rootMargin: '0px 0px -75% 0px',
                 threshold: 0.25
             }
         );
@@ -110,18 +127,56 @@ export default function Carte({ categories, products }) {
             }
     };
 
-    const clickHandler = (e: any, catId: any, id: any) => {
+    const productButtonClickHandler = (e: any, catId: any, id: any) => {
         e.preventDefault();
         const displayedMenuIndex = getIndexByCategory(catId);
         const displayedMenusCopy = [...displayedMenus];
         displayedMenusCopy.splice(displayedMenuIndex, 1, { categoryId: catId, displayedId: id });
         setDisplayedMenus(displayedMenusCopy);
     };
+
+    const sauceToppingButtonClickHandler = (e: any, i: any, type: string) => {
+        e.preventDefault();
+        let tmp: any;
+        let index: number;
+
+        switch (type) {
+            case 'sauce':
+                setOpenTopping(openT);
+                tmp = [...openSauce];
+
+                index = openSauce.findIndex((sauce) => sauce);
+                if (index !== -1) {
+                    tmp.splice(index, 1, false);
+                }
+                if (index !== i) {
+                    tmp.splice(i, 1, true);
+                }
+                setOpenSauce(tmp);
+                break;
+            case 'topping':
+                setOpenSauce(openS);
+                tmp = [...openTopping];
+
+                index = openTopping.findIndex((topping) => topping);
+                if (index !== -1) {
+                    tmp.splice(index, 1, false);
+                }
+                if (index !== i) {
+                    tmp.splice(i, 1, true);
+                }
+
+                setOpenTopping(tmp);
+                break;
+            default:
+                throw new Error('undefined type: ' + type);
+        }
+    };
     return (
         <CarteSection>
             <MenuContainer>
                 <Menu>
-                    {carte.map((category: any, i: number) => (
+                    {carte.map((category: any) => (
                         <Link key={category.id} href={'#' + category.slug}>
                             <MenuLink>
                                 <MenuWrapper>
@@ -130,7 +185,7 @@ export default function Carte({ categories, products }) {
                                         className={selected === category.slug ? 'displayed' : ''}
                                     />
                                     <MenuText
-                                        id={category.name + 'text'}
+                                        id={category.slug + 'text'}
                                         className={selected === category.slug ? 'displayed' : ''}>
                                         {formatText(category.name)}
                                     </MenuText>
@@ -142,7 +197,7 @@ export default function Carte({ categories, products }) {
                 </Menu>
             </MenuContainer>
             <CarteContainer>
-                {carte.map((category) => (
+                {carte.map((category: any) => (
                     <CarteWrapper id={category.slug} key={category.id}>
                         <article>
                             <CarteTitle>{formatText(category.name)}</CarteTitle>
@@ -158,18 +213,20 @@ export default function Carte({ categories, products }) {
                                                 ? 'displayed'
                                                 : ''
                                         }
-                                        onClick={(e) => clickHandler(e, category.id, product.id)}
+                                        onClick={(e) =>
+                                            productButtonClickHandler(e, category.id, product.id)
+                                        }
                                     />
                                 ))}
                             </CarteButtonContainer>
                         </article>
                         <Container>
-                            {category.produits.map((product: any, i: number) => {
+                            {category.produits.map((product: any) => {
                                 switch (product.typeDeProduit[0].__typename) {
                                     case 'ProduitSaleRecord':
                                         return (
                                             <CategoryContainer
-                                                key={i}
+                                                key={product.id}
                                                 className={
                                                     displayedMenus[getIndexByCategory(category.id)]
                                                         .displayedId === product.id
@@ -178,11 +235,13 @@ export default function Carte({ categories, products }) {
                                                 }>
                                                 <SaleWrapper>
                                                     <ProdutTypeTitle>Base</ProdutTypeTitle>
-                                                    {product.typeDeProduit[0].base.map((base) => (
-                                                        <Text key={base.id}>
-                                                            {formatText(base.nom)}
-                                                        </Text>
-                                                    ))}
+                                                    {product.typeDeProduit[0].base.map(
+                                                        (base: any) => (
+                                                            <Text key={base.id}>
+                                                                {formatText(base.nom)}
+                                                            </Text>
+                                                        )
+                                                    )}
                                                 </SaleWrapper>
                                                 <SaleWrapper>
                                                     <ProdutTypeTitle>Protéine</ProdutTypeTitle>
@@ -205,16 +264,181 @@ export default function Carte({ categories, products }) {
                                                     )}
                                                 </SaleWrapper>
                                                 <SaleWrapper>
-                                                    <ProdutTypeTitle>
-                                                        Accompagnement(s)
-                                                    </ProdutTypeTitle>
-                                                    {product.typeDeProduit[0].accompagnement.map(
-                                                        (accompagnement: any) => (
-                                                            <Text key={accompagnement.id}>
-                                                                {formatText(accompagnement.nom)}
-                                                            </Text>
-                                                        )
-                                                    )}
+                                                    <AccompagnementContainer>
+                                                        <ProdutTypeTitle>
+                                                            Accompagnement(s)
+                                                        </ProdutTypeTitle>
+                                                        {product.typeDeProduit[0].accompagnement.map(
+                                                            (accompagnement: any) => {
+                                                                switch (accompagnement.nom) {
+                                                                    case 'Sauce au choix':
+                                                                        return (
+                                                                            <>
+                                                                                <Text
+                                                                                    key={
+                                                                                        accompagnement.id
+                                                                                    }>
+                                                                                    {formatText(
+                                                                                        accompagnement.nom
+                                                                                    )}
+                                                                                </Text>
+                                                                                <SauceToppingButton
+                                                                                    className={
+                                                                                        openSauce[
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            )
+                                                                                        ]
+                                                                                            ? 'open'
+                                                                                            : ''
+                                                                                    }
+                                                                                    width="15"
+                                                                                    height="15"
+                                                                                    viewBox="0 0 25 25"
+                                                                                    fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    onClick={(
+                                                                                        e
+                                                                                    ) => {
+                                                                                        sauceToppingButtonClickHandler(
+                                                                                            e,
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            ),
+                                                                                            'sauce'
+                                                                                        );
+                                                                                    }}>
+                                                                                    <circle
+                                                                                        cx="12.5"
+                                                                                        cy="12.5"
+                                                                                        r="12.5"
+                                                                                        transform="rotate(90 12.5 12.5)"
+                                                                                        fill="#007A0C"
+                                                                                    />
+                                                                                    <path
+                                                                                        d="M8.16277 10.6268L11.8263 16.5676C12.1864 17.1441 12.9425 17.1441 13.2936 16.5676L16.9661 10.6268C17.3802 9.93694 16.9571 9 16.228 9L8.90088 9C8.17177 9 7.7487 9.93694 8.16277 10.6268Z"
+                                                                                        fill="white"
+                                                                                    />
+                                                                                </SauceToppingButton>
+                                                                                <DropDown
+                                                                                    className={
+                                                                                        openSauce[
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            )
+                                                                                        ]
+                                                                                            ? 'open'
+                                                                                            : ''
+                                                                                    }>
+                                                                                    {accompagnement.liste[0].sauces.map(
+                                                                                        (
+                                                                                            sauce: any
+                                                                                        ) => (
+                                                                                            <Text
+                                                                                                key={
+                                                                                                    sauce.id
+                                                                                                }>
+                                                                                                {formatText(
+                                                                                                    sauce.nom
+                                                                                                )}
+                                                                                            </Text>
+                                                                                        )
+                                                                                    )}
+                                                                                </DropDown>
+                                                                            </>
+                                                                        );
+                                                                    case 'Toppings au choix':
+                                                                        return (
+                                                                            <>
+                                                                                <Text
+                                                                                    key={
+                                                                                        accompagnement.id
+                                                                                    }>
+                                                                                    {formatText(
+                                                                                        accompagnement.nom
+                                                                                    )}
+                                                                                </Text>
+                                                                                <SauceToppingButton
+                                                                                    className={
+                                                                                        openTopping[
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            )
+                                                                                        ]
+                                                                                            ? 'open'
+                                                                                            : ''
+                                                                                    }
+                                                                                    width="15"
+                                                                                    height="15"
+                                                                                    viewBox="0 0 25 25"
+                                                                                    fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    onClick={(
+                                                                                        e
+                                                                                    ) => {
+                                                                                        sauceToppingButtonClickHandler(
+                                                                                            e,
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            ),
+                                                                                            'topping'
+                                                                                        );
+                                                                                    }}>
+                                                                                    <circle
+                                                                                        cx="12.5"
+                                                                                        cy="12.5"
+                                                                                        r="12.5"
+                                                                                        transform="rotate(90 12.5 12.5)"
+                                                                                        fill="#007A0C"
+                                                                                    />
+                                                                                    <path
+                                                                                        d="M8.16277 10.6268L11.8263 16.5676C12.1864 17.1441 12.9425 17.1441 13.2936 16.5676L16.9661 10.6268C17.3802 9.93694 16.9571 9 16.228 9L8.90088 9C8.17177 9 7.7487 9.93694 8.16277 10.6268Z"
+                                                                                        fill="white"
+                                                                                    />
+                                                                                </SauceToppingButton>
+                                                                                <DropDown
+                                                                                    className={
+                                                                                        openTopping[
+                                                                                            getIndexByCategory(
+                                                                                                category.id
+                                                                                            )
+                                                                                        ]
+                                                                                            ? 'open'
+                                                                                            : ''
+                                                                                    }>
+                                                                                    {accompagnement.liste[0].toppings.map(
+                                                                                        (
+                                                                                            topping: any
+                                                                                        ) => (
+                                                                                            <Text
+                                                                                                key={
+                                                                                                    topping.id
+                                                                                                }>
+                                                                                                {formatText(
+                                                                                                    topping.nom
+                                                                                                )}
+                                                                                            </Text>
+                                                                                        )
+                                                                                    )}
+                                                                                </DropDown>
+                                                                            </>
+                                                                        );
+                                                                    default: {
+                                                                        return (
+                                                                            <Text
+                                                                                key={
+                                                                                    accompagnement.id
+                                                                                }>
+                                                                                {formatText(
+                                                                                    accompagnement.nom
+                                                                                )}
+                                                                            </Text>
+                                                                        );
+                                                                    }
+                                                                }
+                                                            }
+                                                        )}
+                                                    </AccompagnementContainer>
                                                 </SaleWrapper>
                                                 <SaleWrapper>
                                                     <ProdutTypeTitle>Présentation</ProdutTypeTitle>
@@ -238,7 +462,7 @@ export default function Carte({ categories, products }) {
                                     case 'ProduitCollationRecord':
                                         return (
                                             <CategoryContainer
-                                                key={i}
+                                                key={product.id}
                                                 className={
                                                     displayedMenus[getIndexByCategory(category.id)]
                                                         .displayedId === product.id

@@ -100,6 +100,22 @@ export async function getStaticProps() {
                             accompagnement {
                                 id
                                 nom
+                                liste {
+                                    ... on ListeSauceRecord {
+                                        id
+                                        sauces {
+                                            id
+                                            nom
+                                        }
+                                    }
+                                    ... on ListeToppingRecord {
+                                        id
+                                        toppings {
+                                            id
+                                            nom
+                                        }
+                                    }
+                                }
                             }
                         }
                         ... on ProduitSucreRecord {

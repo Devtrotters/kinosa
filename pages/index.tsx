@@ -16,7 +16,11 @@ export default function Home({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="home">
+        <DefaultLayout
+            _site={data._site}
+            seo={data.seoAccueil}
+            pages={data.page.pages}
+            footer={footerData}>
             <Header data={data.homeHeader} />
             <>
                 <Command
@@ -57,6 +61,20 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                _site {
+                    favicon: faviconMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
+                seoAccueil {
+                    data: _seoMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
                 page {
                     pages {
                         id

@@ -12,7 +12,11 @@ export default function jus({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="jus">
+        <DefaultLayout
+            _site={data._site}
+            seo={data.seoJu}
+            pages={data.page.pages}
+            footer={footerData}>
             <Header data={data.jusSmoothie} />
             <Animations data={data.jusAnimation} />
             <Creations headerData={data.creationHeader} data={data.allCreationSaisons} />
@@ -42,6 +46,20 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                _site {
+                    favicon: faviconMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
+                seoJu {
+                    data: _seoMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
                 creationHeader {
                     id
                     sousTitre

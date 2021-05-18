@@ -12,7 +12,11 @@ export default function traiteur({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="traiteur">
+        <DefaultLayout
+            _site={data._site}
+            seo={data.seoTraiteur}
+            pages={data.page.pages}
+            footer={footerData}>
             <Header data={data.traiteurHeader} />
             <Prestations data={data.allTraiteurPrestations} />
             <Confiance ExternalData={data.partenaire} />
@@ -42,6 +46,20 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                _site {
+                    favicon: faviconMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
+                seoTraiteur {
+                    data: _seoMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
                 traiteurHeader {
                     id
                     titre

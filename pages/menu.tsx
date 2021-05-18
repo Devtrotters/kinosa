@@ -12,7 +12,11 @@ export default function menu({ data }) {
         social: data.footerSocial
     };
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="menu">
+        <DefaultLayout
+            _site={data._site}
+            seo={data.seoMenu}
+            pages={data.page.pages}
+            footer={footerData}>
             <Header data={data.menu} />
             <Carte categories={data.allCategorieProduits} products={data.allProduits} />
             <Command command={data.commande.typeCommand} />
@@ -42,6 +46,20 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                _site {
+                    favicon: faviconMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
+                seoMenu {
+                    data: _seoMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
                 page {
                     pages {
                         id

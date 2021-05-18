@@ -92,7 +92,11 @@ export default function contact({ data }) {
     };
 
     return (
-        <DefaultLayout pages={data.page.pages} footer={footerData} title="contact">
+        <DefaultLayout
+            _site={data._site}
+            seo={data.seoContact}
+            pages={data.page.pages}
+            footer={footerData}>
             <ContactSection>
                 <FormContainer>
                     <div>
@@ -221,6 +225,20 @@ export async function getStaticProps() {
     const { data } = await client.query({
         query: gql`
             query {
+                _site {
+                    favicon: faviconMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
+                seoContact {
+                    data: _seoMetaTags {
+                        attributes
+                        content
+                        tag
+                    }
+                }
                 page {
                     pages {
                         id

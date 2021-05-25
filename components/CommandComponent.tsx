@@ -1,9 +1,14 @@
 import formatText from 'lib/formatText';
 import Link from 'next/link';
+import { useContext } from 'react';
 import { Command, CommandContainer, CommandH2 } from 'styles/CommandComponent.style';
 import { Button } from 'styles/UI/Buttons.style';
 
+import ShowDialogContext from '../context/ShowDialogContext';
+
 export default function CommandComponent({ data }) {
+    const { setShowDialog } = useContext(ShowDialogContext);
+
     const commandHandler = () => {
         // const leatsyCollection = document.getElementsByClassName('fb_customer_chat_bounce_out_v2');
         // console.log(leatsyCollection);
@@ -12,6 +17,7 @@ export default function CommandComponent({ data }) {
         // leatsy.classList.remove('fb_customer_chat_bounce_out_v2');
         // leatsy.classList.add('fb_customer_chat_bounce_in_v2');
         //leatsy.style = "padding: 0px; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; width: 399px; background: none; bottom: 85px; max-height: calc(100% - 80px); right: 4px; margin-right: 12px; min-height: 360px; height: 509px;"
+        setShowDialog(true);
     };
     return (
         <Command>

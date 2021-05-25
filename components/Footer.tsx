@@ -31,12 +31,19 @@ import {
 } from 'styles/Footer.style';
 import { Title } from 'styles/UI/Texts.style';
 
+import ShowDialogContext from '../context/ShowDialogContext';
 import MessengerPlugin from './MessengerPlugin';
 
 export default function Footer({ data, menu }) {
     const [input, setInput] = useState({ email: '' });
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const context = {
+        showDialog: show,
+        setShowDialog: setShow
+    };
 
     useEffect(() => {
         const getFromInstagram = async () => {
@@ -52,16 +59,6 @@ export default function Footer({ data, menu }) {
         };
         getFromInstagram();
     }, []);
-
-    const Kinosa = () => {
-        return (
-            <MessengerCustomerChat
-                language="fr_FR"
-                shouldShowDialog={true}
-                pageId="104172444836368"
-            />
-        );
-    };
 
     const horaires = {
         titre: 'Horaires',
@@ -271,12 +268,14 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <MessengerPlugin
-                    pageId="104172444836368"
-                    showDialog={false}
-                    version="10.0"
-                    language="en_EN"
-                />
+                <ShowDialogContext.Provider value={context}>
+                    <MessengerPlugin
+                        pageId="104172444836368"
+                        showDialog={show}
+                        version="10.0"
+                        language="en_EN"
+                    />
+                </ShowDialogContext.Provider>
             </FooterContainer>
         </footer>
     );

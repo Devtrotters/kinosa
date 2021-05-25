@@ -15,7 +15,7 @@ export default (req, res) => {
         - Type de client : ${req.body.clientType || 'Non renseigné'}
         - Question : ${req.body.question || 'Non renseigné'}
         `,
-        html: `
+        html: `a
         <div>
         <p>Nom : ${req.body.name}</p>
         <p>Mail : ${req.body.email}</p>

@@ -31,6 +31,8 @@ import {
 } from 'styles/Footer.style';
 import { Title } from 'styles/UI/Texts.style';
 
+import MessengerPlugin from './MessengerPlugin';
+
 export default function Footer({ data, menu }) {
     const [input, setInput] = useState({ email: '' });
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
@@ -269,9 +271,7 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <div id="fb-root"></div>
-
-                <div className="fb-customerchat" data-page_id="104172444836368"></div>
+                <MessengerPlugin />
             </FooterContainer>
         </footer>
     );

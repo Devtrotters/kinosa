@@ -271,7 +271,12 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <MessengerPlugin />
+                <MessengerPlugin
+                    pageId="104172444836368"
+                    showDialog={false}
+                    version="10.0"
+                    language="en_EN"
+                />
             </FooterContainer>
         </footer>
     );

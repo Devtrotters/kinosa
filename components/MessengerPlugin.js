@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import useMessenger from '../../hooks/useMessenger';
+import useMessenger from '../hooks/useMessenger';
 
 const MessengerPlugin = (props) => {
     const { pageId, version, language, showDialog } = props;

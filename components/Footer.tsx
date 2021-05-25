@@ -2,7 +2,7 @@ import axios from 'axios';
 import SocialLogo from 'components/SocialLogo';
 import formatText from 'lib/formatText';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import {
     Feed,
@@ -38,12 +38,8 @@ export default function Footer({ data, menu }) {
     const [input, setInput] = useState({ email: '' });
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
-    const [show, setShow] = useState(false);
 
-    const context = {
-        showDialog: show,
-        setShowDialog: setShow
-    };
+    const { showDialog } = useContext(ShowDialogContext);
 
     useEffect(() => {
         const getFromInstagram = async () => {
@@ -268,14 +264,13 @@ export default function Footer({ data, menu }) {
                         </Link>
                     ))}
                 </MenuContainer>
-                <ShowDialogContext.Provider value={context}>
-                    <MessengerPlugin
-                        pageId="104172444836368"
-                        showDialog={context.showDialog}
-                        version="10.0"
-                        language="en_EN"
-                    />
-                </ShowDialogContext.Provider>
+
+                <MessengerPlugin
+                    pageId="104172444836368"
+                    showDialog={showDialog}
+                    version="10.0"
+                    language="en_EN"
+                />
             </FooterContainer>
         </footer>
     );

@@ -19,7 +19,6 @@ export default function CommandComponent({ data }) {
         //leatsy.style = "padding: 0px; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; width: 399px; background: none; bottom: 85px; max-height: calc(100% - 80px); right: 4px; margin-right: 12px; min-height: 360px; height: 509px;"
         console.log(showDialog);
         setShowDialog(true);
-        console.log(showDialog);
     };
     return (
         <Command>

@@ -271,7 +271,7 @@ export default function Footer({ data, menu }) {
                 <ShowDialogContext.Provider value={context}>
                     <MessengerPlugin
                         pageId="104172444836368"
-                        showDialog={show}
+                        showDialog={context.showDialog}
                         version="10.0"
                         language="en_EN"
                     />

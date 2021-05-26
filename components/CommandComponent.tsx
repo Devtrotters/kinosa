@@ -16,10 +16,8 @@ export default function CommandComponent({ data }) {
         console.log(leatsyCollection);
         const leatsy = leatsyCollection[0];
         console.log(leatsy);
-        leatsy.classList.remove('fb_customer_chat_bounce_out_v2');
-        leatsy.classList.add('fb_customer_chat_bounce_in_v2');
-        // leatsy.style.maxHeight = 'calc(100 % - 80px)';
-        // leatsy.style.minHeight = '360px';
+        leatsy.style.maxHeight = 'calc(100 % - 80px)';
+        leatsy.style.minHeight = '360px';
 
         console.log(showDialog);
         setShowDialog(true);

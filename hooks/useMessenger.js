@@ -1,5 +1,5 @@
 const useMessenger = (props) => {
-    const { xfbml = true, version = '10.0', language = 'en_EN' } = props;
+    const { xfbml = true, version = '10.0', language = 'fr_FR' } = props;
 
     const loadPlugin = () => {
         window.fbAsyncInit = function () {

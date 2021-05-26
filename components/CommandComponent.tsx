@@ -27,16 +27,12 @@ export default function CommandComponent({ data }) {
             {data.map((el: any, i: number) => (
                 <CommandContainer key={el.id} url={el.image.url}>
                     <CommandH2>{formatText(el.titre)}</CommandH2>
-                    {i === 0 && (el.lien === '' || el.lien === '/') ? (
-                        <button onClick={() => commandHandler()}>{formatText(el.button)}</button>
-                    ) : (
-                        <Link href={el.lien}>
-                            <Button>
-                                {formatText(el.button)}
-                                <span>{'>'}</span>
-                            </Button>
-                        </Link>
-                    )}
+                    <Link href={el.lien}>
+                        <Button>
+                            {formatText(el.button)}
+                            <span>{'>'}</span>
+                        </Button>
+                    </Link>
                 </CommandContainer>
             ))}
         </Command>

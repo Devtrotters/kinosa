@@ -391,3 +391,7 @@ export const SucreWrapper = styled.article`
         }
     }
 `;
+
+export const ToppingSucresButton = styled(SauceToppingButton)`
+    margin-left: 10px;
+`;

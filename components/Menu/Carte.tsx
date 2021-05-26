@@ -23,7 +23,8 @@ import {
     SaleWrapper,
     SauceToppingButton,
     SousCategorie,
-    SucreWrapper
+    SucreWrapper,
+    ToppingSucresButton
 } from 'styles/Menu/Carte.style';
 import { Text } from 'styles/UI/Texts.style';
 
@@ -35,17 +36,21 @@ export default function Carte({ categories, products }) {
     );
     const [openSauce, setOpenSauce] = useState([]);
     const [openTopping, setOpenTopping] = useState([]);
+    const [openToppingSucres, setOpenToppingSucres] = useState([]);
 
     const openS = [],
-        openT = [];
+        openT = [],
+        openTs = [];
     categories.forEach((cat: any) => {
         openS.push(false);
         openT.push(false);
+        openTs.push(false);
     });
 
     useEffect(() => {
         setOpenSauce(openS);
         setOpenTopping(openT);
+        setOpenToppingSucres(openTs);
     }, []);
 
     useEffect(() => {
@@ -143,6 +148,7 @@ export default function Carte({ categories, products }) {
         switch (type) {
             case 'sauce':
                 setOpenTopping(openT);
+                setOpenToppingSucres(openTs);
                 tmp = [...openSauce];
 
                 index = openSauce.findIndex((sauce) => sauce);
@@ -156,6 +162,7 @@ export default function Carte({ categories, products }) {
                 break;
             case 'topping':
                 setOpenSauce(openS);
+                setOpenToppingSucres(openTs);
                 tmp = [...openTopping];
 
                 index = openTopping.findIndex((topping) => topping);
@@ -167,6 +174,21 @@ export default function Carte({ categories, products }) {
                 }
 
                 setOpenTopping(tmp);
+                break;
+            case 'toppingSucre':
+                setOpenSauce(openS);
+                setOpenTopping(openT);
+                tmp = [...openToppingSucres];
+
+                index = openToppingSucres.findIndex((topping) => topping);
+                if (index !== -1) {
+                    tmp.splice(index, 1, false);
+                }
+                if (index !== i) {
+                    tmp.splice(i, 1, true);
+                }
+
+                setOpenToppingSucres(tmp);
                 break;
             default:
                 throw new Error('undefined type: ' + type);
@@ -474,11 +496,89 @@ export default function Carte({ categories, products }) {
                                                     {product.typeDeProduit[0].__typename ===
                                                         'ProduitSucreRecord' &&
                                                         product.typeDeProduit[0].fruit.map(
-                                                            (fruit: any) => (
-                                                                <Text key={fruit.id}>
-                                                                    {formatText(fruit.nom)}
-                                                                </Text>
-                                                            )
+                                                            (fruit: any) => {
+                                                                if (
+                                                                    fruit.nom ===
+                                                                    'Toppings au choix'
+                                                                ) {
+                                                                    return (
+                                                                        <>
+                                                                            <Text key={fruit.id}>
+                                                                                {formatText(
+                                                                                    fruit.nom
+                                                                                )}
+                                                                            </Text>
+                                                                            <ToppingSucresButton
+                                                                                className={
+                                                                                    openToppingSucres[
+                                                                                        getIndexByCategory(
+                                                                                            category.id
+                                                                                        )
+                                                                                    ]
+                                                                                        ? 'open'
+                                                                                        : ''
+                                                                                }
+                                                                                width="15"
+                                                                                height="15"
+                                                                                viewBox="0 0 25 25"
+                                                                                fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                onClick={(e) => {
+                                                                                    sauceToppingButtonClickHandler(
+                                                                                        e,
+                                                                                        getIndexByCategory(
+                                                                                            category.id
+                                                                                        ),
+                                                                                        'sauce'
+                                                                                    );
+                                                                                }}>
+                                                                                <circle
+                                                                                    cx="12.5"
+                                                                                    cy="12.5"
+                                                                                    r="12.5"
+                                                                                    transform="rotate(90 12.5 12.5)"
+                                                                                    fill="#007A0C"
+                                                                                />
+                                                                                <path
+                                                                                    d="M8.16277 10.6268L11.8263 16.5676C12.1864 17.1441 12.9425 17.1441 13.2936 16.5676L16.9661 10.6268C17.3802 9.93694 16.9571 9 16.228 9L8.90088 9C8.17177 9 7.7487 9.93694 8.16277 10.6268Z"
+                                                                                    fill="white"
+                                                                                />
+                                                                            </ToppingSucresButton>
+                                                                            <DropDown
+                                                                                className={
+                                                                                    openSauce[
+                                                                                        getIndexByCategory(
+                                                                                            category.id
+                                                                                        )
+                                                                                    ]
+                                                                                        ? 'open'
+                                                                                        : ''
+                                                                                }>
+                                                                                {fruit.liste[0].toppingsSucres.map(
+                                                                                    (
+                                                                                        topping: any
+                                                                                    ) => (
+                                                                                        <Text
+                                                                                            key={
+                                                                                                topping.id
+                                                                                            }>
+                                                                                            {formatText(
+                                                                                                topping.nom
+                                                                                            )}
+                                                                                        </Text>
+                                                                                    )
+                                                                                )}
+                                                                            </DropDown>
+                                                                        </>
+                                                                    );
+                                                                } else {
+                                                                    return (
+                                                                        <Text key={fruit.id}>
+                                                                            {formatText(fruit.nom)}
+                                                                        </Text>
+                                                                    );
+                                                                }
+                                                            }
                                                         )}
                                                     {product.typeDeProduit[0].__typename ===
                                                         'ProduitCollationRecord' &&

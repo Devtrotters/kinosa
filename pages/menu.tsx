@@ -141,6 +141,12 @@ export async function getStaticProps() {
                             fruit {
                                 id
                                 nom
+                                liste {
+                                    toppingsSucres {
+                                        id
+                                        nom
+                                    }
+                                }
                             }
                         }
                         ... on ProduitCollationRecord {

@@ -53,6 +53,7 @@ export const MenuLink = styled.a`
     font-size: 12px;
     position: relative;
     text-decoration: underline;
+    cursor: pointer;
 `;
 
 export const DropDown = styled.ul`

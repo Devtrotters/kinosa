@@ -263,6 +263,9 @@ export default function Footer({ data, menu }) {
                             <MenuText>{formatText(el.titre)}</MenuText>
                         </Link>
                     ))}
+                    <Link href="/legals">
+                        <MenuText>Mentions Légales</MenuText>
+                    </Link>
                 </MenuContainer>
 
                 <MessengerPlugin

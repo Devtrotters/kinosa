@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import breakpoint from 'styles/breakpoints';
+import { MediumText } from 'styles/UI/Texts.style';
 
 export const SliderSection = styled.section`
     display: none;
@@ -93,4 +94,8 @@ export const Svg = styled.svg`
             fill: ${(props) => props.theme.color.green.default};
         }
     }
+`;
+
+export const ProgressText = styled(MediumText)`
+    color: ${(props) => props.theme.color.orange};
 `;

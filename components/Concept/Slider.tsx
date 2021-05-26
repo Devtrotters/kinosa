@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     Img,
+    ProgressText,
     SliderButtonContainer,
     SliderButtonWrapper,
     SliderContainer,
@@ -109,6 +110,9 @@ export default function Slider({ data }) {
                         />
                     </Svg>
                 </SliderButtonWrapper>
+                <ProgressText>
+                    {(index % data.length) + 1} / {data.length}
+                </ProgressText>
             </SliderButtonContainer>
         </SliderSection>
     );

@@ -18,16 +18,17 @@ function MyApp({ Component, pageProps }) {
         setShowDialog: setShow
     };
 
-    // useEffect(() => {
-    //     const handleRouteChange = (url: any) => {
-    //         gtag.pageview(url);
-    //         fbq.pageview();
-    //     };
-    //     router.events.on('routeChangeComplete', handleRouteChange);
-    //     return () => {
-    //         router.events.off('routeChangeComplete', handleRouteChange);
-    //     };
-    // }, [router.events]);
+    useEffect(() => {
+        const handleRouteChange = (url: any) => {
+            gtag.pageview(url);
+            fbq.pageview();
+        };
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router.events]);
+
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />

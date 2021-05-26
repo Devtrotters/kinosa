@@ -7,7 +7,7 @@ import { hotjar } from 'react-hotjar';
 
 export default function DefaultLayout({ _site, seo, children, footer, pages }) {
     useEffect(() => {
-        hotjar.initialize(2392724, 6);
+        hotjar.initialize(Number(process.env.NEXT_HOTJAR_ID), 6);
     }, []);
 
     return (

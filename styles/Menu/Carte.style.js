@@ -311,6 +311,7 @@ export const SauceToppingButton = styled.svg`
 
 export const DropDown = styled.div`
     height: 0;
+    margin-left: 10px;
 
     transform-origin: top;
     transform: scaleY(0);

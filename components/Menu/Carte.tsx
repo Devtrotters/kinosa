@@ -294,6 +294,7 @@ export default function Carte({ categories, products }) {
                                                             (accompagnement: any) => {
                                                                 switch (accompagnement.nom) {
                                                                     case 'Sauce au choix':
+                                                                    case 'Assaisonnement':
                                                                         return (
                                                                             <>
                                                                                 <Text
@@ -370,6 +371,7 @@ export default function Carte({ categories, products }) {
                                                                             </>
                                                                         );
                                                                     case 'Toppings au choix':
+                                                                    case 'Petit +':
                                                                         return (
                                                                             <>
                                                                                 <Text

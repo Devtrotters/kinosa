@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
@@ -60,7 +61,7 @@ export default function Prestations({ data }) {
                                     <PrestationsNavText
                                         id={el.slug + 'text'}
                                         className={selectedLink === el.slug ? 'selected' : ''}>
-                                        {el.titreSlug}
+                                        {formatText(el.titreSlug)}
                                     </PrestationsNavText>
                                 </PrestationsNavLinkWrapper>
                             </PrestationsNavLink>

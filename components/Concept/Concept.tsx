@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import {
@@ -54,7 +55,7 @@ export default function Concept({ data }) {
                                     <MenuText
                                         id={bloc.slug + 'text'}
                                         className={displayed === bloc.slug ? 'displayed' : ''}>
-                                        {bloc.titreSlug}
+                                        {formatText(bloc.titreSlug)}
                                     </MenuText>
                                 </MenuWrapper>
                             </MenuLink>
@@ -65,9 +66,9 @@ export default function Concept({ data }) {
             <ConceptContainer id="concept-container">
                 {data.map((bloc: any) => (
                     <Bloc id={bloc.slug} key={bloc.id}>
-                        <BlocTitle>{bloc.titre}</BlocTitle>
+                        <BlocTitle>{formatText(bloc.titre)}</BlocTitle>
                         {bloc.texte.map((text: any) => (
-                            <BlocText key={text.id}>{text.texte}</BlocText>
+                            <BlocText key={text.id}>{formatText(text.texte)}</BlocText>
                         ))}
                         <BlocImg src={bloc.image.url} alt={bloc.image.alt || 'image du site'} />
                     </Bloc>

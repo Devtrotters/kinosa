@@ -1,4 +1,5 @@
 import SocialLogo from 'components/SocialLogo';
+import formatText from 'lib/formatText';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -82,7 +83,7 @@ export default function Navbar({ data, social }) {
                     {data.map((el: any) => (
                         <Link key={el.id} href={el.slug}>
                             <NavText className={`${router.pathname === el.slug ? 'active' : ''}`}>
-                                {el.titre}
+                                {formatText(el.titre)}
                             </NavText>
                         </Link>
                     ))}

@@ -1,3 +1,4 @@
+import formatText from 'lib/formatText';
 import React, { createRef, useEffect, useRef, useState } from 'react';
 import {
     CreationItem,
@@ -69,7 +70,7 @@ export default function Creations({ headerData, data }) {
 
     return (
         <CreationsContainer>
-            <CreationsTitle>{headerData.titre}</CreationsTitle>
+            <CreationsTitle>{formatText(headerData.titre)}</CreationsTitle>
             <CreationsSliderHeaderContainer>
                 <CreationsSliderButton
                     onClick={() => {
@@ -103,7 +104,7 @@ export default function Creations({ headerData, data }) {
                                 (selectedItem === index ? 'selected' : '') +
                                 (saisonsVisibles.includes(index) ? ' visible' : '')
                             }>
-                            {el.saison}
+                            {formatText(el.saison)}
                         </CreationsSliderText>
                     ))}
                 </CreationsSliderTextContainer>
@@ -136,7 +137,9 @@ export default function Creations({ headerData, data }) {
                                         src={produit.image.url}
                                     />
                                     <CreationsImageTextContainer>
-                                        <CreationsImageTitle>{produit.nom}</CreationsImageTitle>
+                                        <CreationsImageTitle>
+                                            {formatText(produit.nom)}
+                                        </CreationsImageTitle>
                                         <CreationsImageText>
                                             {produit.fruits.map((el: any) => el.nom).join(', ')}
                                         </CreationsImageText>
@@ -147,7 +150,7 @@ export default function Creations({ headerData, data }) {
                     ))
                 )}
             </CreationsItemWrapper>
-            <CreationsText>{headerData.sousTitre}</CreationsText>
+            <CreationsText>{formatText(headerData.sousTitre)}</CreationsText>
         </CreationsContainer>
     );
 }

@@ -9,7 +9,7 @@ async function addToList(mail) {
             accept: 'application/json',
             'content-type': 'application/json',
             'api-key':
-                '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'
+                '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'
         },
         body: {
             listIds: [3],

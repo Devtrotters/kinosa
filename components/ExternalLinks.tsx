@@ -7,7 +7,7 @@ export default function ExternalLinks({ data, displayLine }) {
         <Container>
             <Subtitle>{formatText(data.titre)}</Subtitle>
             {data.sousTitre.length !== 0 && <Infos>{formatText(data.sousTitre)}</Infos>}
-            <Grid>
+            <Grid last={3}>
                 {data.liste.map((el: any) => (
                     <article key={el.id}>
                         <ExternalLink href={el.lien || '/'} target="_blank">

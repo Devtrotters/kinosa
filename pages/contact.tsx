@@ -40,6 +40,8 @@ export default function contact({ data }) {
         question: ''
     });
 
+    const [buttonText, setButtonText] = useState('Envoyer');
+
     const changeHandler = (e: any) => {
         e.preventDefault();
 
@@ -82,6 +84,15 @@ export default function contact({ data }) {
             method: 'post',
             url: '/api/mail',
             data: inputData
+        }).then(() => {
+            setInputData(() => ({
+                name: '',
+                email: '',
+                tel: '',
+                clientType: '',
+                question: ''
+            }));
+            setButtonText('Envoyé !');
         });
     };
 
@@ -180,7 +191,7 @@ export default function contact({ data }) {
                             <RequiredFieldText>*Champs obligatoires</RequiredFieldText>
                         </Field>
                         <SubmitButtonContainer>
-                            <SubmitButton type="submit" value="Envoyer" />
+                            <SubmitButton type="submit" value={buttonText} />
                         </SubmitButtonContainer>
                     </Form>
                 </FormContainer>

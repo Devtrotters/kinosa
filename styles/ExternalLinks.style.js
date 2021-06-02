@@ -19,7 +19,7 @@ export const Infos = styled(Text)`
     margin-top: 5px;
 `;
 
-export const Grid = styled.div`
+export const Grid = styled.div.attrs((props) => {})`
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 20px;
@@ -28,15 +28,24 @@ export const Grid = styled.div`
     align-items: flex-end;
 
     @media screen and (${breakpoint.device.s}) {
-        grid-template-columns: repeat(4, 1fr);
         grid-column: 1 / span 2;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: unset;
+
+        > article {
+            width: 25%;
+            max-height: 250px;
+        }
     }
 `;
 
 export const Img = styled.img`
     max-width: 100px;
     max-height: 100px;
-    object-fit: cover;
+    /* object-fit: cover; */
     margin: auto;
 `;
 

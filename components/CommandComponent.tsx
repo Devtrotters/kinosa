@@ -27,12 +27,10 @@ export default function CommandComponent({ data }) {
             {data.map((el: any, i: number) => (
                 <CommandContainer key={el.id} url={el.image.url}>
                     <CommandH2>{formatText(el.titre)}</CommandH2>
-                    <Link href={el.lien}>
-                        <Button>
+                        <Button href={el.lien}>
                             {formatText(el.button)}
                             <span>{'>'}</span>
                         </Button>
-                    </Link>
                 </CommandContainer>
             ))}
         </Command>

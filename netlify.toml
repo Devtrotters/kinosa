@@ -1,6 +1,6 @@
 [[redirects]]
  from = "https://commande.kinosa.fr/*"
- to = "https://m.me/KinosaCommande?ref=931948c0-236c-11eb-b932-a3b19102b7bc"
+ to = "https://m.me/KinosaCommande?ref=bd8f0800-2377-11eb-b932-a3b19102b7bc"
  status = 200
  force = true
  
@@ -13,5 +13,11 @@
  [[redirects]]
  from = "https://draaf.fam.kinosa.fr/*"
  to = "https://montpellier.qualtrics.com/jfe/form/SV_8BrBOuOX8lJIXv7"
+ status = 200
+ force = true
+
+ [[redirects]]
+ from = "https://flyer.fr/*"
+ to = "https://m.me/KinosaCommande?ref=931948c0-236c-11eb-b932-a3b19102b7bc"
  status = 200
  force = true

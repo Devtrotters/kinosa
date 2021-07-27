@@ -260,7 +260,13 @@ export default function Footer({ data, menu }) {
                     <SocialText>{formatText(data.social.titre)}</SocialText>
                     <SocialLogoContainer>
                         {data.social.social.map((logo: any) => (
-                            <SocialLogo key={logo.id} name={logo.nom} isFooter isMenu={false} />
+                            <a
+                                key={logo.id}
+                                href={logo.lien}
+                                target="_blank"
+                                rel="noreferrer">
+                                <SocialLogo name={logo.nom} isFooter isMenu={false} />
+                            </a>
                         ))}
                     </SocialLogoContainer>
                 </SocialSection>

@@ -94,7 +94,9 @@ export default function Navbar({ data, social }) {
                     <SocialLogoContainer>
                         {/* display : grid */}
                         {social.map((el: any) => (
-                            <SocialLogo key={el.id} name={el.nom} isMenu isFooter={false} />
+                            <a key={el.id} href={el.lien} target="_blank" rel="noreferrer">
+                                <SocialLogo name={el.nom} isMenu isFooter={false} />
+                            </a>
                         ))}
                     </SocialLogoContainer>
                 </NavContainer>

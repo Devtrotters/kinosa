@@ -6,13 +6,13 @@
  
  [[redirects]]
  from = "https://draaf-fam.kinosa.fr/*"
- to = "https://montpellier.qualtrics.com/jfe/form/SV_8BrBOuOX8lJIXv7"
+ to = "https://www.leatsy.fr/guest/kinosa"
  status = 200
  force = true
 
  [[redirects]]
  from = "https://draaf.fam.kinosa.fr/*"
- to = "https://montpellier.qualtrics.com/jfe/form/SV_8BrBOuOX8lJIXv7"
+ to = "https://www.leatsy.fr/guest/kinosa"
  status = 200
  force = true
 

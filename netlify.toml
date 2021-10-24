@@ -21,3 +21,9 @@
  to = "https://m.me/KinosaCommande?ref=931948c0-236c-11eb-b932-a3b19102b7bc"
  status = 200
  force = true
+
+ [[redirects]]
+ from = "https://avis.kinosa.fr/*"
+ to = "https://g.page/r/CVunEQ0R3A1hEBM/review"
+ status = 200
+ force = true

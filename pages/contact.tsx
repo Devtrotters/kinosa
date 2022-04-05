@@ -116,84 +116,84 @@ export default function contact({ data }) {
                             <ContactText key={text.id}>{formatText(text.texte)}</ContactText>
                         ))}
                     </div>
-                    <Form onSubmit={(e) => submitHandler(e)}>
-                        <Field>
-                            <Text>
-                                Nom et Prénom<span> *</span>
-                            </Text>
-                            <FormInput
-                                placeholder="Jean Dupont"
-                                type="text"
-                                name="name"
-                                value={inputData.name}
-                                onChange={(e) => changeHandler(e)}
-                                required
-                                onInvalid={(e) => invalidHandler(e)}
-                            />
-                        </Field>
-                        <Field>
-                            <Text>
-                                Adresse mail<span> *</span>
-                            </Text>
-                            <FormInput
-                                placeholder="exemple@exemple.fr"
-                                type="email"
-                                name="email"
-                                value={inputData.email}
-                                onChange={(e) => changeHandler(e)}
-                                required
-                                onInvalid={(e) => invalidHandler(e)}
-                            />
-                        </Field>
-                        <Field>
-                            <Text>Téléphone</Text>
-                            <FormInput
-                                placeholder="06.06.06.06.06"
-                                type="text"
-                                name="tel"
-                                value={inputData.tel}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </Field>
-                        <Field>
-                            <Text>Type de client</Text>
-                            <RadioContainer>
-                                <RadioWrapper>
-                                    <Radio
-                                        id="Professionnel"
-                                        type="radio"
-                                        name="clientType"
-                                        value="Professionnel"
-                                        onChange={(e) => changeHandler(e)}
-                                    />
-                                    <RadioLabel htmlFor="Professionnel">Professionnel</RadioLabel>
-                                </RadioWrapper>
-                                <RadioWrapper>
-                                    <Radio
-                                        id="Particulier"
-                                        type="radio"
-                                        name="clientType"
-                                        value="Particulier"
-                                        onChange={(e) => changeHandler(e)}
-                                    />
-                                    <RadioLabel htmlFor="Particulier">Particulier</RadioLabel>
-                                </RadioWrapper>
-                            </RadioContainer>
-                        </Field>
-                        <Field>
-                            <Text>Une question ?</Text>
-                            <QuestionArea
-                                name="question"
-                                placeholder="Envoyez nous toute votre bonne humeur !"
-                                rows={10}
-                                value={inputData.question}
-                                onChange={(e) => changeHandler(e)}></QuestionArea>
-                            <RequiredFieldText>*Champs obligatoires</RequiredFieldText>
-                        </Field>
-                        <SubmitButtonContainer>
-                            <SubmitButton type="submit" value={buttonText} />
-                        </SubmitButtonContainer>
-                    </Form>
+                    {/*<Form onSubmit={(e) => submitHandler(e)}>*/}
+                    {/*    <Field>*/}
+                    {/*        <Text>*/}
+                    {/*            Nom et Prénom<span> *</span>*/}
+                    {/*        </Text>*/}
+                    {/*        <FormInput*/}
+                    {/*            placeholder="Jean Dupont"*/}
+                    {/*            type="text"*/}
+                    {/*            name="name"*/}
+                    {/*            value={inputData.name}*/}
+                    {/*            onChange={(e) => changeHandler(e)}*/}
+                    {/*            required*/}
+                    {/*            onInvalid={(e) => invalidHandler(e)}*/}
+                    {/*        />*/}
+                    {/*    </Field>*/}
+                    {/*    <Field>*/}
+                    {/*        <Text>*/}
+                    {/*            Adresse mail<span> *</span>*/}
+                    {/*        </Text>*/}
+                    {/*        <FormInput*/}
+                    {/*            placeholder="exemple@exemple.fr"*/}
+                    {/*            type="email"*/}
+                    {/*            name="email"*/}
+                    {/*            value={inputData.email}*/}
+                    {/*            onChange={(e) => changeHandler(e)}*/}
+                    {/*            required*/}
+                    {/*            onInvalid={(e) => invalidHandler(e)}*/}
+                    {/*        />*/}
+                    {/*    </Field>*/}
+                    {/*    <Field>*/}
+                    {/*        <Text>Téléphone</Text>*/}
+                    {/*        <FormInput*/}
+                    {/*            placeholder="06.06.06.06.06"*/}
+                    {/*            type="text"*/}
+                    {/*            name="tel"*/}
+                    {/*            value={inputData.tel}*/}
+                    {/*            onChange={(e) => changeHandler(e)}*/}
+                    {/*        />*/}
+                    {/*    </Field>*/}
+                    {/*    <Field>*/}
+                    {/*        <Text>Type de client</Text>*/}
+                    {/*        <RadioContainer>*/}
+                    {/*            <RadioWrapper>*/}
+                    {/*                <Radio*/}
+                    {/*                    id="Professionnel"*/}
+                    {/*                    type="radio"*/}
+                    {/*                    name="clientType"*/}
+                    {/*                    value="Professionnel"*/}
+                    {/*                    onChange={(e) => changeHandler(e)}*/}
+                    {/*                />*/}
+                    {/*                <RadioLabel htmlFor="Professionnel">Professionnel</RadioLabel>*/}
+                    {/*            </RadioWrapper>*/}
+                    {/*            <RadioWrapper>*/}
+                    {/*                <Radio*/}
+                    {/*                    id="Particulier"*/}
+                    {/*                    type="radio"*/}
+                    {/*                    name="clientType"*/}
+                    {/*                    value="Particulier"*/}
+                    {/*                    onChange={(e) => changeHandler(e)}*/}
+                    {/*                />*/}
+                    {/*                <RadioLabel htmlFor="Particulier">Particulier</RadioLabel>*/}
+                    {/*            </RadioWrapper>*/}
+                    {/*        </RadioContainer>*/}
+                    {/*    </Field>*/}
+                    {/*    <Field>*/}
+                    {/*        <Text>Une question ?</Text>*/}
+                    {/*        <QuestionArea*/}
+                    {/*            name="question"*/}
+                    {/*            placeholder="Envoyez nous toute votre bonne humeur !"*/}
+                    {/*            rows={10}*/}
+                    {/*            value={inputData.question}*/}
+                    {/*            onChange={(e) => changeHandler(e)}></QuestionArea>*/}
+                    {/*        <RequiredFieldText>*Champs obligatoires</RequiredFieldText>*/}
+                    {/*    </Field>*/}
+                    {/*    <SubmitButtonContainer>*/}
+                    {/*        <SubmitButton type="submit" value={buttonText} />*/}
+                    {/*    </SubmitButtonContainer>*/}
+                    {/*</Form>*/}
                 </FormContainer>
                 <article>
                     <Img

@@ -98,22 +98,22 @@ export default function Footer({ data, menu }) {
     return (
         <footer>
             {/* Kin'feed */}
-            <Feed>
-                <Title>{formatText(data.feed.titre)}</Title>
-                <FeedLink href={data.feed.lien} target="_blank">
-                    {formatText(data.feed.texteLien)}
-                </FeedLink>
-                <Instagram>
-                    {data.feed.image.map((img: any, i: number) => (
-                        <InstagramImgLink
-                            key={img.id}
-                            href={`https://www.instagram.com/p/${img.lien}`}
-                            target="_blank">
-                            <InstagramImg src={links[i]} alt={img.alt || 'instagram img'} />
-                        </InstagramImgLink>
-                    ))}
-                </Instagram>
-            </Feed>
+            {/*<Feed>*/}
+            {/*    <Title>{formatText(data.feed.titre)}</Title>*/}
+            {/*    <FeedLink href={data.feed.lien} target="_blank">*/}
+            {/*        {formatText(data.feed.texteLien)}*/}
+            {/*    </FeedLink>*/}
+            {/*    /!*<Instagram>*!/*/}
+            {/*    /!*    {data.feed.image.map((img: any, i: number) => (*!/*/}
+            {/*    /!*        <InstagramImgLink*!/*/}
+            {/*    /!*            key={img.id}*!/*/}
+            {/*    /!*            href={`https://www.instagram.com/p/${img.lien}`}*!/*/}
+            {/*    /!*            target="_blank">*!/*/}
+            {/*    /!*            <InstagramImg src={links[i]} alt={img.alt || 'instagram img'} />*!/*/}
+            {/*    /!*        </InstagramImgLink>*!/*/}
+            {/*    /!*    ))}*!/*/}
+            {/*    /!*</Instagram>*!/*/}
+            {/*</Feed>*/}
             {/* Newsletter */}
             <NewsLetter>
                 <NewsLetterContainer>
@@ -290,7 +290,7 @@ export default function Footer({ data, menu }) {
                 </MenuContainer>
 
                 <MessengerPlugin
-                    pageId="104172444836368"
+                    pageId="1934629010132381"
                     showDialog={showDialog}
                     version="10.0"
                     language="fr_FR"

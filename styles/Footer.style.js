@@ -80,7 +80,7 @@ export const NewsLetter = styled.section`
 `;
 
 export const NewsLetterContainer = styled.div`
-    background: ${(props) => props.theme.color.beige};
+    // background: ${(props) => props.theme.color.beige};
 
     @media screen and (${breakpoint.device.m}) {
         margin: 0 165px;

@@ -160,9 +160,54 @@ export const NewsLetterButton = styled.input`
     &:hover {
         cursor: pointer;
     }
+
     @media screen and (${breakpoint.device.s}) {
         margin: 0;
         width: 100%;
+    }
+`;
+
+export const RGPDContainer = styled.div`
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    width: 100%;
+
+    @media screen and (${breakpoint.device.s}) {
+        align-items: start;
+    }
+`;
+
+export const RGPDWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+`;
+
+export const InputRGPD = styled.input``;
+
+export const InputRGPDLabel = styled.label`
+    font-size: 10px;
+    color: ${(props) => props.theme.color.green.dark};
+    white-space: nowrap;
+
+    @media screen and (${breakpoint.device.s}) {
+        font-size: 12px;
+    }
+`;
+
+export const InputRGPDLegal = styled.p`
+    font-size: 8px;
+    color: #a9a9a9;
+    white-space: nowrap;
+    align-self: center;
+    margin-top: 5px;
+
+    @media screen and (${breakpoint.device.s}) {
+        font-size: 10px;
+        margin-top: 10px;
     }
 `;
 
@@ -198,21 +243,89 @@ export const HorairesSection = styled.section`
         grid-row: 2 / 2;
     }
 `;
+
 export const HorairesText = styled.p`
     font-size: 20px;
     color: ${(props) => props.theme.color.white};
+    text-align: center;
 
     &:first-of-type {
         color: ${(props) => props.theme.color.orange};
     }
+
+    @media screen and (${breakpoint.device.s}) {
+        text-align: left;
+    }
+`;
+
+export const ContactSection = styled.section`
+    margin-top: 20px;
+    width: 100%;
+    @media screen and (${breakpoint.device.s}) {
+        grid-column: 1 / 1;
+        grid-row: 3 / 3;
+    }
+`;
+
+export const ContactText = styled.a`
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: ${(props) => props.theme.color.white};
+
+    @media screen and (${breakpoint.device.s}) {
+        text-align: left;
+    }
+`;
+
+export const PdvSection = styled.section`
+    margin-top: 20px;
+    width: 100%;
+    @media screen and (${breakpoint.device.s}) {
+        grid-column: 2 / 2;
+        grid-row: 2 / 2;
+    }
+`;
+
+export const PdvText = styled.a`
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: ${(props) => props.theme.color.white};
+
+    @media screen and (${breakpoint.device.s}) {
+        text-align: left;
+    }
+`;
+
+export const SiegeSection = styled.section`
+    margin-top: 20px;
+    width: 100%;
+    @media screen and (${breakpoint.device.s}) {
+        grid-column: 2 / 2;
+        grid-row: 3 / 3;
+    }
+`;
+
+export const SiegeText = styled.a`
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: ${(props) => props.theme.color.white};
+
+    @media screen and (${breakpoint.device.s}) {
+        text-align: left;
+    }
 `;
 
 export const SocialSection = styled.section`
+    margin-top: 20px;
     @media screen and (${breakpoint.device.s}) {
-        grid-row: 3 / 3;
+        grid-row: 4 / 4;
         grid-column: 1 / 1;
     }
 `;
+
 export const SocialText = styled(Text)`
     margin-top: 30px;
 
@@ -254,12 +367,12 @@ export const MenuContainer = styled.section`
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     row-gap: 20px;
     column-gap: 30px;
 
     @media screen and (${breakpoint.device.s}) {
-        grid-row: 4 / 4;
+        grid-row: 5 / 5;
         grid-column: 1 / span 2;
 
         justify-content: center;

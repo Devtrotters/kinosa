@@ -4,10 +4,13 @@ import { Button } from 'styles/UI/Buttons.style';
 import { Subtitle, Title } from 'styles/UI/Texts.style';
 
 export const HeaderContainer = styled.section`
+    background-color: ${(props) => props.theme.color.beige};
+
+    padding-top: 30px;
+
     margin-top: 60px;
 
     @media screen and (${breakpoint.device.s}) {
-        margin-top: 0;
         padding: 60px 40px 0 40px;
 
         position: relative;
@@ -16,23 +19,18 @@ export const HeaderContainer = styled.section`
             background-color: ${(props) => props.theme.color.beige};
             position: absolute;
 
-            height: 70%;
-
             top: 0;
             left: 0;
             right: 0;
+            bottom: 0;
             border-radius: 0px 0px 30px 30px;
             z-index: -1;
         }
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 60px 65px 0 65px;
-        margin: 0 165px;
-    }
-
-    @media screen and (${breakpoint.device.lg}) {
-        padding: 60px 95px 0 95px;
+        //margin-top: 0;
+        padding: 60px 260px 0 260px;
     }
 `;
 
@@ -52,12 +50,12 @@ export const HeaderTitle = styled(Title)`
 export const HookContainer = styled.article`
     @media screen and (${breakpoint.device.s}) {
         display: grid;
-        row-gap: 60px;
+        row-gap: 30px;
     }
 
-    @media screen and (${breakpoint.device.m}) {
-        row-gap: 110px;
-    }
+    // @media screen and (${breakpoint.device.m}) {
+    //     row-gap: 110px;
+    // }
 `;
 
 export const Hook = styled.div.attrs((props) => {})`
@@ -92,12 +90,14 @@ export const Hook = styled.div.attrs((props) => {})`
     }
 
     &:first-of-type {
-        margin-top: 60px;
+        margin-top: 30px;
         border-radius: 10px 10px 0px 0px;
+
         &::before {
             border-radius: 10px 10px 0px 0px;
         }
     }
+
     &:hover {
         &::before {
             background-color: rgba(0, 0, 0, 0.1);
@@ -110,6 +110,7 @@ export const Hook = styled.div.attrs((props) => {})`
         &::before {
             border-radius: 10px 10px 10px 0px;
         }
+
         &:first-of-type {
             margin-top: 0;
             border-radius: 10px 10px 0px 10px;
@@ -120,12 +121,12 @@ export const Hook = styled.div.attrs((props) => {})`
         }
     }
 
-    @media screen and (${breakpoint.device.m}) {
-        &:last-of-type {
-            grid-row: 1 / span 2;
-            height: 100%;
-        }
-    }
+    // @media screen and (${breakpoint.device.m}) {
+    //     &:last-of-type {
+    //         grid-row: 1 / span 2;
+    //         height: 100%;
+    //     }
+    // }
 `;
 
 export const HookTitle = styled(Subtitle)`

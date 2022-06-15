@@ -34,7 +34,7 @@ export const PrestationsNavWrapper = styled.div`
         flex-direction: column;
         row-gap: 20px;
         position: sticky;
-        top: 20px;
+        top: 120px;
     }
 `;
 

@@ -5,11 +5,16 @@ import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import {
+    ContactSection,
+    ContactText,
     Feed,
     FeedLink,
     FooterContainer,
     HorairesSection,
     HorairesText,
+    InputRGPD,
+    InputRGPDLabel,
+    InputRGPDLegal,
     Instagram,
     InstagramImg,
     InstagramImgLink,
@@ -25,6 +30,12 @@ import {
     NewsLetterText,
     NewsLetterTitle,
     NewsLetterWrapper,
+    PdvSection,
+    PdvText,
+    RGPDContainer,
+    RGPDWrapper,
+    SiegeSection,
+    SiegeText,
     SocialLogoContainer,
     SocialSection,
     SocialText
@@ -35,7 +46,7 @@ import ShowDialogContext from '../context/ShowDialogContext';
 import MessengerPlugin from './MessengerPlugin';
 
 export default function Footer({ data, menu }) {
-    const [input, setInput] = useState({ email: '' });
+    const [input, setInput] = useState({ email: '', newsLetter: false, transmit: false });
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
 
@@ -73,48 +84,34 @@ export default function Footer({ data, menu }) {
 
     const horaires = {
         titre: 'Horaires',
-        ouverture: 'Lundi au Vendredi : 11h-14h',
+        ouverture: '7jours/7 - 8h30 à 20h00',
         joignable: 'Nous restons joignables : 9h-19h'
     };
 
     const changeHandler = (e: any, value: string) => {
         e.preventDefault();
-        setInput({ email: value });
+        setInput({ email: value, newsLetter: input.newsLetter, transmit: input.transmit });
     };
 
     const submitHandler = async (e: any) => {
         e.preventDefault();
 
-        if (input.email != '') {
+        console.log(input);
+
+        if (input.email != '' && !input.newsLetter && !input.transmit) {
             await axios.post('/api/newsletter', { input }).then((res) => {
                 setbuttonText(res.data.text);
                 setTimeout(() => {
                     setbuttonText(data.newsletter.bouton);
-                    setInput({ email: '' });
+                    setInput({ email: '', newsLetter: false, transmit: false });
                 }, 3000);
             });
+        } else {
+            console.log('test');
         }
     };
     return (
-        <footer>
-            {/* Kin'feed */}
-            {/*<Feed>*/}
-            {/*    <Title>{formatText(data.feed.titre)}</Title>*/}
-            {/*    <FeedLink href={data.feed.lien} target="_blank">*/}
-            {/*        {formatText(data.feed.texteLien)}*/}
-            {/*    </FeedLink>*/}
-            {/*    /!*<Instagram>*!/*/}
-            {/*    /!*    {data.feed.image.map((img: any, i: number) => (*!/*/}
-            {/*    /!*        <InstagramImgLink*!/*/}
-            {/*    /!*            key={img.id}*!/*/}
-            {/*    /!*            href={`https://www.instagram.com/p/${img.lien}`}*!/*/}
-            {/*    /!*            target="_blank">*!/*/}
-            {/*    /!*            <InstagramImg src={links[i]} alt={img.alt || 'instagram img'} />*!/*/}
-            {/*    /!*        </InstagramImgLink>*!/*/}
-            {/*    /!*    ))}*!/*/}
-            {/*    /!*</Instagram>*!/*/}
-            {/*</Feed>*/}
-            {/* Newsletter */}
+        <footer style={{ marginTop: '100px' }}>
             <NewsLetter>
                 <NewsLetterContainer>
                     <NewsLetterWrapper>
@@ -130,6 +127,44 @@ export default function Footer({ data, menu }) {
                             />
                             <NewsLetterButton type="submit" value={buttonText} />
                         </NewsLetterForm>
+                        <RGPDContainer>
+                            <RGPDWrapper>
+                                <InputRGPD
+                                    type="checkbox"
+                                    onChange={() => {
+                                        setInput({
+                                            email: input.email,
+                                            newsLetter: !input.newsLetter,
+                                            transmit: input.transmit
+                                        });
+                                    }}
+                                />
+                                <InputRGPDLabel>
+                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                                    J'accepte de recevoir les newsletter Kinosa
+                                </InputRGPDLabel>
+                            </RGPDWrapper>
+                            <RGPDWrapper>
+                                <InputRGPD
+                                    type="checkbox"
+                                    onChange={() => {
+                                        setInput({
+                                            email: input.email,
+                                            newsLetter: input.newsLetter,
+                                            transmit: !input.transmit
+                                        });
+                                    }}
+                                />
+                                <InputRGPDLabel>
+                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                                    J'accepte que mes données soient transmises aux partenaires qui
+                                    pourront également envoyer des e-mails
+                                </InputRGPDLabel>
+                            </RGPDWrapper>
+                            <InputRGPDLegal>
+                                Un lien de désinscription sera indiqué au bas de chaque mail.
+                            </InputRGPDLegal>
+                        </RGPDContainer>
                     </NewsLetterWrapper>
                 </NewsLetterContainer>
             </NewsLetter>
@@ -254,41 +289,45 @@ export default function Footer({ data, menu }) {
                 <HorairesSection>
                     <HorairesText>{formatText(horaires.titre)}</HorairesText>
                     <HorairesText>{formatText(horaires.ouverture)}</HorairesText>
-                    <HorairesText>{formatText(horaires.joignable)}</HorairesText>
                 </HorairesSection>
+                <ContactSection>
+                    <HorairesText>Contact</HorairesText>
+                    <ContactText href="tel:+33646193773">06 46 19 37 73</ContactText>
+                    <ContactText href="mailto:contact@kinosa.fr">contact@kinosa.fr</ContactText>
+                </ContactSection>
+                <PdvSection>
+                    <HorairesText>Point de vente (Gare sud de France)</HorairesText>
+                    <PdvText href="https://goo.gl/maps/rD6LGTSCuenwou9s9">
+                        1521, Rue de la Font de la Banquière <br /> 34000 Montpellier
+                    </PdvText>
+                </PdvSection>
+                <SiegeSection>
+                    <HorairesText>Siège social</HorairesText>
+                    <SiegeText href="https://goo.gl/maps/qistqDkG24kNczPX7">
+                        42, rue de l’Aiguillerie
+                        <br /> 34000 Montpellier
+                    </SiegeText>
+                </SiegeSection>
                 <SocialSection>
-                    <SocialText>{formatText(data.social.titre)}</SocialText>
                     <SocialLogoContainer>
                         {data.social.social.map((logo: any) => (
-                            <a
-                                key={logo.id}
-                                href={logo.lien}
-                                target="_blank"
-                                rel="noreferrer">
+                            <a key={logo.id} href={logo.lien} target="_blank" rel="noreferrer">
                                 <SocialLogo name={logo.nom} isFooter isMenu={false} />
                             </a>
                         ))}
                     </SocialLogoContainer>
                 </SocialSection>
-                <MapContainer>
-                    {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
-                    <Map
-                        id="map"
-                        frameBorder="0"
-                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&q=Kinosa,Montpellier+France"
-                        allowFullScreen></Map>
-                </MapContainer>
                 <MenuContainer>
-                    {menu.map((el: any) => (
-                        <Link key={el.id} href={el.slug}>
-                            <MenuText>{formatText(el.titre)}</MenuText>
-                        </Link>
-                    ))}
+                    <Link href="/contact">
+                        <MenuText>Commandes / Contact</MenuText>
+                    </Link>
                     <Link href="/legals">
                         <MenuText>Mentions Légales</MenuText>
                     </Link>
+                    <Link href="/sitemap.xml">
+                        <MenuText>Plan du site</MenuText>
+                    </Link>
                 </MenuContainer>
-
                 <MessengerPlugin
                     pageId="1934629010132381"
                     showDialog={showDialog}

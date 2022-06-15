@@ -30,17 +30,6 @@ export default function Carte({ data, products, categories }) {
                         </CarteButton>
                     </Link>
                 </CarteTextContainer>
-                <BlocPlatContainer>
-                    {data.presentation.map((blocPlat: any) => (
-                        <BlocPlat key={blocPlat.id}>
-                            <BlocPlatImg
-                                src={blocPlat.image.url}
-                                alt={blocPlat.image.alt || 'image du site'}
-                            />
-                            <Text>{formatText(blocPlat.texte)}</Text>
-                        </BlocPlat>
-                    ))}
-                </BlocPlatContainer>
             </CarteWrapper>
             <Menu categories={categories} products={products} />
         </CarteSection>

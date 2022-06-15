@@ -2,12 +2,15 @@ import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client
 import { setContext } from '@apollo/client/link/context';
 import Carte from 'components/Home/Carte/Carte';
 import Command from 'components/Home/Command';
-import Concept from 'components/Home/Concept';
 import Header from 'components/Home/Header';
+import Services from 'components/Home/Services';
+import Valeurs from 'components/Home/Valeurs';
 import DefaultLayout from 'components/layouts/default';
 
-// TODO : Delete all images in public
-//TODO: mettre favicon
+import Citation from '../components/Concept/Citation';
+import Slider from '../components/Concept/Slider';
+import ExternalLinks from '../components/ExternalLinks';
+import Equipe from '../components/Home/Equipe';
 
 export default function Home({ data }) {
     const footerData = {
@@ -15,6 +18,7 @@ export default function Home({ data }) {
         newsletter: data.newsletter,
         social: data.footerSocial
     };
+
     return (
         <DefaultLayout
             _site={data._site}
@@ -23,17 +27,22 @@ export default function Home({ data }) {
             footer={footerData}>
             <Header data={data.homeHeader} />
             <>
-                <Command
-                    data={data.homeCommande}
-                    command={data.commande}
-                    ExternalData={data.plateforme}
-                />
+                <Citation data={data.conceptCitation} />
+                <Services data={data.homeConcept} />
+                <ExternalLinks data={data.partenaire} displayLine={false} />
+                <Slider data={data.conceptSlider.image} />
                 <Carte
                     data={data.homeCarte}
                     products={data.allProduits}
                     categories={data.allCategorieProduits}
                 />
-                <Concept data={data.homeConcept} ExternalData={data.partenaire} />
+                <Command
+                    data={data.homeCommande}
+                    command={data.commande}
+                    ExternalData={data.plateforme}
+                />
+                <Valeurs data={data.allConceptConcepts} />
+                <Equipe data={data.allConceptPresentations} />
             </>
         </DefaultLayout>
     );
@@ -95,11 +104,15 @@ export async function getStaticProps() {
                         id
                     }
                 }
-                homeCommande {
-                    titre
-                    texte {
+                conceptCitation {
+                    citation
+                    auteur
+                }
+                conceptSlider {
+                    image {
                         id
-                        texte
+                        url
+                        alt
                     }
                 }
                 homeCommande {
@@ -202,6 +215,35 @@ export async function getStaticProps() {
                         id
                         lien
                         alt
+                    }
+                }
+                allConceptConcepts {
+                    id
+                    titre
+                    titreSlug
+                    slug
+                    texte {
+                        id
+                        texte
+                    }
+                    image {
+                        url
+                        alt
+                    }
+                }
+                allConceptPresentations {
+                    id
+                    image {
+                        url
+                        alt
+                    }
+                    nom
+                    fonction
+                    presentation
+                    social {
+                        id
+                        nom
+                        lien
                     }
                 }
                 newsletter {

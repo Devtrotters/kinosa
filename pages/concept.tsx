@@ -1,11 +1,11 @@
 import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Citation from 'components/Concept/Citation';
-import Concept from 'components/Concept/Concept';
 import Header from 'components/Concept/Header';
 import History from 'components/Concept/History';
-import Presentation from 'components/Concept/Presentation';
 import Slider from 'components/Concept/Slider';
+import Equipe from 'components/Home/Equipe';
+import Valeurs from 'components/Home/Valeurs';
 import DefaultLayout from 'components/layouts/default';
 
 export default function concept({ data }) {
@@ -22,8 +22,8 @@ export default function concept({ data }) {
             footer={footerData}>
             <Header data={data.conceptHeader} />
             <Citation data={data.conceptCitation} />
-            <Presentation data={data.allConceptPresentations} />
-            <Concept data={data.allConceptConcepts} />
+            <Equipe data={data.allConceptPresentations} />
+            <Valeurs data={data.allConceptConcepts} />
             <History data={data.conceptHistoire} />
             <Slider data={data.conceptSlider.image} />
         </DefaultLayout>

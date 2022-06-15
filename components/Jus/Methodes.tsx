@@ -12,7 +12,7 @@ import {
     HeaderTitle
 } from 'styles/Jus/Header.style';
 
-export default function Header({ data }) {
+export default function Methodes({ data }) {
     const [subtextOpen, setSubtextOpen] = useState(null);
     const handleClick = (id) => {
         setSubtextOpen(() => {

@@ -15,8 +15,8 @@ export const CarteSection = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 100px 65px 100px 65px;
-        margin: 100px 165px 0 165px;
+        padding: 100px 165px 100px 165px;
+        margin: 100px 0px 0 0px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
@@ -33,7 +33,6 @@ export const CarteWrapper = styled.article`
 `;
 export const CarteTextContainer = styled.div`
     @media screen and (${breakpoint.device.s}) {
-        width: 45%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

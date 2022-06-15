@@ -3,19 +3,21 @@ import breakpoint from 'styles/breakpoints';
 import { Text, Title } from 'styles/UI/Texts.style';
 
 export const HeaderSection = styled.section`
+    padding: 30px 15px 60px 15px;
+    background: ${(props) => props.theme.color.beige};
+
     margin-top: 60px;
-    padding: 0 15px;
 
     @media screen and (${breakpoint.device.s}) {
-        padding: 0 40px;
+        padding: 60px 40px 100px 40px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 0 230px;
+        padding: 60px 230px 100px 230px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0 260px;
+        padding: 60px 260px 100px 260px;
     }
 `;
 

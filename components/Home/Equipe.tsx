@@ -14,7 +14,7 @@ import { Text } from 'styles/UI/Texts.style';
 
 import SocialLogo from '../SocialLogo';
 
-export default function Presentation({ data }) {
+export default function Equipe({ data }) {
     return (
         <PresentationContainer>
             {data.map((gerant: any) => (
@@ -30,17 +30,17 @@ export default function Presentation({ data }) {
                             <GerantName>{formatText(gerant.nom)}</GerantName>
                             <Text>{formatText(gerant.fonction)}</Text>
                         </GerantNameContainer>
-                        <SocialContainer>
-                            {gerant.social.map((social: any) => (
-                                <a
-                                    key={social.id}
-                                    href={social.lien}
-                                    target="_blank"
-                                    rel="noreferrer">
-                                    <SocialLogo name={social.nom} isFooter={false} isMenu={false} />
-                                </a>
-                            ))}
-                        </SocialContainer>
+                        {/*<SocialContainer>*/}
+                        {/*    {gerant.social.map((social: any) => (*/}
+                        {/*        <a*/}
+                        {/*            key={social.id}*/}
+                        {/*            href={social.lien}*/}
+                        {/*            target="_blank"*/}
+                        {/*            rel="noreferrer">*/}
+                        {/*            <SocialLogo name={social.nom} isFooter={false} isMenu={false} />*/}
+                        {/*        </a>*/}
+                        {/*    ))}*/}
+                        {/*</SocialContainer>*/}
                         <aside>
                             <GerantText>{formatText(gerant.presentation)}</GerantText>
                         </aside>

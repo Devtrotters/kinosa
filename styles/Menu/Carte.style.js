@@ -40,12 +40,38 @@ export const Menu = styled.aside`
         row-gap: 20px;
 
         position: sticky;
-        top: 20px;
+        top: 120px;
     }
 `;
 
 export const MenuButton = styled(Button)`
     border-radius: 10px;
+`;
+
+export const Products = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+
+    @media screen and (${breakpoint.device.menu}) {
+        row-gap: 100px;
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        row-gap: 120px;
+    }
+`;
+
+export const ProductsArticle = styled.article`
+    //position: relative;
+    //
+    //&::before {
+    //    content: '';
+    //    position: absolute;
+    //    background-color: red;
+    //    inset: 0;
+    //    z-index: -1;
+    //}
 `;
 
 export const CarteContainer = styled.section`
@@ -62,7 +88,7 @@ export const CarteContainer = styled.section`
 
 export const CarteWrapper = styled.div`
     @media screen and (${breakpoint.device.s}) {
-        &:nth-child(odd) > article {
+        > article {
             &:nth-child(2) {
                 > section {
                     grid-template-columns: fit-content(100%) 1fr;
@@ -70,34 +96,10 @@ export const CarteWrapper = styled.div`
 
                     > article {
                         grid-column: 1;
+
                         &:last-of-type {
                             grid-column: 2;
                             grid-row: 1 / span 4;
-                        }
-                    }
-                }
-            }
-        }
-
-        &:nth-child(even) > article {
-            &:nth-child(2) {
-                > section {
-                    grid-template-columns: 1fr fit-content(100%);
-                    column-gap: 85px;
-
-                    > article {
-                        grid-column: 2;
-                        &:last-of-type {
-                            grid-column: 1;
-                            grid-row: 1 / span 4;
-                            > div > p {
-                                right: auto;
-                                left: 15px;
-                                &.sousCategorie {
-                                    right: 15px;
-                                    left: auto;
-                                }
-                            }
                         }
                     }
                 }
@@ -107,6 +109,7 @@ export const CarteWrapper = styled.div`
 `;
 
 export const CarteTitle = styled(Title)`
+    font-size: 30px;
     margin: 0 15px;
 
     @media screen and (${breakpoint.device.s}) {
@@ -131,6 +134,7 @@ export const CarteButtonContainer = styled.div`
     scrollbar-width: none;
 
     /* Tout sauf Firefox */
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -258,6 +262,7 @@ export const SaleWrapper = styled.article`
             margin-top: 10px;
         }
     }
+
     &:last-of-type {
         max-width: 100%;
 
@@ -289,6 +294,7 @@ export const AccompagnementContainer = styled.div`
     row-gap: 5px;
     align-items: center;
     justify-content: space-between;
+
     > p {
         &:first-of-type {
             grid-column: 1 / span 2;
@@ -303,6 +309,7 @@ export const SauceToppingButton = styled.svg`
 
     &.open {
         transform: rotate(-180deg);
+
         > circle {
             fill: ${(props) => props.theme.color.orange};
         }

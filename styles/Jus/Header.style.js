@@ -16,7 +16,7 @@ export const HeaderContainer = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        margin: 150px 230px 0 230px;
+        margin: 135px 260px 0 260px;
     }
 `;
 
@@ -61,6 +61,7 @@ export const HeaderSubTitle = styled(Subtitle)`
     &.open {
         color: ${(props) => props.theme.color.orange};
     }
+
     @media screen and (${breakpoint.device.s}) {
         grid-column: 1;
     }
@@ -80,6 +81,7 @@ export const HeaderSubText = styled(Text)`
         max-height: 100vh;
         opacity: 1;
     }
+
     @media screen and (${breakpoint.device.s}) {
         grid-column: 1;
     }
@@ -93,10 +95,12 @@ export const HeaderButton = styled.svg`
 
     &.open {
         transform: rotate(-180deg);
+
         > circle {
             fill: ${(props) => props.theme.color.orange};
         }
     }
+
     @media screen and (${breakpoint.device.s}) {
         grid-column: 1;
     }

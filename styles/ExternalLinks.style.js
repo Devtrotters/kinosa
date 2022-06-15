@@ -1,44 +1,46 @@
-import styled from 'styled-components';
-import breakpoint from 'styles/breakpoints';
+import styled, { keyframes } from 'styled-components';
 
 import { Text } from './UI/Texts.style';
 
 export const Container = styled.section`
     margin-top: 100px;
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    align-items: center;
 
-    @media screen and (${breakpoint.device.s}) {
-        grid-column: 1 / span 2;
-    }
+    overflow: hidden;
 `;
 
 export const Infos = styled(Text)`
     margin-top: 5px;
 `;
 
+const slider = (n) => keyframes`
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc((-150px * ${n}) + (-45px * ${n})));
+  }
+`;
+
 export const Grid = styled.div.attrs((props) => {})`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
+    width: calc(150px * ${(props) => Number(props.number)});
+    display: flex;
     column-gap: 45px;
     margin-top: 40px;
     align-items: flex-end;
+    float: left;
+    -webkit-animation: ${(props) => slider(props.number)} infinite
+        calc(2s * ${(props) => Number(props.number)}) linear;
+    animation: ${(props) => slider(props.number)} infinite
+        calc(2s * ${(props) => Number(props.number)}) linear;
 
-    @media screen and (${breakpoint.device.s}) {
-        grid-column: 1 / span 2;
+    &:hover {
+        animation-play-state: paused;
+    }
 
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        column-gap: unset;
-
-        > article {
-            width: 25%;
-            max-height: 250px;
-        }
+    > article {
+        min-width: 150px;
     }
 `;
 

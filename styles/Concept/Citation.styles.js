@@ -8,7 +8,11 @@ export const CitationContainer = styled.article`
     position: relative;
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 60px 240px 0 240px;
+        margin: 60px 45px 0 45px;
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin: 60px 165px 0 165px;
     }
 
     @media screen and (${breakpoint.device.m}) {

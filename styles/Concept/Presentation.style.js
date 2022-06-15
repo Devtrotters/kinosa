@@ -12,8 +12,6 @@ export const PresentationContainer = styled.section`
 
     position: relative;
 
-    background-color: ${(props) => props.theme.color.beige};
-
     @media screen and (${breakpoint.device.s}) {
         padding: 60px 45px;
     }
@@ -40,6 +38,7 @@ export const GerantContainer = styled.article`
             > .image {
                 grid-column: 1;
             }
+
             > div {
                 grid-column: 2;
             }
@@ -49,6 +48,7 @@ export const GerantContainer = styled.article`
             > .image {
                 grid-column: 2;
             }
+
             > div {
                 grid-column: 1;
                 grid-row: 1;

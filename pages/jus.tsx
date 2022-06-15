@@ -2,7 +2,7 @@ import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client
 import { setContext } from '@apollo/client/link/context';
 import Animations from 'components/Jus/Animations';
 import Creations from 'components/Jus/Creations';
-import Header from 'components/Jus/Header';
+import Methodes from 'components/Jus/Methodes';
 import DefaultLayout from 'components/layouts/default';
 
 export default function jus({ data }) {
@@ -17,7 +17,7 @@ export default function jus({ data }) {
             seo={data.seoJu}
             pages={data.page.pages}
             footer={footerData}>
-            <Header data={data.jusSmoothie} />
+            <Methodes data={data.jusSmoothie} />
             <Animations data={data.jusAnimation} />
             <Creations headerData={data.creationHeader} data={data.allCreationSaisons} />
         </DefaultLayout>

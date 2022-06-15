@@ -4,16 +4,23 @@ import { Text } from 'styles/UI/Texts.style';
 
 export const ContactSection = styled.section`
     padding: 0 15px;
-    margin-top: 60px;
+    margin-top: 80px;
 
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 40px;
+    row-gap: 30px;
 
     @media screen and (${breakpoint.device.s}) {
+        margin-top: 90px;
+
         padding: 0 40px;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 50px;
+        //justify-content: space-between;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin-top: 120px;
     }
 
     @media screen and (${breakpoint.device.m}) {
@@ -24,39 +31,78 @@ export const ContactSection = styled.section`
     }
 `;
 
-export const FormContainer = styled.article`
-    @media screen and (${breakpoint.device.s}) {
-        grid-row: 1 / span 2;
+export const TopSection = styled.div`
+    grid-column: 1 / span 2;
+`;
+
+export const ContactText = styled(Text)`
+    margin-top: 30px;
+    text-align: justify;
+    font-size: 20px;
+    width: 100%;
+    color: #007a0c;
+
+    @media screen and (${breakpoint.device.menu}) {
+        width: 80%;
     }
 `;
-export const ContactText = styled(Text)`
-    margin-top: 10px;
-    text-align: justify;
+
+export const GridContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-column: 1 / span 2;
+
+    @media screen and (${breakpoint.device.s}) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        column-gap: normal;
+        row-gap: normal;
+    }
+`;
+
+export const GridSection = styled.div``;
+
+export const GridTitle = styled.h2`
+    font-size: 16px;
+    color: #f9bb42;
+    font-weight: 400;
+`;
+
+export const GridText = styled.p`
+    font-size: 20px;
+    color: #007a0c;
+    margin-top: 5px;
 `;
 
 export const Form = styled.form`
-    margin-top: 40px;
-
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 
-    @media screen and (${breakpoint.device.s}) {
-        margin-top: 60px;
-    }
+    grid-column: 1 / span 2;
 
-    @media screen and (${breakpoint.device.m}) {
-        margin-top: 100px;
+    @media screen and (${breakpoint.device.menu}) {
+        grid-column: 1;
     }
 `;
 
 const errorAnimation = keyframes`
-    from {
-        transform : translateX(0);
-    }
-    to {
-        transform: translateX(10px);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10px);
+  }
 `;
 
 export const Field = styled.div`
@@ -71,6 +117,7 @@ export const Field = styled.div`
     &.invalid > p {
         color: red;
         animation: ${errorAnimation} 0.3s linear;
+
         > span {
             color: red;
         }
@@ -145,6 +192,7 @@ export const SubmitButton = styled.input`
     transition: 0.5s all;
 
     cursor: pointer;
+
     &:hover {
         color: ${(props) => props.theme.color.orange};
         background-position: -100% 0;
@@ -159,13 +207,17 @@ export const Img = styled.img`
 `;
 
 export const MapContainer = styled.article`
-    @media screen and (${breakpoint.device.s}) {
+    grid-column: 1 / span 2;
+    height: 350px;
+
+    @media screen and (${breakpoint.device.menu}) {
         grid-column: 2;
+        height: 100%;
     }
 `;
 
 export const Map = styled.iframe`
     width: 100%;
-    height: 350px;
+    height: 100%;
     border-radius: 20px;
 `;

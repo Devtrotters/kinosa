@@ -14,7 +14,8 @@ import {
     MenuWrapper,
     Square
 } from 'styles/Concept/Concept.style';
-export default function Concept({ data }) {
+
+export default function Valeurs({ data }) {
     const [displayed, setDisplayed] = useState(data[0].slug);
 
     useEffect(() => {
@@ -27,10 +28,11 @@ export default function Concept({ data }) {
                 });
             },
             {
-                rootMargin: '0px 0px -80% 0px',
+                rootMargin: '0px 0px -70% 0px',
                 threshold: 0.25
             }
         );
+
         data.forEach((element: any) => {
             observer.observe(document.getElementById(element.slug));
         });

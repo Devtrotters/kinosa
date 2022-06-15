@@ -8,18 +8,24 @@ export const MobileMenu = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 15px 0 15px;
-    position: relative;
+    padding: 10px 15px 10px 15px;
     overflow: hidden;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+
+    background: ${(props) => props.theme.color.white};
 
     @media screen and (${breakpoint.device.s}) {
         &.home {
             background: ${(props) => props.theme.color.beige};
         }
 
-        padding: 25px 40px 0 40px;
+        padding: 25px 40px 15px 40px;
     }
-
     @media screen and (${breakpoint.device.menu}) {
         display: none;
     }
@@ -48,9 +54,17 @@ export const SocialLogoContainer = styled.article`
     column-gap: 40px;
 `;
 
+export const MobileButtonContainer = styled.div`
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+`;
+
+export const PhoneMobileButton = styled.a``;
+
 export const DisplayMobileButton = styled.svg`
     cursor: pointer;
-    display: bloc;
+    display: block;
     justify-self: end;
 `;
 
@@ -59,23 +73,29 @@ export const MenuContainer = styled.section`
     justify-content: space-between;
     align-items: center;
 
-    &.home {
-        background: ${(props) => props.theme.color.beige};
+    background: ${(props) => props.theme.color.beige};
+
+    &.contact {
+        background: none;
     }
 
     @media screen and (${breakpoint.device.menu}) {
         display: flex;
-        padding: 25px 40px 0 40px;
+        padding: 35px 40px 10px 40px;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 99;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 25px 65px 0 65px;
-        margin: 0 165px;
+        padding: 35px 165px 0 165px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 25px 95px 0 95px;
-        margin: 0 165px;
+        padding: 35px 195px 0 195px;
     }
 `;
 
@@ -83,6 +103,7 @@ export const NavContainer = styled.nav`
     &.none {
         display: none;
     }
+
     transform: translateX(100%);
     display: flex;
     flex-direction: column;
@@ -98,7 +119,7 @@ export const NavContainer = styled.nav`
 
     background: ${(props) => props.theme.color.orange};
 
-    transition: transform 1s linear, left 1s linear;
+    transition: transform 0.3s linear, left 0.3s linear;
 
     &.open {
         transform: translateX(0);
@@ -127,6 +148,7 @@ export const NavText = styled.a`
     color: ${(props) => props.theme.color.green.default};
     font-size: 30px;
     cursor: pointer;
+    text-decoration: none;
 
     &.active {
         text-decoration: underline;
@@ -142,7 +164,7 @@ export const NavText = styled.a`
 
         font-size: 15px;
         color: ${(props) => props.theme.color.green.default};
-        transition: all 0.3s linear;
+        transition: all 0.2s linear;
 
         &:hover {
             color: ${(props) => props.theme.color.orange};
@@ -170,17 +192,42 @@ export const NavText = styled.a`
     }
 `;
 
-export const NavButton = styled(Button)`
+export const NavButtonContainer = styled.div`
+    position: relative;
+`;
+
+export const NavButtonPhone = styled.a`
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+
+    font-size: 12px;
+    color: #014e08;
+
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+
+    text-decoration: none;
+
+    transition: all 0.2s linear;
+
+    &:hover {
+        color: #f9bb42;
+    }
+`;
+
+export const NavButton = styled(Button).attrs({ as: 'a' })`
     padding: 15px 20px;
 
     border-radius: 10px;
     font-size: 20px;
 
-    color: ${(props) => props.theme.color.white};
+    color: ${(props) => props.theme.color.orange};
     background: ${(props) => props.theme.color.green.default};
 
     &:hover {
-        color: ${(props) => props.theme.color.white};
+        color: ${(props) => props.theme.color.orange};
     }
 
     @media screen and (${breakpoint.device.s}) {
@@ -188,6 +235,8 @@ export const NavButton = styled(Button)`
     }
 
     @media screen and (${breakpoint.device.menu}) {
+        color: ${(props) => props.theme.color.green.default};
+
         margin-left: 25px;
         padding: 10px 20px;
 
@@ -204,7 +253,7 @@ export const NavButton = styled(Button)`
         transition: 0.5s all;
 
         &:hover {
-            color: ${(props) => props.theme.color.white};
+            color: ${(props) => props.theme.color.orange};
             background-position: -100% 0;
         }
     }

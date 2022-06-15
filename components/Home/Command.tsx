@@ -13,9 +13,7 @@ export default function Command({ data, command, ExternalData }) {
                     <Text key={texte.id}>{formatText(texte.texte)}</Text>
                 ))}
             </SubtitleGrid>
-
             <CommandComponent data={command.typeCommand} />
-            <ExternalLinks data={ExternalData} displayLine={true} />
         </CommandSection>
     );
 }

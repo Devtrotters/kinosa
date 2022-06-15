@@ -1,4 +1,3 @@
-import ExternalLinks from 'components/ExternalLinks';
 import formatText from 'lib/formatText';
 import Link from 'next/link';
 import {
@@ -15,7 +14,7 @@ import {
 } from 'styles/Home/Concept.style';
 import { Title } from 'styles/UI/Texts.style';
 
-export default function Concept({ data, ExternalData }) {
+export default function Services({ data }) {
     return (
         <ConceptSection>
             <ConceptWrapper>
@@ -32,19 +31,16 @@ export default function Concept({ data, ExternalData }) {
                 </Link>
             </ConceptWrapper>
             <GerantArticle>
-                {data.gerant.map((gerant: any) => (
-                    <GerantWrapper key={gerant.id}>
-                        <GerantImgContainer>
-                            <GerantImg
-                                src={gerant.image.url}
-                                alt={gerant.image.alt || 'image du site'}
-                            />
-                        </GerantImgContainer>
-                        <GerantText>{formatText(gerant.texte)}</GerantText>
-                    </GerantWrapper>
-                ))}
+                <GerantWrapper key={data.gerant.id}>
+                    <GerantImgContainer>
+                        <GerantImg
+                            src={data.gerant[0].image.url}
+                            alt={data.gerant[0].image.alt || 'image du site'}
+                        />
+                    </GerantImgContainer>
+                    <GerantText>{formatText(data.gerant[0].texte)}</GerantText>
+                </GerantWrapper>
             </GerantArticle>
-            <ExternalLinks data={ExternalData} displayLine={false} />
         </ConceptSection>
     );
 }

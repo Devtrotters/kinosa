@@ -31,7 +31,6 @@ export default async (req, res) => {
     try {
         // eslint-disable-next-line prettier/prettier
         await addToList(data.input.email);
-        console.log(res.status);
         return res.status(200).json({
             text: 'Ajouté !'
         });

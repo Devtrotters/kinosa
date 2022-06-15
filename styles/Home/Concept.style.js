@@ -12,8 +12,8 @@ export const ConceptSection = styled.section`
         margin-top: 100px;
 
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 80px;
+        grid-template-columns: 40% 60%;
+        column-gap: 30px;
     }
 
     @media screen and (${breakpoint.device.m}) {
@@ -27,7 +27,7 @@ export const ConceptSection = styled.section`
 
 export const ConceptWrapper = styled.article`
     @media screen and (${breakpoint.device.s}) {
-        grid-column: 2 / 2;
+        grid-column: 1;
     }
 `;
 
@@ -51,18 +51,21 @@ export const ConceptButton = styled(Button)`
 export const GerantArticle = styled.article`
     margin-top: 60px;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
+    //display: grid;
+    //grid-template-columns: 1fr 1fr;
+    //column-gap: 10px;
 
-    > div:first-of-type {
+    > div {
         > div {
             > img {
                 transform: scale(1.5);
+                max-height: 350px;
             }
         }
     }
+
     @media screen and (${breakpoint.device.s}) {
+        grid-column: 2;
         grid-row: 1 / 1;
         margin-top: 0;
     }
@@ -70,9 +73,9 @@ export const GerantArticle = styled.article`
 
 export const GerantWrapper = styled.div`
     /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr fit-content(10%);
-    row-gap: 15px; */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr fit-content(10%);
+  row-gap: 15px; */
 
     position: relative;
 
@@ -80,6 +83,7 @@ export const GerantWrapper = styled.div`
         > div > img {
             filter: grayscale(0%);
         }
+
         > p {
             display: inline;
         }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import breakpoint from 'styles/breakpoints';
 import { Text, Title } from 'styles/UI/Texts.style';
+
 export const HeaderContainer = styled.section.attrs((props) => {})`
     height: 575px;
 
@@ -56,6 +57,7 @@ export const HeaderText = styled(Text)`
     &:first-of-type {
         margin-top: 20px;
     }
+
     text-align: justify;
 
     z-index: 1;

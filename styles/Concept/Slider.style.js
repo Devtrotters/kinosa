@@ -4,7 +4,6 @@ import { MediumText } from 'styles/UI/Texts.style';
 
 export const SliderSection = styled.section`
     display: none;
-    margin-top: 100px;
 
     @media screen and (${breakpoint.device.s}) {
         padding: 100px 45px 0 45px;
@@ -12,10 +11,10 @@ export const SliderSection = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 0 230px;
+        padding: 100px 230px 0 230px;
     }
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0 260px;
+        padding: 100px 260px 0 260px;
     }
 `;
 export const SliderContainer = styled.article`
@@ -29,12 +28,12 @@ export const SliderContainer = styled.article`
 `;
 
 const fade = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 `;
 
 export const Img = styled.img`

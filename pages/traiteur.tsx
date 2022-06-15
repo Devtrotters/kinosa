@@ -5,6 +5,8 @@ import Confiance from 'components/Traiteur/Confiance';
 import Header from 'components/Traiteur/Header';
 import Prestations from 'components/Traiteur/Prestations';
 
+import Slider from '../components/Concept/Slider';
+
 export default function traiteur({ data }) {
     const footerData = {
         feed: data.instagram,
@@ -19,6 +21,8 @@ export default function traiteur({ data }) {
             footer={footerData}>
             <Header data={data.traiteurHeader} />
             <Prestations data={data.allTraiteurPrestations} />
+            <Slider data={data.conceptSlider.image} />
+
             <Confiance ExternalData={data.partenaire} />
         </DefaultLayout>
     );
@@ -58,6 +62,13 @@ export async function getStaticProps() {
                         attributes
                         content
                         tag
+                    }
+                }
+                conceptSlider {
+                    image {
+                        id
+                        url
+                        alt
                     }
                 }
                 traiteurHeader {

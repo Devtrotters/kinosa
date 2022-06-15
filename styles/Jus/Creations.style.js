@@ -6,14 +6,18 @@ export const CreationsContainer = styled.section`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 60px 15px 0 15px;
+    margin: 0 15px 0 15px;
     row-gap: 30px;
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 100px 45px;
+        margin: 0 40px 0 40px;
     }
     @media screen and (${breakpoint.device.m}) {
-        margin: 100px 165px;
+        margin: 0 230px 0 0;
+    }
+
+    @media screen and (${breakpoint.device.lg}) {
+        margin: 0 260px 0 0;
     }
 `;
 
@@ -136,6 +140,7 @@ export const CreationsImage = styled.img`
     &:hover {
         opacity: 0.8;
     }
+
     @media screen and (${breakpoint.device.m}) {
         height: 400px;
     }

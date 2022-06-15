@@ -7,34 +7,26 @@ import {
     DisplayMobileButton,
     HeaderMobileMenu,
     MenuContainer,
+    MobileButtonContainer,
     MobileMenu,
     NavButton,
+    NavButtonContainer,
+    NavButtonPhone,
     NavContainer,
     NavText,
+    PhoneMobileButton,
     SocialLogoContainer
 } from 'styles/Navbar.style';
 
 export default function Navbar({ data, social }) {
     const [buttonText, setButtonText] = useState('Blog');
-    const [className, setClassname] = useState('none');
     const router = useRouter();
 
-    const handleMouseOver = () => {
-        if (buttonText === 'Blog') setButtonText('Soon');
-        else setButtonText('Blog');
-    };
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setClassname('');
-        }, 1000);
-
-        return () => clearTimeout(timer);
-    }, []);
+    const [displayMenu, setDisplayMenu] = useState(false);
 
     return (
         <header>
-            <MobileMenu className={`${router.pathname === '/' ? 'home' : ''}`}>
+            <MobileMenu className={`${router.pathname === '/contact' ? 'contact' : ''}`}>
                 <Link href="/">
                     <a>
                         <svg
@@ -62,12 +54,15 @@ export default function Navbar({ data, social }) {
                         </svg>
                     </a>
                 </Link>
-                <NavContainer className={className}>
+                <NavContainer className={displayMenu ? 'open' : ''}>
                     <HeaderMobileMenu>
                         <h1>Kinosa</h1>
                         <DisplayMobileButton
                             onClick={() => {
-                                setClassname(() => '');
+                                setDisplayMenu(false);
+                                const r = document.querySelector(':root') as HTMLElement;
+                                r.style.setProperty('--body-height', '100%');
+                                r.style.overflow = 'auto';
                             }}
                             width="25"
                             height="25"
@@ -80,17 +75,36 @@ export default function Navbar({ data, social }) {
                             />
                         </DisplayMobileButton>
                     </HeaderMobileMenu>
-                    {data.map((el: any) => (
-                        <Link key={el.id} href={el.slug}>
-                            <NavText className={`${router.pathname === el.slug ? 'active' : ''}`}>
-                                {formatText(el.titre)}
-                            </NavText>
-                        </Link>
-                    ))}
+                    {data.map((el: any) => {
+                        if (el.slug.startsWith('/')) {
+                            return (
+                                <Link key={el.id} href={el.slug}>
+                                    <NavText
+                                        className={`${router.pathname === el.slug ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setDisplayMenu(false);
+                                            const r = document.querySelector(
+                                                ':root'
+                                            ) as HTMLElement;
+                                            r.style.setProperty('--body-height', '100%');
+                                            r.style.overflow = 'auto';
+                                        }}>
+                                        {el.titre}
+                                    </NavText>
+                                </Link>
+                            );
+                        } else {
+                            return (
+                                <NavText
+                                    className={`${router.pathname === el.slug ? 'active' : ''}`}
+                                    href={el.slug}>
+                                    {el.titre}
+                                </NavText>
+                            );
+                        }
+                    })}
 
-                    <NavButton onMouseOver={handleMouseOver} onMouseLeave={handleMouseOver}>
-                        {buttonText}
-                    </NavButton>
+                    <NavButton href="/contact">Commande & Contact</NavButton>
                     <SocialLogoContainer>
                         {/* display : grid */}
                         {social.map((el: any) => (
@@ -100,22 +114,47 @@ export default function Navbar({ data, social }) {
                         ))}
                     </SocialLogoContainer>
                 </NavContainer>
-                <DisplayMobileButton
-                    onClick={() => {
-                        setClassname(() => 'open');
-                    }}
-                    width="30"
-                    height="20"
-                    viewBox="0 0 30 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect width="30" height="5" fill="#007A0C" />
-                    <rect y="15" width="30" height="5" fill="#007A0C" />
-                </DisplayMobileButton>
+                <MobileButtonContainer>
+                    <PhoneMobileButton href="tel:+33646193773">
+                        <DisplayMobileButton
+                            width="22"
+                            height="23"
+                            viewBox="0 0 22 23"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21.2008 1.42506L16.7321 0.375825C16.2466 0.262158 15.7482 0.520095 15.5505 0.983507L13.4881 5.87994C13.3076 6.30837 13.4279 6.81113 13.7845 7.10404L16.3884 9.27246C14.8416 12.6256 12.1389 15.4149 8.77449 17.0193L6.64328 14.37C6.3511 14.0071 5.86127 13.8847 5.44018 14.0683L0.627779 16.1668C0.168022 16.3723 -0.0854882 16.8794 0.0262283 17.3734L1.05746 21.9201C1.16488 22.3923 1.57737 22.7333 2.06291 22.7333C13.067 22.7333 22 13.6618 22 2.44806C22 1.95842 21.6691 1.53436 21.2008 1.42506Z"
+                                fill="#F9BB42"
+                            />
+                        </DisplayMobileButton>
+                    </PhoneMobileButton>
+
+                    <DisplayMobileButton
+                        onClick={() => {
+                            setDisplayMenu(true);
+                            const r = document.querySelector(':root') as HTMLElement;
+                            r.style.setProperty('--body-height', '100vh');
+                            r.style.overflow = 'hidden';
+                        }}
+                        width="30"
+                        height="20"
+                        viewBox="0 0 30 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="5" fill="#007A0C" />
+                        <rect y="15" width="30" height="5" fill="#007A0C" />
+                    </DisplayMobileButton>
+                </MobileButtonContainer>
             </MobileMenu>
-            <MenuContainer className={`${router.pathname === '/' ? 'home' : ''}`}>
+            <MenuContainer className={`${router.pathname === '/contact' ? 'contact' : ''}`}>
                 <Link href="/">
-                    <a>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                    <a
+                        onClick={() => {
+                            const r = document.querySelector(':root') as HTMLElement;
+                            r.style.setProperty('--body-height', '100%');
+                            r.style.overflow = 'auto';
+                        }}>
                         <svg
                             width="181"
                             height="51"
@@ -242,16 +281,49 @@ export default function Navbar({ data, social }) {
                     </a>
                 </Link>
                 <NavContainer>
-                    {data.map((el: any) => (
-                        <Link key={el.id} href={el.slug}>
-                            <NavText className={`${router.pathname === el.slug ? 'active' : ''}`}>
-                                {el.titre}
-                            </NavText>
-                        </Link>
-                    ))}
-                    <NavButton onMouseOver={handleMouseOver} onMouseLeave={handleMouseOver}>
-                        {buttonText}
-                    </NavButton>
+                    {data.map((el: any) => {
+                        if (el.slug.startsWith('/')) {
+                            return (
+                                <Link key={el.id} href={el.slug}>
+                                    <NavText
+                                        className={`${router.pathname === el.slug ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setDisplayMenu(false);
+                                            const r = document.querySelector('body') as HTMLElement;
+                                            r.style.setProperty('height', '100%');
+                                            r.style.overflow = 'auto';
+                                        }}>
+                                        {el.titre}
+                                    </NavText>
+                                </Link>
+                            );
+                        } else {
+                            return (
+                                <NavText
+                                    className={`${router.pathname === el.slug ? 'active' : ''}`}
+                                    href={el.slug}>
+                                    {el.titre}
+                                </NavText>
+                            );
+                        }
+                    })}
+                    <NavButtonContainer>
+                        <NavButtonPhone href="/">
+                            <svg
+                                width="12"
+                                height="13"
+                                viewBox="0 0 12 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.5641 0.661492L9.12662 0.0806995C8.86178 0.0177803 8.58991 0.160558 8.4821 0.417075L7.35713 3.12744C7.25869 3.3646 7.32431 3.6429 7.51884 3.80503L8.93912 5.00534C8.09539 6.86146 6.6212 8.4054 4.78608 9.29353L3.62361 7.82703C3.46424 7.62617 3.19705 7.55841 2.96737 7.66005L0.342425 8.82163C0.0916485 8.93537 -0.0466299 9.21609 0.0143063 9.48954L0.576795 12.0063C0.635387 12.2677 0.860383 12.4564 1.12522 12.4564C7.12744 12.4564 12 7.43499 12 1.22777C12 0.956729 11.8195 0.721992 11.5641 0.661492Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                            <span>06 59 45 26 84</span>
+                        </NavButtonPhone>
+                        <NavButton href="/contact">Commande & Contact</NavButton>
+                    </NavButtonContainer>
                 </NavContainer>
             </MenuContainer>
         </header>

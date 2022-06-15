@@ -7,14 +7,15 @@ export const CommandSection = styled.section`
     padding: 0 15px;
 
     @media screen and (${breakpoint.device.s}) {
-        padding: 0 40px;
+        padding: 0 40px 0 0;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 0 230px;
+        padding: 0 230px 0 0;
     }
+
     @media screen and (${breakpoint.device.lg}) {
-        padding: 0 260px;
+        padding: 0 260px 0 0;
     }
 `;
 

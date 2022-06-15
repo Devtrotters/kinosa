@@ -9,8 +9,11 @@ import {
     ContactText,
     Field,
     Form,
-    FormContainer,
     FormInput,
+    GridContainer,
+    GridSection,
+    GridText,
+    GridTitle,
     Img,
     Map,
     MapContainer,
@@ -21,9 +24,13 @@ import {
     RadioWrapper,
     RequiredFieldText,
     SubmitButton,
-    SubmitButtonContainer
+    SubmitButtonContainer,
+    TopSection
 } from 'styles/Contact/Contact.style';
 import { Text, Title } from 'styles/UI/Texts.style';
+
+import ExternalLinks from '../components/ExternalLinks';
+import Command from '../components/Home/Command';
 
 export default function contact({ data }) {
     const footerData = {
@@ -40,7 +47,7 @@ export default function contact({ data }) {
         question: ''
     });
 
-    const [buttonText, setButtonText] = useState('Envoyer');
+    const [buttonText, setButtonText] = useState('Envoyer >');
 
     const changeHandler = (e: any) => {
         e.preventDefault();
@@ -109,98 +116,91 @@ export default function contact({ data }) {
             pages={data.page.pages}
             footer={footerData}>
             <ContactSection>
-                <FormContainer>
-                    <div>
-                        <Title>{formatText(data.contact.titre)}</Title>
-                        {data.contact.texte.map((text: any) => (
-                            <ContactText key={text.id}>{formatText(text.texte)}</ContactText>
-                        ))}
-                    </div>
-                    {/*<Form onSubmit={(e) => submitHandler(e)}>*/}
-                    {/*    <Field>*/}
-                    {/*        <Text>*/}
-                    {/*            Nom et Prénom<span> *</span>*/}
-                    {/*        </Text>*/}
-                    {/*        <FormInput*/}
-                    {/*            placeholder="Jean Dupont"*/}
-                    {/*            type="text"*/}
-                    {/*            name="name"*/}
-                    {/*            value={inputData.name}*/}
-                    {/*            onChange={(e) => changeHandler(e)}*/}
-                    {/*            required*/}
-                    {/*            onInvalid={(e) => invalidHandler(e)}*/}
-                    {/*        />*/}
-                    {/*    </Field>*/}
-                    {/*    <Field>*/}
-                    {/*        <Text>*/}
-                    {/*            Adresse mail<span> *</span>*/}
-                    {/*        </Text>*/}
-                    {/*        <FormInput*/}
-                    {/*            placeholder="exemple@exemple.fr"*/}
-                    {/*            type="email"*/}
-                    {/*            name="email"*/}
-                    {/*            value={inputData.email}*/}
-                    {/*            onChange={(e) => changeHandler(e)}*/}
-                    {/*            required*/}
-                    {/*            onInvalid={(e) => invalidHandler(e)}*/}
-                    {/*        />*/}
-                    {/*    </Field>*/}
-                    {/*    <Field>*/}
-                    {/*        <Text>Téléphone</Text>*/}
-                    {/*        <FormInput*/}
-                    {/*            placeholder="06.06.06.06.06"*/}
-                    {/*            type="text"*/}
-                    {/*            name="tel"*/}
-                    {/*            value={inputData.tel}*/}
-                    {/*            onChange={(e) => changeHandler(e)}*/}
-                    {/*        />*/}
-                    {/*    </Field>*/}
-                    {/*    <Field>*/}
-                    {/*        <Text>Type de client</Text>*/}
-                    {/*        <RadioContainer>*/}
-                    {/*            <RadioWrapper>*/}
-                    {/*                <Radio*/}
-                    {/*                    id="Professionnel"*/}
-                    {/*                    type="radio"*/}
-                    {/*                    name="clientType"*/}
-                    {/*                    value="Professionnel"*/}
-                    {/*                    onChange={(e) => changeHandler(e)}*/}
-                    {/*                />*/}
-                    {/*                <RadioLabel htmlFor="Professionnel">Professionnel</RadioLabel>*/}
-                    {/*            </RadioWrapper>*/}
-                    {/*            <RadioWrapper>*/}
-                    {/*                <Radio*/}
-                    {/*                    id="Particulier"*/}
-                    {/*                    type="radio"*/}
-                    {/*                    name="clientType"*/}
-                    {/*                    value="Particulier"*/}
-                    {/*                    onChange={(e) => changeHandler(e)}*/}
-                    {/*                />*/}
-                    {/*                <RadioLabel htmlFor="Particulier">Particulier</RadioLabel>*/}
-                    {/*            </RadioWrapper>*/}
-                    {/*        </RadioContainer>*/}
-                    {/*    </Field>*/}
-                    {/*    <Field>*/}
-                    {/*        <Text>Une question ?</Text>*/}
-                    {/*        <QuestionArea*/}
-                    {/*            name="question"*/}
-                    {/*            placeholder="Envoyez nous toute votre bonne humeur !"*/}
-                    {/*            rows={10}*/}
-                    {/*            value={inputData.question}*/}
-                    {/*            onChange={(e) => changeHandler(e)}></QuestionArea>*/}
-                    {/*        <RequiredFieldText>*Champs obligatoires</RequiredFieldText>*/}
-                    {/*    </Field>*/}
-                    {/*    <SubmitButtonContainer>*/}
-                    {/*        <SubmitButton type="submit" value={buttonText} />*/}
-                    {/*    </SubmitButtonContainer>*/}
-                    {/*</Form>*/}
-                </FormContainer>
-                <article>
-                    <Img
-                        src={data.contact.image.url}
-                        alt={data.contact.image.alt || 'img du site'}
-                    />
-                </article>
+                <TopSection>
+                    <Title>{formatText(data.contact.titre)}</Title>
+                    {data.contact.texte.map((text: any) => (
+                        <ContactText key={text.id}>{formatText(text.texte)}</ContactText>
+                    ))}
+                </TopSection>
+                <GridContainer>
+                    <GridSection>
+                        <GridTitle>Point de vente (Gare sud de France)</GridTitle>
+                        <GridText>
+                            1521, Rue de la Font de la Banquière <br /> 34000 Montpellier
+                        </GridText>
+                    </GridSection>
+                    <GridSection>
+                        <GridTitle>Siège social</GridTitle>
+                        <GridText>
+                            42, rue de l’Aiguillerie <br /> 34000 Montpellier
+                        </GridText>
+                    </GridSection>
+                    <GridSection>
+                        <GridTitle>Contact</GridTitle>
+                        <GridText>
+                            06 46 19 37 73
+                            <br />
+                            contact@kinosa.fr
+                        </GridText>
+                    </GridSection>
+                    <GridSection>
+                        <GridTitle>Horaires</GridTitle>
+                        <GridText>7jours/7 - 8h30 à 20h00</GridText>
+                    </GridSection>
+                </GridContainer>
+                <Form onSubmit={(e) => submitHandler(e)}>
+                    <Field>
+                        <Text>
+                            Nom et Prénom<span> *</span>
+                        </Text>
+                        <FormInput
+                            placeholder="Jean Dupont"
+                            type="text"
+                            name="name"
+                            value={inputData.name}
+                            onChange={(e) => changeHandler(e)}
+                            required
+                            onInvalid={(e) => invalidHandler(e)}
+                        />
+                    </Field>
+                    <Field>
+                        <Text>
+                            Adresse mail<span> *</span>
+                        </Text>
+                        <FormInput
+                            placeholder="exemple@exemple.fr"
+                            type="email"
+                            name="email"
+                            value={inputData.email}
+                            onChange={(e) => changeHandler(e)}
+                            required
+                            onInvalid={(e) => invalidHandler(e)}
+                        />
+                    </Field>
+                    <Field>
+                        <Text>Téléphone</Text>
+                        <FormInput
+                            placeholder="06.06.06.06.06"
+                            type="text"
+                            name="tel"
+                            value={inputData.tel}
+                            onChange={(e) => changeHandler(e)}
+                        />
+                    </Field>
+                    <Field>
+                        <Text>Une question ?</Text>
+                        <QuestionArea
+                            name="question"
+                            placeholder="Envoyez nous toute votre bonne humeur !"
+                            rows={10}
+                            value={inputData.question}
+                            onChange={(e) => changeHandler(e)}></QuestionArea>
+                        <RequiredFieldText>*Champs obligatoires</RequiredFieldText>
+                    </Field>
+                    <SubmitButtonContainer>
+                        <SubmitButton type="submit" value={buttonText} />
+                    </SubmitButtonContainer>
+                </Form>
                 <MapContainer>
                     {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
                     <Map
@@ -210,6 +210,12 @@ export default function contact({ data }) {
                         allowFullScreen></Map>
                 </MapContainer>
             </ContactSection>
+            <Command
+                data={data.homeCommande}
+                command={data.commande}
+                ExternalData={data.plateforme}
+            />
+            <ExternalLinks data={data.partenaire} displayLine={false} />
         </DefaultLayout>
     );
 }
@@ -266,6 +272,50 @@ export async function getStaticProps() {
                     image {
                         url
                         alt
+                    }
+                }
+                homeCommande {
+                    titre
+                    texte {
+                        id
+                        texte
+                    }
+                }
+                commande {
+                    typeCommand {
+                        id
+                        titre
+                        button
+                        lien
+                        image {
+                            url
+                        }
+                    }
+                }
+                plateforme {
+                    titre
+                    sousTitre
+                    liste {
+                        id
+                        logo {
+                            url
+                            alt
+                        }
+                        nom
+                        lien
+                    }
+                }
+                partenaire {
+                    titre
+                    sousTitre
+                    liste {
+                        id
+                        lien
+                        nom
+                        logo {
+                            alt
+                            url
+                        }
                     }
                 }
                 instagram {

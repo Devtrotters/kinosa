@@ -3,23 +3,27 @@ import breakpoint from 'styles/breakpoints';
 import { BigText, MediumText, Text, Title } from 'styles/UI/Texts.style';
 
 export const HeaderContainer = styled.section`
-    margin: 60px 15px 0 15px;
+    padding: 30px 15px 30px 15px;
     display: flex;
     flex-direction: column;
     row-gap: 40px;
+
+    background-color: ${(props) => props.theme.color.beige};
+    margin-top: 60px;
+
     @media screen and (${breakpoint.device.s}) {
-        margin: 60px 45px 0 45px;
+        padding: 60px 45px 100px 45px;
     }
 
     @media screen and (${breakpoint.device.menu}) {
         display: grid;
         grid-template-columns: fit-content(50%) 1fr;
-        margin: 60px 45px 0 45px;
+        padding: 60px 45px 100px 45px;
         column-gap: 30px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        margin: 60px 230px 0 230px;
+        padding: 60px 230px 100px 230px;
     }
 `;
 export const HeaderTextContainer = styled.article`

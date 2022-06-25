@@ -12,7 +12,7 @@ export const ConceptSection = styled.section`
         margin-top: 100px;
 
         display: grid;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 40% calc(100% - 40% - 30px);
         column-gap: 30px;
     }
 
@@ -100,15 +100,19 @@ export const GerantImgContainer = styled.div`
 export const GerantImg = styled.img`
     width: 100%;
     height: 100%;
+    max-height: 350px;
+
+    border-radius: 30px;
 
     object-fit: cover;
     filter: grayscale(100%);
 
     transition: all 0.3s linear;
 
-    &:last-of-type {
-        grid-row: 1 / 1;
-        grid-column: 2 / 2;
+    margin-top: 30px;
+
+    @media screen and (${breakpoint.device.s}) {
+        margin-top: 0;
     }
 `;
 

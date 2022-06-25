@@ -14,7 +14,7 @@ import { Text, Title } from 'styles/UI/Texts.style';
 
 import Menu from './Menu';
 
-export default function Carte({ data, products, categories }) {
+export default function Carte({ data, products, categories, allTypeProduits }) {
     return (
         <CarteSection>
             <CarteWrapper>
@@ -31,7 +31,7 @@ export default function Carte({ data, products, categories }) {
                     </Link>
                 </CarteTextContainer>
             </CarteWrapper>
-            <Menu categories={categories} products={products} />
+            <Menu categories={categories} products={products} allTypeProduits={allTypeProduits} />
         </CarteSection>
     );
 }

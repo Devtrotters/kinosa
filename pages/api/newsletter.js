@@ -1,6 +1,8 @@
-async function addToList(mail) {
+async function addToList(mail, transmit) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     let request = require('request');
+
+    let listIds = transmit ? [4] : [3];
 
     const options = {
         method: 'POST',
@@ -12,7 +14,7 @@ async function addToList(mail) {
                 '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'
         },
         body: {
-            listIds: [3],
+            listIds: listIds,
             updateEnabled: false,
             email: mail
         },
@@ -30,7 +32,7 @@ export default async (req, res) => {
     let data = req.body;
     try {
         // eslint-disable-next-line prettier/prettier
-        await addToList(data.input.email);
+        await addToList(data.input.email, data.input.transmit);
         return res.status(200).json({
             text: 'Ajouté !'
         });

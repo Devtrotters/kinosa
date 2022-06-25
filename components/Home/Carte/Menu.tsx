@@ -5,6 +5,7 @@ import {
     DropDown,
     DropDownItem,
     DropDownText,
+    DropDownTextContainer,
     MenuContainer,
     MenuLink,
     MenuTitleContainer,
@@ -12,7 +13,7 @@ import {
     Svg
 } from 'styles/Home/Carte/Menu.style';
 import { MediumText, Title } from 'styles/UI/Texts.style';
-export default function Menu({ categories, products }) {
+export default function Menu({ categories, products, allTypeProduits }) {
     const [open, setOpen] = useState(0);
     const [carte, setCarte] = useState([]);
 
@@ -51,58 +52,80 @@ export default function Menu({ categories, products }) {
 
     return (
         <MenuContainer>
-            {carte.map((menu: any) => (
-                <MenuWrapper key={menu.id}>
-                    <MenuTitleContainer>
-                        <div>
-                            <Title>{formatText(menu.name)}</Title>
-                            <Svg
-                                data-v-74d53e62=""
-                                width="14"
-                                height="14"
-                                viewBox="0 0 14 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className={open === menu.id ? 'open' : ''}
-                                onClick={(e) => openHandler(e, menu.id)}>
-                                <rect
+            {allTypeProduits.map((type: any) => {
+                const typeCategories = categories.filter((el) => el.typeProduits.id === type.id);
+
+                return (
+                    <MenuWrapper key={type.id}>
+                        <MenuTitleContainer>
+                            <div>
+                                <Title>{formatText(type.nom)}</Title>
+                                <Svg
                                     data-v-74d53e62=""
-                                    x="14"
-                                    y="5.5"
-                                    width="3"
+                                    width="14"
                                     height="14"
-                                    transform="rotate(90 14 5.5)"
-                                    fill="white"></rect>
-                                <rect
-                                    data-v-74d53e62=""
-                                    x="8.5"
-                                    y="14"
-                                    width="3"
-                                    height="14"
-                                    transform="rotate(-180 8.5 14)"
-                                    fill="white"></rect>
-                            </Svg>
-                        </div>
-                        <div>
-                            {menu.link && (
-                                <Link href={menu.link}>
-                                    <MenuLink>{formatText(menu.linkText)}</MenuLink>
+                                    viewBox="0 0 14 14"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={open === type.id ? 'open' : ''}
+                                    onClick={(e) => openHandler(e, type.id)}>
+                                    <rect
+                                        data-v-74d53e62=""
+                                        x="14"
+                                        y="5.5"
+                                        width="3"
+                                        height="14"
+                                        transform="rotate(90 14 5.5)"
+                                        fill="white"></rect>
+                                    <rect
+                                        data-v-74d53e62=""
+                                        x="8.5"
+                                        y="14"
+                                        width="3"
+                                        height="14"
+                                        transform="rotate(-180 8.5 14)"
+                                        fill="white"></rect>
+                                </Svg>
+                            </div>
+                            {/* <div>
+                            {type.slug && (
+                                <Link href={'/menu#' + type.slug}>
+                                    <MenuLink>{formatText(type.texteLien)}</MenuLink>
                                 </Link>
                             )}
-                        </div>
-                    </MenuTitleContainer>
+                        </div> */}
+                        </MenuTitleContainer>
 
-                    <DropDown className={open === menu.id ? 'open' : ''}>
-                        {menu.produits.map((el: any) => (
-                            <DropDownItem key={el.id}>
-                                <DropDownText>{formatText(el.nom)}</DropDownText>
-                                <DropDownText>{formatText(el.prix + ' €')}</DropDownText>
-                                <MediumText>{formatText(el.composition)}</MediumText>
-                            </DropDownItem>
-                        ))}
-                    </DropDown>
-                </MenuWrapper>
-            ))}
+                        <DropDown className={open === type.id ? 'open' : ''}>
+                            {typeCategories.map((el: any) => {
+                                const produits = products.filter(
+                                    (product: any) => product.categorie.id === el.id
+                                );
+                                return (
+                                    <DropDownItem
+                                        key={el.id}
+                                        style={{
+                                            backgroundImage: `url(${el.image.url})`,
+                                            backgroundSize: 'cover',
+                                            backgroundPosition: 'center'
+                                        }}>
+                                        <DropDownTextContainer>
+                                            <DropDownText>{formatText(el.nom)}</DropDownText>
+                                            {produits.map((produit) => (
+                                                <DropDownText key={produit.id}>
+                                                    {formatText(produit.nom)}
+                                                </DropDownText>
+                                            ))}
+                                            {/* <DropDownText>{formatText(el.prix + ' €')}</DropDownText>
+                                    <MediumText>{formatText(el.composition)}</MediumText> */}
+                                        </DropDownTextContainer>
+                                    </DropDownItem>
+                                );
+                            })}
+                        </DropDown>
+                    </MenuWrapper>
+                );
+            })}
         </MenuContainer>
     );
 }

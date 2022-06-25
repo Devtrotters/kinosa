@@ -15,12 +15,12 @@ export const CarteSection = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 100px 165px 100px 165px;
+        padding: 100px 230px 100px 230px;
         margin: 100px 0px 0 0px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 100px 95px 100px 95px;
+        padding: 100px 260px 100px 260px;
     }
 `;
 

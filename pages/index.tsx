@@ -33,6 +33,7 @@ export default function Home({ data }) {
                 <Slider data={data.conceptSlider.image} />
                 <Carte
                     data={data.homeCarte}
+                    allTypeProduits={data.allTypeProduits}
                     products={data.allProduits}
                     categories={data.allCategorieProduits}
                 />
@@ -180,11 +181,25 @@ export async function getStaticProps() {
                         texte
                     }
                 }
+                allTypeProduits {
+                    id
+                    nom
+                    texteLien
+                    slug
+                }
                 allCategorieProduits {
                     id
                     nom
                     lien
                     texteLien
+                    image {
+                        url
+                    }
+                    typeProduits {
+                        id
+                        nom
+                        slug
+                    }
                 }
                 allProduits(first: 100) {
                     id

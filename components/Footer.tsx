@@ -96,9 +96,7 @@ export default function Footer({ data, menu }) {
     const submitHandler = async (e: any) => {
         e.preventDefault();
 
-        console.log(input);
-
-        if (input.email != '' && !input.newsLetter && !input.transmit) {
+        if (input.email != '' && input.newsLetter) {
             await axios.post('/api/newsletter', { input }).then((res) => {
                 setbuttonText(res.data.text);
                 setTimeout(() => {
@@ -106,8 +104,6 @@ export default function Footer({ data, menu }) {
                     setInput({ email: '', newsLetter: false, transmit: false });
                 }, 3000);
             });
-        } else {
-            console.log('test');
         }
     };
     return (

@@ -2,15 +2,9 @@ import styled from 'styled-components';
 import breakpoint from 'styles/breakpoints';
 import { Subtitle, Text } from 'styles/UI/Texts.style';
 
-export const PresentationContainer = styled.section`
+export const PresentationWrapper = styled.div`
     margin-top: 60px;
     padding: 60px 15px;
-
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
-
-    position: relative;
 
     @media screen and (${breakpoint.device.s}) {
         padding: 60px 45px;
@@ -21,6 +15,20 @@ export const PresentationContainer = styled.section`
     }
     @media screen and (${breakpoint.device.lg}) {
         padding: 60px 95px;
+    }
+`;
+
+export const PresentationContainer = styled.section`
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+
+    position: relative;
+
+    @media screen and (${breakpoint.device.lg}) {
+        margin-top: 60px;
     }
 `;
 

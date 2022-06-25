@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoint from 'styles/breakpoints';
 import { Subtitle } from 'styles/UI/Texts.style';
 
 export const MenuContainer = styled.section`
@@ -63,31 +64,72 @@ export const DropDown = styled.ul`
     transform: scaleY(0);
     transition: all 0.3s linear;
 
+    display: flex;
+    column-gap: 30px;
+
+    margin-top: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
     &.open {
         transform: scaleY(1);
         height: 100%;
     }
 `;
 export const DropDownItem = styled.li`
-    display: grid;
-    grid-template-columns: 1fr fit-content(100%);
-    grid-gap: 10px;
-    align-content: start;
-    padding: 0 20px;
-    margin-top: 40px;
+    flex-shrink: 0;
+    height: 300px;
+    width: 100%;
+    max-width: 255px;
+    border-radius: 20px;
+    position: relative;
 
-    &:first-of-type {
-        margin-top: 30px;
+    &::before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 30px;
+        z-index: 0;
     }
 
-    &:last-of-type {
-        margin-bottom: 20px;
+    @media screen and (${breakpoint.device.s}) {
+        height: 400px;
+    }
+`;
+
+export const DropDownTextContainer = styled.div`
+    position: absolute;
+    inset: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+
+    @media screen and (${breakpoint.device.m}) {
+        inset: 60px;
     }
 `;
 
 export const DropDownText = styled(Subtitle)`
-    color: ${(props) => props.theme.color.orange};
-    &:last-of-type {
-        color: ${(props) => props.theme.color.green.dark};
+    color: ${(props) => props.theme.color.white};
+    font-size: 16px;
+    text-align: center;
+
+    &:first-of-type {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        font-size: 20px;
+
+        &:first-of-type {
+            font-size: 30px;
+        }
     }
 `;

@@ -191,7 +191,7 @@ export const InputRGPD = styled.input``;
 export const InputRGPDLabel = styled.label`
     font-size: 10px;
     color: ${(props) => props.theme.color.green.dark};
-    white-space: nowrap;
+    // white-space: nowrap;
 
     @media screen and (${breakpoint.device.s}) {
         font-size: 12px;
@@ -380,7 +380,7 @@ export const MenuContainer = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        width: 60%;
+        // width: 60%;
         margin: 40px auto 0 auto;
     }
 `;

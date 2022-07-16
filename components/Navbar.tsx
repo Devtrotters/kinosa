@@ -56,8 +56,11 @@ export default function Navbar({ data, social }) {
                 </Link>
                 <NavContainer className={displayMenu ? 'open' : ''}>
                     <HeaderMobileMenu>
-                        <h1>Kinosa</h1>
+                        <h1>
+                            Kinosa <br /> Healthy bar & traiteur
+                        </h1>
                         <DisplayMobileButton
+                            style={{ position: 'absolute' }}
                             onClick={() => {
                                 setDisplayMenu(false);
                                 const r = document.querySelector(':root') as HTMLElement;

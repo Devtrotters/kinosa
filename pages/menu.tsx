@@ -125,6 +125,7 @@ export default function menu({ data }) {
                         } else if (type.slug === 'creations') {
                             return (
                                 <Creations
+                                    key={type.id}
                                     headerData={data.creationHeader}
                                     data={data.allCreationSaisons}
                                 />

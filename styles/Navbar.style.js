@@ -33,13 +33,12 @@ export const MobileMenu = styled.section`
 
 export const HeaderMobileMenu = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr fit-content(100%);
     padding: 20px 30px 0 30px;
     width: 100%;
 
     > h1 {
         font-size: 20px;
-        grid-column: 2;
         font-weight: normal;
         text-align: center;
         color: ${(props) => props.theme.color.white};

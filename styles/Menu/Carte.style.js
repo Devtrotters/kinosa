@@ -109,6 +109,21 @@ export const CarteWrapper = styled.div`
     }
 `;
 
+export const CarteSuperTitle = styled(Title)`
+    font-size: 30px;
+    margin: 0 15px;
+    margin-bottom: 30px;
+
+    @media screen and (${breakpoint.device.s}) {
+        margin: 0 40px;
+        margin-bottom: 30px;
+    }
+    @media screen and (${breakpoint.device.menu}) {
+        margin: 0;
+        margin-bottom: 30px;
+    }
+`;
+
 export const CarteTitle = styled(Title)`
     font-size: 30px;
     margin: 0 15px;

@@ -174,7 +174,7 @@ export default function Carte({ categories, products, type }) {
             {carte.map((category: any) => (
                 <CarteWrapper id={category.slug} key={category.id}>
                     <article>
-                        <CarteTitle>{formatText(category.name)}</CarteTitle>
+                        <CarteTitle as="h3">{formatText(category.name)}</CarteTitle>
                         <CarteButtonContainer>
                             {category.produits.map((product: any) => (
                                 <CarteButton

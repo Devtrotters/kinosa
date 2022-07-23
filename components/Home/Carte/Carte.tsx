@@ -20,7 +20,7 @@ export default function Carte({ data, products, categories, allTypeProduits }) {
             <CarteWrapper>
                 <CarteTextContainer>
                     <div>
-                        <Title>{formatText(data.titre)}</Title>
+                        <Title as="h2">{formatText(data.titre)}</Title>
                         <CarteSubTitle>{formatText(data.sousTitre)}</CarteSubTitle>
                     </div>
                     <Link href={data.lienBouton}>

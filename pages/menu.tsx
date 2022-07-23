@@ -13,6 +13,7 @@ import {
     CarteButtonContainer,
     CarteContainer,
     CarteSection,
+    CarteSuperTitle,
     CarteTitle,
     CarteWrapper,
     CategoryContainer,
@@ -105,7 +106,8 @@ export default function menu({ data }) {
                                         />
                                         <MenuText
                                             id={type.slug + '-text'}
-                                            className={selected === type.slug ? 'displayed' : ''}>
+                                            className={selected === type.slug ? 'displayed' : ''}
+                                            as="h2">
                                             {formatText(type.nom)}
                                         </MenuText>
                                     </MenuWrapper>
@@ -125,7 +127,7 @@ export default function menu({ data }) {
                             return (
                                 <div>
                                     <article id={type.slug} key={i}>
-                                        <Title>{type.nom}</Title>
+                                        <CarteSuperTitle as="h2">{type.nom}</CarteSuperTitle>
                                         <Carte
                                             categories={categories}
                                             products={data.allProduits}
@@ -147,7 +149,7 @@ export default function menu({ data }) {
                         } else {
                             return (
                                 <ProductsArticle id={type.slug} key={i}>
-                                    <Title>{type.nom}</Title>
+                                    <CarteSuperTitle as="h2">{type.nom}</CarteSuperTitle>
                                     <Carte
                                         categories={categories}
                                         products={data.allProduits}

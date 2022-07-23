@@ -70,7 +70,7 @@ export default function Creations({ headerData, data }) {
 
     return (
         <CreationsContainer>
-            <CreationsTitle>{formatText(headerData.titre)}</CreationsTitle>
+            <CreationsTitle as="h2">{formatText(headerData.titre)}</CreationsTitle>
             <CreationsSliderHeaderContainer>
                 <CreationsSliderButton
                     onClick={() => {

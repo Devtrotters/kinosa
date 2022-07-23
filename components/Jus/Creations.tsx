@@ -26,7 +26,7 @@ export default function Creations({ headerData, data }) {
     const creations = [data[selectedItem]];
 
     const handleSelectedItem = (id: number) => {
-        const creationsWrapper = document.getElementById('creations');
+        const creationsWrapper = document.getElementById('creationsWrapper');
         creationsWrapper.style.opacity = '0';
         const timer = setTimeout(() => {
             setselectedItem(id);
@@ -124,7 +124,7 @@ export default function Creations({ headerData, data }) {
                     />
                 </CreationsSliderButton>
             </CreationsSliderHeaderContainer>
-            <CreationsItemWrapper id="creations">
+            <CreationsItemWrapper id="creationsWrapper">
                 {creations.map((produits: any) =>
                     produits.produits.map((produits: any) => (
                         <CreationItem key={produits.id}>

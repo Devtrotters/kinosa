@@ -99,6 +99,7 @@ export default function Navbar({ data, social }) {
                         } else {
                             return (
                                 <NavText
+                                    key={el.id}
                                     className={`${router.pathname === el.slug ? 'active' : ''}`}
                                     href={el.slug}>
                                     {el.titre}

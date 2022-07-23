@@ -23,6 +23,14 @@ const GlobalStyle = createGlobalStyle`
     max-height: var(--body-height);
     position: relative;
   }
+
+  .bg-orange {
+    background-color: #FFFBEF;
+  }
+
+  .bg-white {
+    background-color: #fbfbfb;
+  }
 `;
 
 export default GlobalStyle;

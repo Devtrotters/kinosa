@@ -386,7 +386,7 @@ export const MenuContainer = styled.section`
 `;
 
 export const MenuText = styled.a`
-    font-size: 30px;
+    font-size: 20px;
     color: ${(props) => props.theme.color.white};
 
     &:hover {

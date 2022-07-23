@@ -312,7 +312,7 @@ export default function Navbar({ data, social }) {
                         }
                     })}
                     <NavButtonContainer>
-                        <NavButtonPhone href="/">
+                        <NavButtonPhone href="tel:+33646193773">
                             <svg
                                 width="12"
                                 height="13"
@@ -324,7 +324,7 @@ export default function Navbar({ data, social }) {
                                     fill="currentColor"
                                 />
                             </svg>
-                            <span>06 59 45 26 84</span>
+                            <span>06 46 19 37 73</span>
                         </NavButtonPhone>
                         <NavButton href="/contact">Commande & Contact</NavButton>
                     </NavButtonContainer>

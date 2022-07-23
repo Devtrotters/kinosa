@@ -4,11 +4,11 @@ import { BigText, MediumText, Subtitle, Text, Title } from 'styles/UI/Texts.styl
 
 export const PrestationsWrapper = styled.section`
     display: flex;
-    margin: 100px 15px 0 15px;
+    padding: 100px 15px 0 15px;
     row-gap: 60px;
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 100px 45px 0 45px;
+        padding: 100px 45px 0 45px;
     }
 
     @media screen and (${breakpoint.device.menu}) {
@@ -17,7 +17,7 @@ export const PrestationsWrapper = styled.section`
         grid-template-columns: fit-content(50%) 1fr;
     }
     @media screen and (${breakpoint.device.m}) {
-        margin: 100px 230px 0 165px;
+        padding: 100px 230px 0 165px;
     }
 `;
 

@@ -31,6 +31,12 @@ const GlobalStyle = createGlobalStyle`
   .bg-white {
     background-color: #fbfbfb;
   }
+
+  .404 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
 `;
 
 export default GlobalStyle;

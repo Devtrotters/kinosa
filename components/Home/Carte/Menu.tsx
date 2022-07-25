@@ -53,7 +53,9 @@ export default function Menu({ categories, products, allTypeProduits }) {
     return (
         <MenuContainer>
             {allTypeProduits.map((type: any) => {
-                const typeCategories = categories.filter((el) => el.typeProduits.id === type.id);
+                const typeCategories = categories.filter(
+                    (el) => el.typeProduits && el.typeProduits.id === type.id
+                );
 
                 return (
                     <MenuWrapper key={type.id}>

@@ -120,7 +120,7 @@ export default function menu({ data }) {
                 <Products>
                     {data.allTypeProduits.map((type: any, i: number) => {
                         const categories = data.allCategorieProduits.filter(
-                            (el) => el.typeProduits.id === type.id
+                            (el) => el.typeProduits && el.typeProduits.id === type.id
                         );
 
                         if (i === 0) {

@@ -7,6 +7,7 @@ export const ConceptSection = styled.section`
     padding: 60px 15px;
 
     display: flex;
+    flex-direction: column;
 
     background-color: ${(props) => props.theme.color.beige};
 
@@ -21,6 +22,15 @@ export const ConceptSection = styled.section`
     }
     @media screen and (${breakpoint.device.lg}) {
         padding: 60px 260px;
+    }
+`;
+
+export const ConceptTitle = styled(Title)`
+    margin-bottom: 30px;
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin-bottom: 60px;
+        grid-column 1 / span 2;
     }
 `;
 
@@ -48,7 +58,9 @@ export const MenuLink = styled.a`
     text-decoration: none;
     cursor: pointer;
 `;
-export const MenuText = styled(Text)`
+export const MenuText = styled(Text).attrs({
+    as: 'h2'
+})`
     &.displayed {
         color: ${(props) => props.theme.color.orange};
     }
@@ -131,8 +143,7 @@ export const Bloc = styled.article`
     }
 `;
 
-export const BlocTitle = styled.h1`
-    width: 90%;
+export const BlocTitle = styled.h3`
     font-size: 40px;
     font-weight: normal;
     color: ${(props) => props.theme.color.green.default};

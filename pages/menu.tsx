@@ -13,6 +13,7 @@ import {
     CarteButtonContainer,
     CarteContainer,
     CarteSection,
+    CarteSuperTitle,
     CarteTitle,
     CarteWrapper,
     CategoryContainer,
@@ -52,8 +53,15 @@ export default function menu({ data }) {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
+                const section = document.getElementById('carte-section') as HTMLElement;
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
+                        section.classList.remove('bg-white');
+                        section.classList.remove('bg-orange');
+                        section.classList.add(
+                            ((entry.target as HTMLElement).dataset as DOMStringMap).color
+                        );
+
                         setSelected(entry.target.id);
                     }
                 });
@@ -63,8 +71,14 @@ export default function menu({ data }) {
             }
         );
 
-        data.allTypeProduits.forEach((element: any) => {
-            observer.observe(document.getElementById(element.slug));
+        const isOdd = (num: number) => {
+            return num % 2 == 0;
+        };
+
+        data.allTypeProduits.forEach((element: any, i: number) => {
+            const el = document.getElementById(element.slug);
+            el.dataset.color = isOdd(i) ? 'bg-white' : 'bg-orange';
+            observer.observe(el);
         });
 
         return () => {
@@ -79,7 +93,7 @@ export default function menu({ data }) {
             pages={data.page.pages}
             footer={footerData}>
             <Header data={data.menu} />
-            <CarteSection>
+            <CarteSection id="carte-section">
                 <MenuContainer>
                     <Menu>
                         {data.allTypeProduits.map((type: any) => (
@@ -92,7 +106,8 @@ export default function menu({ data }) {
                                         />
                                         <MenuText
                                             id={type.slug + '-text'}
-                                            className={selected === type.slug ? 'displayed' : ''}>
+                                            className={selected === type.slug ? 'displayed' : ''}
+                                            as="h2">
                                             {formatText(type.nom)}
                                         </MenuText>
                                     </MenuWrapper>
@@ -111,8 +126,8 @@ export default function menu({ data }) {
                         if (i === 0) {
                             return (
                                 <div>
-                                    <article id={type.slug} key={type.id}>
-                                        <Title>{type.nom}</Title>
+                                    <article id={type.slug} key={i}>
+                                        <CarteSuperTitle as="h2">{type.nom}</CarteSuperTitle>
                                         <Carte
                                             categories={categories}
                                             products={data.allProduits}
@@ -124,16 +139,17 @@ export default function menu({ data }) {
                             );
                         } else if (type.slug === 'creations') {
                             return (
-                                <Creations
-                                    key={type.id}
-                                    headerData={data.creationHeader}
-                                    data={data.allCreationSaisons}
-                                />
+                                <div id={type.slug} key={i}>
+                                    <Creations
+                                        headerData={data.creationHeader}
+                                        data={data.allCreationSaisons}
+                                    />
+                                </div>
                             );
                         } else {
                             return (
-                                <ProductsArticle id={type.slug} key={type.id}>
-                                    <Title>{type.nom}</Title>
+                                <ProductsArticle id={type.slug} key={i}>
+                                    <CarteSuperTitle as="h2">{type.nom}</CarteSuperTitle>
                                     <Carte
                                         categories={categories}
                                         products={data.allProduits}

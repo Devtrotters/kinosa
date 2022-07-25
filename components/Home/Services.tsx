@@ -18,7 +18,7 @@ export default function Services({ data }) {
     return (
         <ConceptSection>
             <ConceptWrapper>
-                <Title>{formatText(data.titre)}</Title>
+                <Title as="h2">{formatText(data.titre)}</Title>
                 <ConceptSubtitle>{formatText(data.sousTitre)}</ConceptSubtitle>
                 {data.texte.map((text: any) => (
                     <ConceptText key={text.id}>{formatText(text.texte)}</ConceptText>

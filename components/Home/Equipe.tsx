@@ -19,7 +19,7 @@ export default function Equipe({ data }) {
     return (
         <>
             <PresentationWrapper>
-                <Title>Kin'Equipe</Title>
+                <Title as="h2">Kin&apos;Equipe</Title>
                 <PresentationContainer>
                     {data.map((gerant: any) => (
                         <GerantContainer key={gerant.id}>
@@ -31,7 +31,7 @@ export default function Equipe({ data }) {
                             </GerantImgWrapper>
                             <GerantPresentationContainer>
                                 <GerantNameContainer>
-                                    <GerantName>{formatText(gerant.nom)}</GerantName>
+                                    <GerantName as="h3">{formatText(gerant.nom)}</GerantName>
                                     <Text>{formatText(gerant.fonction)}</Text>
                                 </GerantNameContainer>
                                 {/*<SocialContainer>*/}

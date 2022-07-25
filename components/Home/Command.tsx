@@ -7,7 +7,7 @@ import { Text, Title } from 'styles/UI/Texts.style';
 export default function Command({ data, command, ExternalData }) {
     return (
         <CommandSection>
-            <Title>{formatText(data.titre)}</Title>
+            <Title as="h2">{formatText(data.titre)}</Title>
             <SubtitleGrid>
                 {data.texte.map((texte: any) => (
                     <Text key={texte.id}>{formatText(texte.texte)}</Text>

@@ -27,7 +27,7 @@ export default function Methodes({ data }) {
     return (
         <HeaderContainer key={data.id}>
             <div>
-                <HeaderTitle>{formatText(data.titre)}</HeaderTitle>
+                <HeaderTitle as="h3">{formatText(data.titre)}</HeaderTitle>
                 <HeaderText>{formatText(data.texte)}</HeaderText>
 
                 {data.presentation.map((el: any) => (

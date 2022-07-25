@@ -4,7 +4,8 @@ import { Button } from 'styles/UI/Buttons.style';
 import { Text, Title } from 'styles/UI/Texts.style';
 
 export const CarteSection = styled.section`
-    margin-top: 80px;
+    padding-top: 80px;
+    transition: all 0.5s ease-in-out;
 
     @media screen and (${breakpoint.device.s}) {
         display: flex;
@@ -12,7 +13,7 @@ export const CarteSection = styled.section`
     }
 
     @media screen and (${breakpoint.device.m}) {
-        margin-top: 100px;
+        padding-top: 100px;
         column-gap: 85px;
     }
 `;
@@ -105,6 +106,21 @@ export const CarteWrapper = styled.div`
                 }
             }
         }
+    }
+`;
+
+export const CarteSuperTitle = styled(Title)`
+    font-size: 30px;
+    margin: 0 15px;
+    margin-bottom: 30px;
+
+    @media screen and (${breakpoint.device.s}) {
+        margin: 0 40px;
+        margin-bottom: 30px;
+    }
+    @media screen and (${breakpoint.device.menu}) {
+        margin: 0;
+        margin-bottom: 30px;
     }
 `;
 

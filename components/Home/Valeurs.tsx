@@ -8,12 +8,14 @@ import {
     BlocTitle,
     ConceptContainer,
     ConceptSection,
+    ConceptTitle,
     Menu,
     MenuLink,
     MenuText,
     MenuWrapper,
     Square
 } from 'styles/Concept/Concept.style';
+import { Title } from 'styles/UI/Texts.style';
 
 export default function Valeurs({ data }) {
     const [displayed, setDisplayed] = useState(data[0].slug);
@@ -43,39 +45,42 @@ export default function Valeurs({ data }) {
     }, []);
 
     return (
-        <ConceptSection>
-            <div>
-                <Menu>
-                    {data.map((bloc: any) => (
-                        <Link key={bloc.id} href={'#' + bloc.slug}>
-                            <MenuLink>
-                                <MenuWrapper>
-                                    <Square
-                                        id={bloc.slug + 'square'}
-                                        className={displayed === bloc.slug ? 'displayed' : ''}
-                                    />
-                                    <MenuText
-                                        id={bloc.slug + 'text'}
-                                        className={displayed === bloc.slug ? 'displayed' : ''}>
-                                        {formatText(bloc.titreSlug)}
-                                    </MenuText>
-                                </MenuWrapper>
-                            </MenuLink>
-                        </Link>
-                    ))}
-                </Menu>
-            </div>
-            <ConceptContainer id="concept-container">
-                {data.map((bloc: any) => (
-                    <Bloc id={bloc.slug} key={bloc.id}>
-                        <BlocTitle>{formatText(bloc.titre)}</BlocTitle>
-                        {bloc.texte.map((text: any) => (
-                            <BlocText key={text.id}>{formatText(text.texte)}</BlocText>
+        <div>
+            <ConceptSection>
+                <ConceptTitle as="h2">Kin&apos;Valeurs</ConceptTitle>
+                <div>
+                    <Menu>
+                        {data.map((bloc: any) => (
+                            <Link key={bloc.id} href={'#' + bloc.slug}>
+                                <MenuLink>
+                                    <MenuWrapper>
+                                        <Square
+                                            id={bloc.slug + 'square'}
+                                            className={displayed === bloc.slug ? 'displayed' : ''}
+                                        />
+                                        <MenuText
+                                            id={bloc.slug + 'text'}
+                                            className={displayed === bloc.slug ? 'displayed' : ''}>
+                                            {formatText(bloc.titreSlug)}
+                                        </MenuText>
+                                    </MenuWrapper>
+                                </MenuLink>
+                            </Link>
                         ))}
-                        <BlocImg src={bloc.image.url} alt={bloc.image.alt || 'image du site'} />
-                    </Bloc>
-                ))}
-            </ConceptContainer>
-        </ConceptSection>
+                    </Menu>
+                </div>
+                <ConceptContainer id="concept-container">
+                    {data.map((bloc: any) => (
+                        <Bloc id={bloc.slug} key={bloc.id}>
+                            <BlocTitle>{formatText(bloc.titre)}</BlocTitle>
+                            {bloc.texte.map((text: any) => (
+                                <BlocText key={text.id}>{formatText(text.texte)}</BlocText>
+                            ))}
+                            <BlocImg src={bloc.image.url} alt={bloc.image.alt || 'image du site'} />
+                        </Bloc>
+                    ))}
+                </ConceptContainer>
+            </ConceptSection>
+        </div>
     );
 }

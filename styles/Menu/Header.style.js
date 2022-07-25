@@ -22,10 +22,12 @@ export const HeaderSection = styled.section`
 `;
 
 export const HeaderContainer = styled.article`
-    display: grid;
+    display: flex;
+    flex-direction: column-reverse;
     row-gap: 40px;
 
     @media screen and (${breakpoint.device.s}) {
+        display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 50px;
     }

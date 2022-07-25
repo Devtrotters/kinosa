@@ -25,8 +25,16 @@ export default function Prestations({ data }) {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
+                const section = document.getElementById('prestation-section') as HTMLElement;
+
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
+                        section.classList.remove('bg-white');
+                        section.classList.remove('bg-orange');
+                        section.classList.add(
+                            ((entry.target as HTMLElement).dataset as DOMStringMap).color
+                        );
+
                         setSelectedLink(entry.target.id);
                     }
                 });
@@ -36,8 +44,15 @@ export default function Prestations({ data }) {
                 threshold: 0.25
             }
         );
-        data.forEach((element: any) => {
-            observer.observe(document.getElementById(element.slug));
+
+        const isOdd = (num: number) => {
+            return num % 2 == 0;
+        };
+
+        data.forEach((element: any, i: number) => {
+            const el = document.getElementById(element.slug);
+            el.dataset.color = isOdd(i) ? 'bg-white' : 'bg-orange';
+            observer.observe(el);
         });
 
         return () => {
@@ -46,7 +61,7 @@ export default function Prestations({ data }) {
     }, []);
 
     return (
-        <PrestationsWrapper>
+        <PrestationsWrapper id="prestation-section">
             <PrestationsNav>
                 <PrestationsNavWrapper>
                     {data.map((el: any, i: number) => (

@@ -74,10 +74,6 @@ export const MenuContainer = styled.section`
 
     background: ${(props) => props.theme.color.beige};
 
-    &.contact {
-        background: none;
-    }
-
     @media screen and (${breakpoint.device.menu}) {
         display: flex;
         padding: 35px 40px 10px 40px;

@@ -19,7 +19,6 @@ import {
 } from 'styles/Navbar.style';
 
 export default function Navbar({ data, social }) {
-    const [buttonText, setButtonText] = useState('Blog');
     const router = useRouter();
 
     const [displayMenu, setDisplayMenu] = useState(false);

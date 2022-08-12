@@ -1,7 +1,16 @@
 import sgMail from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
 
 export default (req, res) => {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    let transporter = nodemailer.createTransport({
+        host: 'smtp-relay.sendinblue.com',
+        port: 587,
+        secure: false, // upgrade later with STARTTLS
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    });
 
     const msg = {
         to: `Site Web <${process.env.MAIL_USER}>`, // Change to your recipient
@@ -15,7 +24,7 @@ export default (req, res) => {
         - Type de client : ${req.body.clientType || 'Non renseigné'}
         - Question : ${req.body.question || 'Non renseigné'}
         `,
-        html: `a
+        html: `
         <div>
         <p>Nom : ${req.body.name}</p>
         <p>Mail : ${req.body.email}</p>
@@ -26,10 +35,10 @@ export default (req, res) => {
     };
 
     try {
-        sgMail.send(msg);
+        transporter.sendMail(msg);
         res.json({ text: 'Email sent' });
-    } catch (error) {
-        console.error(error);
-        res.json({ error });
+    } catch (err) {
+        console.log(err);
+        res.json({ err });
     }
 };

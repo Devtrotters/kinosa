@@ -153,7 +153,7 @@ export default function menu({ data }) {
                                     <Carte
                                         categories={categories}
                                         products={data.allProduits}
-                                        type={data.allProduits}
+                                        type={type.slug}
                                     />
                                 </ProductsArticle>
                             );

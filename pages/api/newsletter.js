@@ -10,8 +10,7 @@ async function addToList(mail, transmit) {
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            'api-key':
-                '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'
+            'api-key': process.env.MAILER_API
         },
         body: {
             listIds: listIds,

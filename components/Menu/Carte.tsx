@@ -201,214 +201,54 @@ export default function Carte({ categories, products, type }) {
                                     return (
                                         <CategoryContainer
                                             key={product.id}
-                                            className={
+                                            className={`${
                                                 displayedMenus[getIndexByCategory(category.id)]
                                                     .displayedId === product.id
-                                                    ? 'displayed sale'
-                                                    : 'sale'
-                                            }>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Base</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].base.map((base: any) => (
-                                                    <Text key={base.id}>
-                                                        {formatText(base.nom)}
-                                                    </Text>
-                                                ))}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Protéine</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].proteine.map(
-                                                    (protein: any) => (
-                                                        <Text key={protein.id}>
-                                                            {formatText(protein.nom)}
-                                                        </Text>
-                                                    )
-                                                )}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <ProdutTypeTitle>Ingrédients</ProdutTypeTitle>
-                                                {product.typeDeProduit[0].ingredient.map(
-                                                    (ingredient: any) => (
-                                                        <Text key={ingredient.id}>
-                                                            {formatText(ingredient.nom)}
-                                                        </Text>
-                                                    )
-                                                )}
-                                            </SaleWrapper>
-                                            <SaleWrapper>
-                                                <AccompagnementContainer>
-                                                    <ProdutTypeTitle>
-                                                        Accompagnement(s)
-                                                    </ProdutTypeTitle>
-                                                    {product.typeDeProduit[0].accompagnement.map(
-                                                        (accompagnement: any) => {
-                                                            switch (accompagnement.nom) {
-                                                                case 'Sauce au choix':
-                                                                case 'Assaisonnement':
-                                                                    return (
-                                                                        <>
-                                                                            <Text
-                                                                                key={
-                                                                                    accompagnement.id
-                                                                                }>
-                                                                                {formatText(
-                                                                                    accompagnement.nom
-                                                                                )}
-                                                                            </Text>
-                                                                            <SauceToppingButton
-                                                                                className={
-                                                                                    openSauce[
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        )
-                                                                                    ]
-                                                                                        ? 'open'
-                                                                                        : ''
-                                                                                }
-                                                                                width="15"
-                                                                                height="15"
-                                                                                viewBox="0 0 25 25"
-                                                                                fill="none"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                onClick={(e) => {
-                                                                                    sauceToppingButtonClickHandler(
-                                                                                        e,
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        ),
-                                                                                        'sauce'
-                                                                                    );
-                                                                                }}>
-                                                                                <circle
-                                                                                    cx="12.5"
-                                                                                    cy="12.5"
-                                                                                    r="12.5"
-                                                                                    transform="rotate(90 12.5 12.5)"
-                                                                                    fill="#007A0C"
-                                                                                />
-                                                                                <path
-                                                                                    d="M8.16277 10.6268L11.8263 16.5676C12.1864 17.1441 12.9425 17.1441 13.2936 16.5676L16.9661 10.6268C17.3802 9.93694 16.9571 9 16.228 9L8.90088 9C8.17177 9 7.7487 9.93694 8.16277 10.6268Z"
-                                                                                    fill="white"
-                                                                                />
-                                                                            </SauceToppingButton>
-                                                                            <DropDown
-                                                                                className={
-                                                                                    openSauce[
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        )
-                                                                                    ]
-                                                                                        ? 'open'
-                                                                                        : ''
-                                                                                }>
-                                                                                {accompagnement.liste[0].sauces.map(
-                                                                                    (
-                                                                                        sauce: any
-                                                                                    ) => (
-                                                                                        <Text
-                                                                                            key={
-                                                                                                sauce.id
-                                                                                            }>
-                                                                                            {formatText(
-                                                                                                sauce.nom
-                                                                                            )}
-                                                                                        </Text>
-                                                                                    )
-                                                                                )}
-                                                                            </DropDown>
-                                                                        </>
-                                                                    );
-                                                                case 'Toppings au choix':
-                                                                case 'Petit +':
-                                                                    return (
-                                                                        <>
-                                                                            <Text
-                                                                                key={
-                                                                                    accompagnement.id
-                                                                                }>
-                                                                                {formatText(
-                                                                                    accompagnement.nom
-                                                                                )}
-                                                                            </Text>
-                                                                            <SauceToppingButton
-                                                                                className={
-                                                                                    openTopping[
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        )
-                                                                                    ]
-                                                                                        ? 'open'
-                                                                                        : ''
-                                                                                }
-                                                                                width="15"
-                                                                                height="15"
-                                                                                viewBox="0 0 25 25"
-                                                                                fill="none"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                onClick={(e) => {
-                                                                                    sauceToppingButtonClickHandler(
-                                                                                        e,
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        ),
-                                                                                        'topping'
-                                                                                    );
-                                                                                }}>
-                                                                                <circle
-                                                                                    cx="12.5"
-                                                                                    cy="12.5"
-                                                                                    r="12.5"
-                                                                                    transform="rotate(90 12.5 12.5)"
-                                                                                    fill="#007A0C"
-                                                                                />
-                                                                                <path
-                                                                                    d="M8.16277 10.6268L11.8263 16.5676C12.1864 17.1441 12.9425 17.1441 13.2936 16.5676L16.9661 10.6268C17.3802 9.93694 16.9571 9 16.228 9L8.90088 9C8.17177 9 7.7487 9.93694 8.16277 10.6268Z"
-                                                                                    fill="white"
-                                                                                />
-                                                                            </SauceToppingButton>
-                                                                            <DropDown
-                                                                                className={
-                                                                                    openTopping[
-                                                                                        getIndexByCategory(
-                                                                                            category.id
-                                                                                        )
-                                                                                    ]
-                                                                                        ? 'open'
-                                                                                        : ''
-                                                                                }>
-                                                                                {accompagnement.liste[0].toppings.map(
-                                                                                    (
-                                                                                        topping: any
-                                                                                    ) => (
-                                                                                        <Text
-                                                                                            key={
-                                                                                                topping.id
-                                                                                            }>
-                                                                                            {formatText(
-                                                                                                topping.nom
-                                                                                            )}
-                                                                                        </Text>
-                                                                                    )
-                                                                                )}
-                                                                            </DropDown>
-                                                                        </>
-                                                                    );
-                                                                default: {
-                                                                    return (
-                                                                        <Text
-                                                                            key={accompagnement.id}>
-                                                                            {formatText(
-                                                                                accompagnement.nom
-                                                                            )}
-                                                                        </Text>
-                                                                    );
-                                                                }
-                                                            }
-                                                        }
-                                                    )}
-                                                </AccompagnementContainer>
-                                            </SaleWrapper>
-                                            <SaleWrapper>
+                                                    ? 'displayed'
+                                                    : ''
+                                            } ${
+                                                type === 'pieces-et-plateaux' ? 'oneCol' : 'sale'
+                                            }`}>
+                                            {type !== 'pieces-et-plateaux' && (
+                                                <>
+                                                    <SaleWrapper>
+                                                        <ProdutTypeTitle>Base</ProdutTypeTitle>
+                                                        {product.typeDeProduit[0].base.map(
+                                                            (base: any) => (
+                                                                <Text key={base.id}>
+                                                                    {formatText(base.nom)}
+                                                                </Text>
+                                                            )
+                                                        )}
+                                                    </SaleWrapper>
+                                                    <SaleWrapper>
+                                                        <ProdutTypeTitle>Protéine</ProdutTypeTitle>
+                                                        {product.typeDeProduit[0].proteine.map(
+                                                            (protein: any) => (
+                                                                <Text key={protein.id}>
+                                                                    {formatText(protein.nom)}
+                                                                </Text>
+                                                            )
+                                                        )}
+                                                    </SaleWrapper>
+                                                    <SaleWrapper>
+                                                        <ProdutTypeTitle>
+                                                            Ingrédients
+                                                        </ProdutTypeTitle>
+                                                        {product.typeDeProduit[0].ingredient.map(
+                                                            (ingredient: any) => (
+                                                                <Text key={ingredient.id}>
+                                                                    {formatText(ingredient.nom)}
+                                                                </Text>
+                                                            )
+                                                        )}
+                                                    </SaleWrapper>
+                                                </>
+                                            )}
+                                            <SaleWrapper
+                                                className={`${
+                                                    type === 'pieces-et-plateaux' ? 'oneCol' : ''
+                                                }`}>
                                                 <ProdutTypeTitle>Présentation</ProdutTypeTitle>
                                                 <Text>{formatText(product.presentation)}</Text>
                                                 <ImageContainer>

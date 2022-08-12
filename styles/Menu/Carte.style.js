@@ -253,6 +253,10 @@ export const CategoryContainer = styled.section`
         grid-template-columns: 1fr 1fr;
     }
 
+    &.oneCol {
+        grid-template-columns: 1fr !important;
+    }
+
     > article {
         &:last-of-type {
             > h3 {
@@ -292,6 +296,10 @@ export const SaleWrapper = styled.article`
                 margin-top: 0;
             }
         }
+    }
+
+    &.oneCol {
+        grid-column: 1 / span 1 !important;
     }
 
     @media screen and (${breakpoint.device.s}) {

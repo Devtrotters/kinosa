@@ -98,11 +98,11 @@ export default function Prestations({ data }) {
                             ))}
                         </PrestationsBlocTextWrapper>
                         <PrestationsBlocImageContainer>
-                            {el.images.map((image: any) => (
+                            {el.images.map((image: any, i: number) => (
                                 <PrestationsBlocImage
-                                    key={image.id}
-                                    alt={image.alt || 'image du site'}
-                                    src={image.url}
+                                    key={i}
+                                    alt={image.altImage || 'image du site'}
+                                    src={image.image}
                                 />
                             ))}
                         </PrestationsBlocImageContainer>

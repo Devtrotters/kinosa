@@ -212,9 +212,8 @@ export async function getStaticProps() {
                 }
                 jusSmoothie {
                     images {
-                        url
-                        id
-                        alt
+                        image
+                        altImage
                     }
                     presentation {
                         texte

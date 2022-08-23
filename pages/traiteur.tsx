@@ -92,9 +92,8 @@ export async function getStaticProps() {
                         titre
                     }
                     images {
-                        alt
-                        id
-                        url
+                        image
+                        altImage
                     }
                 }
                 page {

@@ -64,8 +64,8 @@ export default function Methodes({ data }) {
                 ))}
             </div>
             <HeaderImageContainer>
-                {data.images.map((img: any) => (
-                    <HeaderImage key={img.id} src={img.url} alt={img.alt || 'image du site'} />
+                {data.images.map((img: any, i) => (
+                    <HeaderImage key={i} src={img.image} alt={img.altImage || 'image du site'} />
                 ))}
             </HeaderImageContainer>
         </HeaderContainer>

@@ -64,7 +64,7 @@ export default function Navbar({ data, social }) {
                                 setDisplayMenu(false);
                                 const r = document.querySelector(':root') as HTMLElement;
                                 r.style.setProperty('--body-height', '100%');
-                                r.style.overflow = 'auto';
+                                r.style.removeProperty('overflow');
                             }}
                             width="25"
                             height="25"
@@ -89,7 +89,7 @@ export default function Navbar({ data, social }) {
                                                 ':root'
                                             ) as HTMLElement;
                                             r.style.setProperty('--body-height', '100%');
-                                            r.style.overflow = 'auto';
+                                            r.style.removeProperty('overflow');
                                         }}>
                                         {el.titre}
                                     </NavText>
@@ -156,7 +156,7 @@ export default function Navbar({ data, social }) {
                         onClick={() => {
                             const r = document.querySelector(':root') as HTMLElement;
                             r.style.setProperty('--body-height', '100%');
-                            r.style.overflow = 'auto';
+                            r.style.removeProperty('overflow');
                         }}>
                         <svg
                             width="181"
@@ -294,7 +294,7 @@ export default function Navbar({ data, social }) {
                                             setDisplayMenu(false);
                                             const r = document.querySelector('body') as HTMLElement;
                                             r.style.setProperty('height', '100%');
-                                            r.style.overflow = 'auto';
+                                            r.style.removeProperty('overflow');
                                         }}>
                                         {el.titre}
                                     </NavText>

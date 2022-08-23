@@ -97,9 +97,8 @@ export async function getStaticProps() {
                     hook {
                         titre
                         sousTitre
-                        image {
-                            url
-                        }
+                        image
+                        altImage
                         button
                         lien
                         id
@@ -129,10 +128,8 @@ export async function getStaticProps() {
                     button
                     lienBouton
                     presentation {
-                        image {
-                            url
-                            alt
-                        }
+                        image
+                        altImage
                         texte
                         id
                     }
@@ -142,10 +139,8 @@ export async function getStaticProps() {
                     sousTitre
                     liste {
                         id
-                        logo {
-                            url
-                            alt
-                        }
+                        image
+                        altImage
                         nom
                         lien
                     }
@@ -157,10 +152,8 @@ export async function getStaticProps() {
                         id
                         lien
                         nom
-                        logo {
-                            alt
-                            url
-                        }
+                        image
+                        altImage
                     }
                 }
                 homeConcept {
@@ -174,10 +167,8 @@ export async function getStaticProps() {
                     lienBouton
                     gerant {
                         id
-                        image {
-                            url
-                            alt
-                        }
+                        image
+                        altImage
                         texte
                     }
                 }
@@ -192,9 +183,8 @@ export async function getStaticProps() {
                     nom
                     lien
                     texteLien
-                    image {
-                        url
-                    }
+                    image
+                    altImage
                     typeProduits {
                         id
                         nom
@@ -217,19 +207,8 @@ export async function getStaticProps() {
                         titre
                         button
                         lien
-                        image {
-                            url
-                        }
-                    }
-                }
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
+                        image
+                        altImage
                     }
                 }
                 allConceptConcepts {
@@ -241,17 +220,13 @@ export async function getStaticProps() {
                         id
                         texte
                     }
-                    image {
-                        url
-                        alt
-                    }
+                    image
+                    altImage
                 }
                 allConceptPresentations {
                     id
-                    image {
-                        url
-                        alt
-                    }
+                    image
+                    altImage
                     nom
                     fonction
                     presentation

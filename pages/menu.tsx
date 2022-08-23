@@ -231,10 +231,8 @@ export async function getStaticProps() {
                         id
                         texte
                     }
-                    image {
-                        url
-                        alt
-                    }
+                    image
+                    altImage
                     titreCommande
                 }
                 allTypeProduits {
@@ -264,10 +262,8 @@ export async function getStaticProps() {
                         nom
                     }
                     presentation
-                    image {
-                        url
-                        alt
-                    }
+                    image
+                    altImage
                     typeDeProduit {
                         ... on ProduitSaleRecord {
                             id
@@ -343,11 +339,8 @@ export async function getStaticProps() {
                                 nom
                                 id
                             }
-                            image {
-                                url
-                                id
-                                alt
-                            }
+                            image
+                            altImage
                         }
                         periode
                     }
@@ -359,10 +352,8 @@ export async function getStaticProps() {
                         id
                         lien
                         nom
-                        logo {
-                            alt
-                            url
-                        }
+                        image
+                        altImage
                     }
                 }
                 commande {
@@ -371,19 +362,8 @@ export async function getStaticProps() {
                         titre
                         button
                         lien
-                        image {
-                            url
-                        }
-                    }
-                }
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
+                        image
+                        altImage
                     }
                 }
                 newsletter {

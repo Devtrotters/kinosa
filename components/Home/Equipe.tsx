@@ -25,8 +25,8 @@ export default function Equipe({ data }) {
                         <GerantContainer key={gerant.id}>
                             <GerantImgWrapper className="image">
                                 <GerantImg
-                                    src={gerant.image.url}
-                                    alt={gerant.image.alt || 'image du site'}
+                                    src={gerant.image}
+                                    alt={gerant.altImage || 'image du site'}
                                 />
                             </GerantImgWrapper>
                             <GerantPresentationContainer>

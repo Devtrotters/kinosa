@@ -34,7 +34,6 @@ import Command from '../components/Home/Command';
 
 export default function contact({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };
@@ -269,10 +268,8 @@ export async function getStaticProps() {
                         id
                         texte
                     }
-                    image {
-                        url
-                        alt
-                    }
+                    image
+                    altImage
                 }
                 homeCommande {
                     titre
@@ -287,9 +284,8 @@ export async function getStaticProps() {
                         titre
                         button
                         lien
-                        image {
-                            url
-                        }
+                        image
+                        altImage
                     }
                 }
                 plateforme {
@@ -297,10 +293,8 @@ export async function getStaticProps() {
                     sousTitre
                     liste {
                         id
-                        logo {
-                            url
-                            alt
-                        }
+                        image
+                        altImage
                         nom
                         lien
                     }
@@ -312,20 +306,8 @@ export async function getStaticProps() {
                         id
                         lien
                         nom
-                        logo {
-                            alt
-                            url
-                        }
-                    }
-                }
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
+                        image
+                        altImage
                     }
                 }
                 newsletter {

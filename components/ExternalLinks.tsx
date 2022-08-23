@@ -12,7 +12,7 @@ export default function ExternalLinks({ data, displayLine }) {
                     {data.liste.map((el: any) => (
                         <article key={el.id}>
                             <ExternalLink href={el.lien || '/'} target="_blank">
-                                <Img src={el.logo.url} alt={el.logo.alt || 'logo platform'} />
+                                <Img src={el.image} alt={el.altImage || 'logo platform'} />
                                 <Text>{formatText(el.nom)}</Text>
                             </ExternalLink>
                         </article>
@@ -20,7 +20,7 @@ export default function ExternalLinks({ data, displayLine }) {
                     {data.liste.map((el: any) => (
                         <article key={el.id + '1'}>
                             <ExternalLink href={el.lien || '/'} target="_blank">
-                                <Img src={el.logo.url} alt={el.logo.alt || 'logo platform'} />
+                                <Img src={el.image} alt={el.altImage || 'logo platform'} />
                                 <Text>{formatText(el.nom)}</Text>
                             </ExternalLink>
                         </article>

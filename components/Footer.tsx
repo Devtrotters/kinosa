@@ -52,35 +52,35 @@ export default function Footer({ data, menu }) {
 
     const { showDialog } = useContext(ShowDialogContext);
 
-    useEffect(() => {
-        const getFromInstagram = async () => {
-            const instagram = [];
-            await axios
-                .get(
-                    `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[0].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
-                )
-                .then((res) => instagram.push(res.data.thumbnail_url));
-            await axios
-                .get(
-                    `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[1].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
-                )
-                .then((res) => instagram.push(res.data.thumbnail_url));
-            await axios
-                .get(
-                    `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[2].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
-                )
-                .then((res) => instagram.push(res.data.thumbnail_url));
-            // for (let i = 0; i < data.feed.image.length; i++) {
-            //     await axios
-            //         .get(
-            //             `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[i].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
-            //         )
-            //         .then((res) => instagram.push(res.data.thumbnail_url));
-            // }
-            setLinks(() => instagram);
-        };
-        getFromInstagram();
-    }, []);
+    // useEffect(() => {
+    //     const getFromInstagram = async () => {
+    //         const instagram = [];
+    //         await axios
+    //             .get(
+    //                 `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[0].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
+    //             )
+    //             .then((res) => instagram.push(res.data.thumbnail_url));
+    //         await axios
+    //             .get(
+    //                 `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[1].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
+    //             )
+    //             .then((res) => instagram.push(res.data.thumbnail_url));
+    //         await axios
+    //             .get(
+    //                 `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[2].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
+    //             )
+    //             .then((res) => instagram.push(res.data.thumbnail_url));
+    //         // for (let i = 0; i < data.feed.image.length; i++) {
+    //         //     await axios
+    //         //         .get(
+    //         //             `https://graph.facebook.com/v8.0/instagram_oembed?url=https://www.instagram.com/p/${data.feed.image[i].lien}/&fields=thumbnail_url&access_token=2842645105957402%7Cd111c0a3d230497b536bded41ef33c58`
+    //         //         )
+    //         //         .then((res) => instagram.push(res.data.thumbnail_url));
+    //         // }
+    //         setLinks(() => instagram);
+    //     };
+    //     getFromInstagram();
+    // }, []);
 
     const horaires = {
         titre: 'Horaires',

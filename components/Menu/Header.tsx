@@ -18,7 +18,7 @@ export default function Header({ data }) {
                         <HeaderText key={text.id}>{formatText(text.texte)}</HeaderText>
                     ))}
                 </HeaderContent>
-                <HeaderImage src={data.image.url} alt={data.image.alt || 'img du site'} />
+                <HeaderImage src={data.image} alt={data.altImage || 'img du site'} />
             </HeaderContainer>
         </HeaderSection>
     );

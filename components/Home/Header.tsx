@@ -11,12 +11,14 @@ import {
 } from 'styles/Home/Header.style';
 
 export default function Header({ data }) {
+    console.log(data);
+
     return (
         <HeaderContainer>
             <HookContainer>
                 <HeaderTitle>{formatText(data.titre)}</HeaderTitle>
                 {data.hook.map((el: any) => (
-                    <Hook key={el.id} url={el.image.url}>
+                    <Hook key={el.id} url={el.image}>
                         <HookTitle>{formatText(el.titre)}</HookTitle>
                         <HookText>{formatText(el.sousTitre)}</HookText>
                         <Link href={el.lien}>

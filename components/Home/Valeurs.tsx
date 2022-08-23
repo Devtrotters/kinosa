@@ -76,7 +76,7 @@ export default function Valeurs({ data }) {
                             {bloc.texte.map((text: any) => (
                                 <BlocText key={text.id}>{formatText(text.texte)}</BlocText>
                             ))}
-                            <BlocImg src={bloc.image.url} alt={bloc.image.alt || 'image du site'} />
+                            <BlocImg src={bloc.image} alt={bloc.altImage || 'image du site'} />
                         </Bloc>
                     ))}
                 </ConceptContainer>

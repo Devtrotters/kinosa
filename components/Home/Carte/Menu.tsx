@@ -17,6 +17,8 @@ export default function Menu({ categories, products, allTypeProduits }) {
     const [open, setOpen] = useState(0);
     const [carte, setCarte] = useState([]);
 
+    console.log(categories);
+
     useEffect(() => {
         const fillCarte = function () {
             const carteTemp = [];
@@ -107,7 +109,7 @@ export default function Menu({ categories, products, allTypeProduits }) {
                                     <DropDownItem
                                         key={el.id}
                                         style={{
-                                            backgroundImage: `url(${el.image.url})`,
+                                            backgroundImage: `url(${el.image})`,
                                             backgroundSize: 'cover',
                                             backgroundPosition: 'center'
                                         }}>

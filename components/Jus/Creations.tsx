@@ -129,12 +129,12 @@ export default function Creations({ headerData, data }) {
                     produits.produits.map((produits: any) => (
                         <CreationItem key={produits.id}>
                             <CreationsItemTitle>{produits.periode}</CreationsItemTitle>
-                            {produits.produit.map((produit: any) => (
+                            {produits.produit.map((produit: any, i) => (
                                 <CreationsImageContainer key={produit.id}>
                                     <CreationsImage
-                                        alt={produit.image.alt || 'image du site'}
-                                        key={produit.image.id}
-                                        src={produit.image.url}
+                                        alt={produit.altImage || 'image du site'}
+                                        key={i}
+                                        src={produit.image}
                                     />
                                     <CreationsImageTextContainer>
                                         <CreationsImageTitle>

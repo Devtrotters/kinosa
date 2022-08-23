@@ -78,11 +78,8 @@ export async function getStaticProps() {
                         id
                         texte
                     }
-                    image {
-                        url
-                        id
-                        alt
-                    }
+                    image
+                    altImage
                 }
                 allTraiteurPrestations {
                     titre
@@ -105,17 +102,6 @@ export async function getStaticProps() {
                         id
                         slug
                         titre
-                    }
-                }
-
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
                     }
                 }
                 newsletter {
@@ -145,10 +131,8 @@ export async function getStaticProps() {
                         id
                         lien
                         nom
-                        logo {
-                            alt
-                            url
-                        }
+                        image
+                        altImage
                     }
                 }
             }

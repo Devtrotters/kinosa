@@ -253,8 +253,8 @@ export default function Carte({ categories, products, type }) {
                                                 <Text>{formatText(product.presentation)}</Text>
                                                 <ImageContainer>
                                                     <Img
-                                                        src={product.image.url}
-                                                        alt={product.image.alt || 'img du site'}
+                                                        src={product.image}
+                                                        alt={product.altImage || 'img du site'}
                                                     />
                                                     <Price>{product.prix + ' €'}</Price>
                                                     {product.sousCategorie && (
@@ -374,8 +374,8 @@ export default function Carte({ categories, products, type }) {
                                                 <Text>{formatText(product.presentation)}</Text>
                                                 <ImageContainer>
                                                     <Img
-                                                        src={product.image.url}
-                                                        alt={product.image.alt || 'img du site'}
+                                                        src={product.image}
+                                                        alt={product.altImage || 'img du site'}
                                                     />
                                                     <Price>{product.prix + ' €'}</Price>
                                                     {product.sousCategorie && (

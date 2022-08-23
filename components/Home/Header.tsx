@@ -11,8 +11,6 @@ import {
 } from 'styles/Home/Header.style';
 
 export default function Header({ data }) {
-    console.log(data);
-
     return (
         <HeaderContainer>
             <HookContainer>

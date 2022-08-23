@@ -165,12 +165,8 @@ export async function getStaticProps() {
                     }
                     bouton
                     lienBouton
-                    gerant {
-                        id
-                        image
-                        altImage
-                        texte
-                    }
+                    image
+                    altImage
                 }
                 allTypeProduits {
                     id

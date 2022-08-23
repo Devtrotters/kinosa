@@ -30,10 +30,7 @@ export default function Services({ data }) {
                     </ConceptButton>
                 </Link>
             </ConceptWrapper>
-            <GerantImg
-                src={data.gerant[0].image}
-                alt={data.gerant[0].altImage || 'image du site'}
-            />
+            <GerantImg src={data.image} alt={data.altImage || 'image du site'} />
         </ConceptSection>
     );
 }

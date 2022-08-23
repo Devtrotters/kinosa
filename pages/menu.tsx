@@ -43,7 +43,6 @@ import { Title } from '../styles/UI/Texts.style';
 
 export default function menu({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };

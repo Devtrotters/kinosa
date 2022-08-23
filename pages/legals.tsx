@@ -7,7 +7,6 @@ import { theme } from 'styles/theme';
 
 export default function mentionsLegales({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };
@@ -96,16 +95,6 @@ export async function getStaticProps() {
                 }
                 mentionsLegale {
                     texte
-                }
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
-                    }
                 }
                 newsletter {
                     titre

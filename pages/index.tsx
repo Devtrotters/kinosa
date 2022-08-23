@@ -14,7 +14,6 @@ import Equipe from '../components/Home/Equipe';
 
 export default function Home({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };

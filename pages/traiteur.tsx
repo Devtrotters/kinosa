@@ -9,7 +9,6 @@ import Slider from '../components/Concept/Slider';
 
 export default function traiteur({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };

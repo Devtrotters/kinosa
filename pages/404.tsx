@@ -8,7 +8,6 @@ import { Title } from 'styles/UI/Texts.style';
 
 export default function NotFound({ data }) {
     const footerData = {
-        feed: data.instagram,
         newsletter: data.newsletter,
         social: data.footerSocial
     };
@@ -132,27 +131,6 @@ export async function getStaticProps() {
                         id
                         slug
                         titre
-                    }
-                }
-                contact {
-                    titre
-                    texte {
-                        id
-                        texte
-                    }
-                    image {
-                        url
-                        alt
-                    }
-                }
-                instagram {
-                    titre
-                    texteLien
-                    lien
-                    image {
-                        id
-                        lien
-                        alt
                     }
                 }
                 newsletter {

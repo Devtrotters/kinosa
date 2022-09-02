@@ -4,7 +4,7 @@
 
 import axios from 'axios';
 
-export default (req, res) => {
+export default async (req, res) => {
     // const msg = {
     //     to: `Site Web <${process.env.MAIL_USER}>`, // Change to your recipient
     //     sender: `Site Web <${process.env.MAIL_USER}>`, // Change to your verified sender
@@ -27,8 +27,8 @@ export default (req, res) => {
     //     </div>`
     // };
 
-    try {
-        axios.post(
+    await axios
+        .post(
             'https://api.sendinblue.com/v3/smtp/email',
             {
                 sender: {
@@ -37,7 +37,7 @@ export default (req, res) => {
                 },
                 to: [
                     {
-                        email: process.env.MAIL_USER,
+                        email: 'enzo.viry@gmail.com',
                         name: 'Site Web'
                     }
                 ],
@@ -62,12 +62,13 @@ export default (req, res) => {
                     'api-key': process.env.MAILER_API
                 }
             }
-        );
-        // transporter.sendMail(msg);
-        // apiInstance.sendTransacEmail(sendSmtpEmail);
-        res.json({ text: 'Email sent' });
-    } catch (err) {
-        console.log(err);
-        res.json({ err });
-    }
+        )
+        .then((response) => {
+            res.json({ text: 'Email sent' });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    // transporter.sendMail(msg);
+    // apiInstance.sendTransacEmail(sendSmtpEmail);
 };

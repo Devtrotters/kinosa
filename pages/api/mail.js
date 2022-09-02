@@ -37,7 +37,7 @@ export default async (req, res) => {
                 },
                 to: [
                     {
-                        email: 'enzo.viry@gmail.com',
+                        email: process.env.MAIL_USER,
                         name: 'Site Web'
                     }
                 ],

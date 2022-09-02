@@ -29,7 +29,7 @@ export default function Home({ data }) {
                 <Citation data={data.conceptCitation} />
                 <Services data={data.homeConcept} />
                 <ExternalLinks data={data.partenaire} displayLine={false} />
-                <Slider data={data.conceptSlider.image} />
+                <Slider data={data.conceptSlider.images} />
                 <Carte
                     data={data.homeCarte}
                     allTypeProduits={data.allTypeProduits}
@@ -108,10 +108,9 @@ export async function getStaticProps() {
                     auteur
                 }
                 conceptSlider {
-                    image {
-                        id
-                        url
-                        alt
+                    images {
+                        image
+                        altImage
                     }
                 }
                 homeCommande {

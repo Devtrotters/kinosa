@@ -34,9 +34,9 @@ export default function Slider({ data }) {
             <SliderContainer>
                 {displayedImages.map((image: any, i: number) => (
                     <Img
-                        key={image.id}
-                        src={image.url}
-                        alt={image.alt || 'image du site'}
+                        key={image.image}
+                        src={image.image}
+                        alt={image.altImage || 'image du site'}
                         onClick={() => slideHandler(index + i)}
                     />
                 ))}

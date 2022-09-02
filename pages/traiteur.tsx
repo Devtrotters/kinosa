@@ -20,7 +20,7 @@ export default function traiteur({ data }) {
             footer={footerData}>
             <Header data={data.traiteurHeader} />
             <Prestations data={data.allTraiteurPrestations} />
-            <Slider data={data.conceptSlider.image} />
+            <Slider data={data.conceptSlider.images} />
 
             <Confiance ExternalData={data.partenaire} />
         </DefaultLayout>
@@ -64,10 +64,9 @@ export async function getStaticProps() {
                     }
                 }
                 conceptSlider {
-                    image {
-                        id
-                        url
-                        alt
+                    images {
+                        image
+                        altImage
                     }
                 }
                 traiteurHeader {

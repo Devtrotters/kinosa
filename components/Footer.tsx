@@ -32,10 +32,17 @@ import {
     NewsLetterWrapper,
     PdvSection,
     PdvText,
+    Review,
+    ReviewArrow,
+    Reviews,
+    ReviewsBottom,
+    ReviewsContainer,
+    ReviewsWrapper,
     RGPDContainer,
     RGPDWrapper,
     SiegeSection,
     SiegeText,
+    SlideWrapper,
     SocialLogoContainer,
     SocialSection,
     SocialText
@@ -50,7 +57,32 @@ export default function Footer({ data, menu }) {
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
 
+    const [reviews, setReviews] = useState([]);
+
+    const [slide, setSlide] = useState(0);
+
     const { showDialog } = useContext(ShowDialogContext);
+
+    useEffect(() => {
+        const getReviews = async () => {
+            const { data } = await axios({
+                method: 'get',
+                url: '/api/getReviews'
+            });
+
+            const formatedReviews = [...data.reviews];
+
+            formatedReviews.push({
+                author_name: "L'équipe Kinosa",
+                text:
+                    'Envie d\'en voir plus ?<br />Rendez-vous sur <a href="https://nos-avis.kinosa.fr" target="_blank" rel="noreferrer">nos-avis.kinosa.fr</a> !'
+            });
+
+            setReviews(formatedReviews);
+        };
+
+        getReviews();
+    }, []);
 
     // useEffect(() => {
     //     const getFromInstagram = async () => {
@@ -106,8 +138,85 @@ export default function Footer({ data, menu }) {
             });
         }
     };
+
+    const handleSlide = (direction: string) => {
+        if (direction === 'next') {
+            if (slide < reviews.length - 1) {
+                setSlide(slide + 1);
+            } else {
+                setSlide(0);
+            }
+        } else if (direction === 'prev') {
+            if (slide > 0) {
+                setSlide(slide - 1);
+            } else {
+                setSlide(reviews.length - 1);
+            }
+        }
+    };
+
     return (
         <footer style={{ marginTop: '100px' }}>
+            <ReviewsContainer>
+                <ReviewsWrapper>
+                    <ReviewArrow onClick={(e) => handleSlide('prev')}>
+                        <svg
+                            width="23"
+                            height="25"
+                            viewBox="0 0 23 25"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M0.942383 12.3998L12.3539 24.0398L14.001 22.3598L5.41289 13.5998H22.5885V11.1998H5.41288L14.001 2.43977L12.3539 0.759766L0.942383 12.3998Z"
+                                fill="#007A0C"
+                            />
+                        </svg>
+                    </ReviewArrow>
+
+                    <Reviews>
+                        <SlideWrapper slide={slide}>
+                            {reviews.map((review: any, index: number) => (
+                                <Review key={index}>
+                                    <p>{review.author_name}</p>
+                                    <p>
+                                        {formatText(
+                                            review.text.length > 340
+                                                ? review.text.substring(0, 337) + '...'
+                                                : review.text
+                                        )}
+                                    </p>
+                                </Review>
+                            ))}
+                        </SlideWrapper>
+                    </Reviews>
+                    <ReviewArrow onClick={(e) => handleSlide('next')}>
+                        <svg
+                            width="23"
+                            height="25"
+                            viewBox="0 0 23 25"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M22.0576 12.6002L10.6461 0.960229L8.99905 2.64023L17.5871 11.4002L0.411515 11.4002L0.411515 13.8002L17.5871 13.8002L8.99904 22.5602L10.6461 24.2402L22.0576 12.6002Z"
+                                fill="#007A0C"
+                            />
+                        </svg>
+                    </ReviewArrow>
+                </ReviewsWrapper>
+                <ReviewsBottom>
+                    <p>Votre satisfaction est notre meilleure publicité !</p>
+                    <p>
+                        Exprimez votre opinion sur nos produits et services ici :{' '}
+                        <a href="https://avis.kinosa.fr" target="_blank" rel="noreferrer">
+                            avis.kinosa.fr
+                        </a>
+                    </p>
+                </ReviewsBottom>
+            </ReviewsContainer>
             <NewsLetter>
                 <NewsLetterContainer>
                     <NewsLetterWrapper>

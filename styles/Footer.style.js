@@ -65,6 +65,8 @@ export const InstagramImg = styled.img`
 export const NewsLetter = styled.section`
     position: relative;
 
+    background: ${(props) => props.theme.color.beige};
+
     &::before {
         content: ' ';
         position: absolute;
@@ -164,6 +166,126 @@ export const NewsLetterButton = styled.input`
     @media screen and (${breakpoint.device.s}) {
         margin: 0;
         width: 100%;
+    }
+`;
+
+export const ReviewsContainer = styled.div`
+    background: ${(props) => props.theme.color.beige};
+
+    margin-top: 60px;
+    padding: 60px 15px;
+
+    @media screen and (${breakpoint.device.s}) {
+        padding: 60px 45px;
+    }
+    @media screen and (${breakpoint.device.m}) {
+        padding: 60px 65px;
+    }
+    @media screen and (${breakpoint.device.lg}) {
+        padding: 60px 95px;
+    }
+`;
+
+export const ReviewsWrapper = styled.div`
+    position: relative;
+`;
+
+export const ReviewArrow = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(50%);
+    background: ${(props) => props.theme.color.orange};
+    height: 40px;
+    width: 40px;
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    z-index: 1;
+
+    &:last-of-type {
+        right: 0;
+    }
+
+    @media screen and (${breakpoint.device.s}) {
+        &:first-of-type {
+            left: 45px;
+        }
+
+        &:last-of-type {
+            right: 45px;
+        }
+    }
+    @media screen and (${breakpoint.device.m}) {
+        &:first-of-type {
+            left: 65px;
+        }
+
+        &:last-of-type {
+            right: 65px;
+        }
+    }
+    @media screen and (${breakpoint.device.lg}) {
+        &:first-of-type {
+            left: 95px;
+        }
+
+        &:last-of-type {
+            right: 95px;
+        }
+    }
+`;
+
+export const Reviews = styled.div.attrs((props) => {})`
+    position: relative;
+    overflow: hidden;
+`;
+
+export const SlideWrapper = styled.div.attrs((props) => {})`
+    transform: translateX(${(props) => -props.slide * 100}%);
+    display: flex;
+    transition: all 0.5s ease-in-out;
+`;
+
+export const Review = styled.div.attrs((props) => {})`
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    padding: 0 20%;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    color: #014e08;
+
+    > p {
+        &:first-of-type {
+            font-weight: 500;
+        }
+
+        > a {
+            color: #014e08;
+        }
+    }
+`;
+
+export const ReviewsBottom = styled.div`
+    text-align: center;
+    color: #014e08;
+
+    margin-top: 30px;
+
+    > p > a {
+        color: #007a0c;
+    }
+
+    @media screen and (${breakpoint.device.lg}) {
+        margin-top: 60px;
     }
 `;
 

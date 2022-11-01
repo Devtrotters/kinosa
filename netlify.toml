@@ -27,3 +27,9 @@
  to = "https://g.page/r/CVunEQ0R3A1hEBM/review"
  status = 200
  force = true
+
+ [[redirects]]
+ from = "https://nos-avis.kinosa.fr/*"
+ to = "https://g.page/kinosa_mtp?share"
+ status = 200
+ force = true

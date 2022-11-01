@@ -32,7 +32,7 @@ import { Text, Title } from 'styles/UI/Texts.style';
 import ExternalLinks from '../components/ExternalLinks';
 import Command from '../components/Home/Command';
 
-export default function contact({ data }) {
+export default function contact({ data, reviews }) {
     const footerData = {
         newsletter: data.newsletter,
         social: data.footerSocial
@@ -113,7 +113,8 @@ export default function contact({ data }) {
             _site={data._site}
             seo={data.seoContact}
             pages={data.page.pages}
-            footer={footerData}>
+            footer={footerData}
+            reviews={reviews}>
             <ContactSection>
                 <TopSection>
                     <Title>{formatText(data.contact.titre)}</Title>
@@ -326,7 +327,12 @@ export async function getStaticProps() {
             }
         `
     });
+
+    const reviews = await fetch(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    ).then((res) => res.json());
+
     return {
-        props: { data }
+        props: { data, reviews: reviews.result.reviews ?? [] }
     };
 }

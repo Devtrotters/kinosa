@@ -52,35 +52,36 @@ import { Title } from 'styles/UI/Texts.style';
 import ShowDialogContext from '../context/ShowDialogContext';
 import MessengerPlugin from './MessengerPlugin';
 
-export default function Footer({ data, menu }) {
+export default function Footer({ data, menu, reviews }) {
     const [input, setInput] = useState({ email: '', newsLetter: false, transmit: false });
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
 
     const [slide, setSlide] = useState(0);
 
-    const { showDialog, reviews, setReviews } = useContext(ShowDialogContext);
+    const { showDialog } = useContext(ShowDialogContext);
 
-    useEffect(() => {
-        const getReviews = async () => {
-            const { data } = await axios({
-                method: 'get',
-                url: '/api/getReviews'
-            });
+    // useEffect(() => {
+    //     const getReviews = async () => {
+    //         const { data } = await axios.get(
+    //             'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    //         );
 
-            const formatedReviews = [...data.reviews];
+    //         console.log(data);
 
-            formatedReviews.push({
-                author_name: "L'équipe Kinosa",
-                text:
-                    'Envie d\'en voir plus ?<br />Rendez-vous sur <a href="https://nos-avis.kinosa.fr" target="_blank" rel="noreferrer">nos-avis.kinosa.fr</a> !'
-            });
+    //         const formatedReviews = [...data.reviews];
 
-            setReviews(formatedReviews);
-        };
+    //         formatedReviews.push({
+    //             author_name: "L'équipe Kinosa",
+    //             text:
+    //                 'Envie d\'en voir plus ?<br />Rendez-vous sur <a href="https://nos-avis.kinosa.fr" target="_blank" rel="noreferrer">nos-avis.kinosa.fr</a> !'
+    //         });
 
-        getReviews();
-    }, []);
+    //         setReviews([formatedReviews]);
+    //     };
+
+    //     getReviews();
+    // }, []);
 
     // useEffect(() => {
     //     const getFromInstagram = async () => {

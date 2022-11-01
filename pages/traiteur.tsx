@@ -7,7 +7,7 @@ import Prestations from 'components/Traiteur/Prestations';
 
 import Slider from '../components/Concept/Slider';
 
-export default function traiteur({ data }) {
+export default function traiteur({ data, reviews }) {
     const footerData = {
         newsletter: data.newsletter,
         social: data.footerSocial
@@ -17,7 +17,8 @@ export default function traiteur({ data }) {
             _site={data._site}
             seo={data.seoTraiteur}
             pages={data.page.pages}
-            footer={footerData}>
+            footer={footerData}
+            reviews={reviews}>
             <Header data={data.traiteurHeader} />
             <Prestations data={data.allTraiteurPrestations} />
             <Slider data={data.conceptSlider.images} />
@@ -135,7 +136,12 @@ export async function getStaticProps() {
             }
         `
     });
+
+    const reviews = await fetch(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    ).then((res) => res.json());
+
     return {
-        props: { data }
+        props: { data, reviews: reviews.result.reviews ?? [] }
     };
 }

@@ -6,7 +6,7 @@ import React from 'react';
 import { NotFoundContainer, NotFoundText, NotFoundTitle } from 'styles/404';
 import { Title } from 'styles/UI/Texts.style';
 
-export default function NotFound({ data }) {
+export default function NotFound({ data, reviews }) {
     const footerData = {
         newsletter: data.newsletter,
         social: data.footerSocial
@@ -24,7 +24,8 @@ export default function NotFound({ data }) {
             _site={data._site}
             seo={data.seoContact}
             pages={data.page.pages}
-            footer={footerData}>
+            footer={footerData}
+            reviews={reviews}>
             <NotFoundContainer>
                 <svg
                     width="412"
@@ -150,7 +151,11 @@ export async function getStaticProps() {
         `
     });
 
+    const reviews = await fetch(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    ).then((res) => res.json());
+
     return {
-        props: { data }
+        props: { data, reviews: reviews.result.reviews ?? [] }
     };
 }

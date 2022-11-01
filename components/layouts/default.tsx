@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { renderMetaTags } from 'react-datocms';
 import { hotjar } from 'react-hotjar';
 
-export default function DefaultLayout({ _site, seo, children, footer, pages }) {
+export default function DefaultLayout({ _site, seo, children, footer, pages, reviews }) {
     useEffect(() => {
         hotjar.initialize(Number(process.env.NEXT_HOTJAR_ID), 6);
     }, []);
@@ -19,7 +19,7 @@ export default function DefaultLayout({ _site, seo, children, footer, pages }) {
             <>
                 <Navbar data={pages} social={footer.social.social} />
                 <main>{children}</main>
-                <Footer data={footer} menu={pages} />
+                <Footer data={footer} menu={pages} reviews={reviews} />
             </>
         </>
     );

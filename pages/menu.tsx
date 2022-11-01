@@ -41,7 +41,7 @@ import formatText from '../lib/formatText';
 import { MenuLink, MenuText, MenuWrapper, Square } from '../styles/Concept/Concept.style';
 import { Title } from '../styles/UI/Texts.style';
 
-export default function menu({ data }) {
+export default function menu({ data, reviews }) {
     const footerData = {
         newsletter: data.newsletter,
         social: data.footerSocial
@@ -90,7 +90,8 @@ export default function menu({ data }) {
             _site={data._site}
             seo={data.seoMenu}
             pages={data.page.pages}
-            footer={footerData}>
+            footer={footerData}
+            reviews={reviews}>
             <Header data={data.menu} />
             <CarteSection id="carte-section">
                 <MenuContainer>
@@ -380,7 +381,12 @@ export async function getStaticProps() {
             }
         `
     });
+
+    const reviews = await fetch(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    ).then((res) => res.json());
+
     return {
-        props: { data }
+        props: { data, reviews: reviews.result.reviews ?? [] }
     };
 }

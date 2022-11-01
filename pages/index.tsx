@@ -12,7 +12,7 @@ import Slider from '../components/Concept/Slider';
 import ExternalLinks from '../components/ExternalLinks';
 import Equipe from '../components/Home/Equipe';
 
-export default function Home({ data }) {
+export default function Home({ data, reviews }) {
     const footerData = {
         newsletter: data.newsletter,
         social: data.footerSocial
@@ -23,7 +23,8 @@ export default function Home({ data }) {
             _site={data._site}
             seo={data.seoAccueil}
             pages={data.page.pages}
-            footer={footerData}>
+            footer={footerData}
+            reviews={reviews}>
             <Header data={data.homeHeader} />
             <>
                 <Citation data={data.conceptCitation} />
@@ -246,7 +247,12 @@ export async function getStaticProps() {
             }
         `
     });
+
+    const reviews = await fetch(
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJg_JHs9OvthIRW6cRDRHcDWE&sensor=true&key=AIzaSyCQ7GVa2SUwnNXW9Pep_oR2w_cVmleEeqM&language=fr&fields=reviews'
+    ).then((res) => res.json());
+
     return {
-        props: { data }
+        props: { data, reviews: reviews.result.reviews ?? [] }
     };
 }

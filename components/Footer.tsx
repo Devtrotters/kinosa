@@ -57,11 +57,9 @@ export default function Footer({ data, menu }) {
     const [buttonText, setbuttonText] = useState(data.newsletter.bouton);
     const [links, setLinks] = useState([]);
 
-    const [reviews, setReviews] = useState([]);
-
     const [slide, setSlide] = useState(0);
 
-    const { showDialog } = useContext(ShowDialogContext);
+    const { showDialog, reviews, setReviews } = useContext(ShowDialogContext);
 
     useEffect(() => {
         const getReviews = async () => {

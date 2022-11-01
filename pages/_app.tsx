@@ -1,3 +1,4 @@
+import axios from 'axios';
 import ShowDialogContext from 'context/ShowDialogContext';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -12,10 +13,13 @@ function MyApp({ Component, pageProps }) {
     const router = useRouter();
 
     const [show, setShow] = useState(false);
+    const [reviews, setReviews] = useState([]);
 
     const context = {
         showDialog: show,
-        setShowDialog: setShow
+        setShowDialog: setShow,
+        reviews: reviews,
+        setReviews: setReviews
     };
 
     useEffect(() => {

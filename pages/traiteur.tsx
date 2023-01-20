@@ -142,6 +142,6 @@ export async function getStaticProps() {
     ).then((res) => res.json());
 
     return {
-        props: { data, reviews: reviews.result.reviews ?? [] }
+        props: { data, reviews: reviews?.result?.reviews ?? [] }
     };
 }

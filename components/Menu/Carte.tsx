@@ -6,6 +6,7 @@ import {
     AccompagnementContainer,
     CarteButton,
     CarteButtonContainer,
+    CarteButtonWrapper,
     CarteContainer,
     CarteSection,
     CarteTitle,
@@ -175,24 +176,26 @@ export default function Carte({ categories, products, type }) {
                 <CarteWrapper id={category.slug} key={category.id}>
                     <article>
                         <CarteTitle as="h3">{formatText(category.name)}</CarteTitle>
-                        <CarteButtonContainer>
-                            {category.produits.map((product: any) => (
-                                <CarteButton
-                                    key={product.id}
-                                    type="button"
-                                    value={product.nom}
-                                    className={
-                                        displayedMenus[getIndexByCategory(category.id)]
-                                            .displayedId === product.id
-                                            ? 'displayed'
-                                            : ''
-                                    }
-                                    onClick={(e) =>
-                                        productButtonClickHandler(e, category.id, product.id)
-                                    }
-                                />
-                            ))}
-                        </CarteButtonContainer>
+                        <CarteButtonWrapper>
+                            <CarteButtonContainer>
+                                {category.produits.map((product: any) => (
+                                    <CarteButton
+                                        key={product.id}
+                                        type="button"
+                                        value={product.nom}
+                                        className={
+                                            displayedMenus[getIndexByCategory(category.id)]
+                                                .displayedId === product.id
+                                                ? 'displayed'
+                                                : ''
+                                        }
+                                        onClick={(e) =>
+                                            productButtonClickHandler(e, category.id, product.id)
+                                        }
+                                    />
+                                ))}
+                            </CarteButtonContainer>
+                        </CarteButtonWrapper>
                     </article>
                     <Container>
                         {category.produits.map((product: any) => {
@@ -256,7 +259,11 @@ export default function Carte({ categories, products, type }) {
                                                         src={product.image}
                                                         alt={product.altImage || 'img du site'}
                                                     />
-                                                    <Price>{product.prix + ' €'}</Price>
+                                                    <Price>
+                                                        {product.prix
+                                                            ? product.prix + ' €'
+                                                            : 'Sur devis'}
+                                                    </Price>
                                                     {product.sousCategorie && (
                                                         <SousCategorie className="sousCategorie">
                                                             {product.sousCategorie.nom}
@@ -377,7 +384,11 @@ export default function Carte({ categories, products, type }) {
                                                         src={product.image}
                                                         alt={product.altImage || 'img du site'}
                                                     />
-                                                    <Price>{product.prix + ' €'}</Price>
+                                                    <Price>
+                                                        {product.prix
+                                                            ? product.prix + ' €'
+                                                            : 'Sur devis'}
+                                                    </Price>
                                                     {product.sousCategorie && (
                                                         <SousCategorie className="sousCategorie">
                                                             {product.sousCategorie.nom}

@@ -89,6 +89,21 @@ export const CarteContainer = styled.section`
 
 export const CarteWrapper = styled.div`
     @media screen and (${breakpoint.device.s}) {
+        margin: 0 40px;
+    }
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin: 0 40px 0 0;
+    }
+
+    @media screen and (${breakpoint.device.m}) {
+        margin: 0 230px 0 0;
+    }
+
+    @media screen and (${breakpoint.device.lg}) {
+        margin: 0 260px 0 0;
+    }
+    @media screen and (${breakpoint.device.s}) {
         > article {
             &:nth-child(2) {
                 > section {
@@ -129,40 +144,40 @@ export const CarteTitle = styled(Title)`
     margin: 0 15px;
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 0 40px;
-    }
-    @media screen and (${breakpoint.device.menu}) {
         margin: 0;
     }
 `;
-export const CarteButtonContainer = styled.div`
-    --test: calc(100vw - 100%);
-    width: calc(100vw - var(--test));
 
+export const CarteButtonWrapper = styled.div`
     margin-top: 20px;
+    padding: 0 15px;
+
+    width: auto;
+    position: relative;
+    height: 60px;
+`;
+export const CarteButtonContainer = styled.div`
+    position: absolute;
+    inset: 0;
 
     display: flex;
     column-gap: 20px;
-    overflow-x: scroll;
     white-space: nowrap;
+    overflow-x: scroll;
+    padding: 0 15px;
 
-    /* Uniquement Firefox */
-    scrollbar-width: none;
+    // Todo : check this
+    ///* Uniquement Firefox */
+    //scrollbar-width: none;
+    //
+    ///* Tout sauf Firefox */
+    //
+    //&::-webkit-scrollbar {
+    //    display: none;
+    //}
 
-    /* Tout sauf Firefox */
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    &::before {
-        content: '';
-    }
-
-    @media screen and (${breakpoint.device.menu}) {
-        &::before {
-            display: none;
-        }
+    @media screen and (${breakpoint.device.s}) {
+        padding: 0;
     }
 `;
 export const CarteButton = styled.input`
@@ -216,24 +231,7 @@ export const Container = styled.article`
     }
 
     @media screen and (${breakpoint.device.s}) {
-        margin: 0 40px;
         padding: 0;
-
-        &::before {
-            display: none;
-        }
-    }
-
-    @media screen and (${breakpoint.device.menu}) {
-        margin: 0 40px 0 0;
-    }
-
-    @media screen and (${breakpoint.device.m}) {
-        margin: 0 230px 0 0;
-    }
-
-    @media screen and (${breakpoint.device.lg}) {
-        margin: 0 260px 0 0;
     }
 `;
 
@@ -363,7 +361,7 @@ export const ImageContainer = styled.div`
 
 export const Img = styled.img`
     width: 100%;
-    height: 300px;
+    height: 350px;
 
     display: block;
 

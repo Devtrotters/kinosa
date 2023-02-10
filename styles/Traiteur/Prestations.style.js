@@ -128,9 +128,17 @@ export const PrestationsBlocTextContainer = styled.div`
 export const PrestationsBlocTitle = styled(Text)`
     color: ${(props) => props.theme.color.orange};
 `;
-export const PrestationsBlocText = styled(Text)`
+export const PrestationsBlocText = styled(Text).attrs({
+    as: 'div'
+})`
     text-align: justify;
     width: 100%;
+
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
+    }
 `;
 
 export const PrestationsBlocImageContainer = styled.div`

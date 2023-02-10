@@ -44,11 +44,19 @@ export const HeaderContent = styled.div`
 export const HeaderTitle = styled(Title)`
     width: 80%;
 `;
-export const HeaderText = styled(Text)`
+export const HeaderText = styled(Text).attrs({
+    as: 'div'
+})`
     text-align: justify;
 
     &:first-of-type {
         margin-top: 5px;
+    }
+
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
     }
 `;
 

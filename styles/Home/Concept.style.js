@@ -35,12 +35,20 @@ export const ConceptSubtitle = styled(Subtitle)`
     margin-top: 40px;
 `;
 
-export const ConceptText = styled(Text)`
+export const ConceptText = styled(Text).attrs({
+    as: 'div'
+})`
     margin-top: 10px;
     text-align: justify;
 
     &:first-of-type {
         margin-top: 20px;
+    }
+
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
     }
 `;
 

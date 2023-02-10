@@ -37,11 +37,11 @@ export default function Home({ data, reviews }) {
                     products={data.allProduits}
                     categories={data.allCategorieProduits}
                 />
-                <Command
-                    data={data.homeCommande}
-                    command={data.commande}
-                    ExternalData={data.plateforme}
-                />
+                {/*<Command*/}
+                {/*    data={data.homeCommande}*/}
+                {/*    command={data.commande}*/}
+                {/*    ExternalData={data.plateforme}*/}
+                {/*/>*/}
                 <Valeurs data={data.allConceptConcepts} />
                 <Equipe data={data.allConceptPresentations} />
             </>

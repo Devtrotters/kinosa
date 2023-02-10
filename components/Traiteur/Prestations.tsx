@@ -93,7 +93,9 @@ export default function Prestations({ data }) {
                             {el.contenu.map((contenu: any) => (
                                 <PrestationsBlocTextContainer key={contenu.id}>
                                     <PrestationsBlocTitle>{contenu.titre}</PrestationsBlocTitle>
-                                    <PrestationsBlocText>{contenu.texte}</PrestationsBlocText>
+                                    <PrestationsBlocText>
+                                        {formatText(contenu.texte)}
+                                    </PrestationsBlocText>
                                 </PrestationsBlocTextContainer>
                             ))}
                         </PrestationsBlocTextWrapper>

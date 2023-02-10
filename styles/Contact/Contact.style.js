@@ -35,12 +35,20 @@ export const TopSection = styled.div`
     grid-column: 1 / span 2;
 `;
 
-export const ContactText = styled(Text)`
+export const ContactText = styled(Text).attrs({
+    as: 'div'
+})`
     margin-top: 30px;
     text-align: justify;
     font-size: 20px;
     width: 100%;
     color: #007a0c;
+
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
+    }
 
     @media screen and (${breakpoint.device.menu}) {
         width: 80%;

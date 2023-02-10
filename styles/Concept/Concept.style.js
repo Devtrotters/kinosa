@@ -3,13 +3,10 @@ import breakpoint from 'styles/breakpoints';
 import { Text, Title } from 'styles/UI/Texts.style';
 
 export const ConceptSection = styled.section`
-    margin-top: 100px;
     padding: 60px 15px;
 
     display: flex;
     flex-direction: column;
-
-    background-color: ${(props) => props.theme.color.beige};
 
     @media screen and (${breakpoint.device.s}) {
         display: grid;
@@ -30,7 +27,7 @@ export const ConceptTitle = styled(Title)`
 
     @media screen and (${breakpoint.device.menu}) {
         margin-bottom: 60px;
-        grid-column 1 / span 2;
+        grid-column: 1 / span 2;
     }
 `;
 
@@ -116,7 +113,7 @@ export const Bloc = styled.article`
                 grid-row: 1 / span 3;
             }
 
-            > p {
+            > div {
                 grid-column: 1;
             }
         }
@@ -132,7 +129,7 @@ export const Bloc = styled.article`
                 grid-row: 3;
             }
 
-            > p {
+            > div {
                 &:last-of-type {
                     grid-column: 2;
                 }
@@ -149,8 +146,15 @@ export const BlocTitle = styled.h3`
     color: ${(props) => props.theme.color.green.default};
 `;
 
-export const BlocText = styled(Text)`
+export const BlocText = styled(Text).attrs({
+    as: 'div'
+})`
     text-align: justify;
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
+    }
 `;
 export const BlocImg = styled.img`
     max-height: 380px;

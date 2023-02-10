@@ -155,7 +155,7 @@ export default function Footer({ data, menu, reviews }) {
     };
 
     return (
-        <footer style={{ marginTop: '100px' }}>
+        <footer>
             <ReviewsContainer>
                 <ReviewsWrapper>
                     <ReviewArrow onClick={(e) => handleSlide('prev')}>

@@ -125,8 +125,8 @@ export default function menu({ data, reviews }) {
 
                         if (i === 0) {
                             return (
-                                <div>
-                                    <article id={type.slug} key={i}>
+                                <div key={i}>
+                                    <article id={type.slug}>
                                         <CarteSuperTitle as="h2">{type.nom}</CarteSuperTitle>
                                         <Carte
                                             categories={categories}

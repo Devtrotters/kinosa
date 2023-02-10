@@ -33,11 +33,18 @@ export const HeaderTextContainer = styled.article`
     row-gap: 20px;
 `;
 export const HeaderTitle = styled(Title)``;
-export const HeaderText = styled(Text)`
+export const HeaderText = styled(Text).attrs({
+    as: 'div'
+})`
     display: flex;
     flex-direction: column;
 
     text-align: justify;
+    > p {
+        > a {
+            color: ${(props) => props.theme.color.orange};
+        }
+    }
 `;
 export const HeaderImage = styled.img`
     border-radius: 10px;

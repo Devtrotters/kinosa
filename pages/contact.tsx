@@ -146,7 +146,7 @@ export default function contact({ data, reviews }) {
                         <GridTitle>Horaires</GridTitle>
                         <GridText>
                             Du lundi au vendredi 10h-15h30
-                            <br /> Prestations évenementielles sans restrictions
+                            <br /> Prestations événementielles sans restrictions
                         </GridText>
                     </GridSection>
                 </GridContainer>

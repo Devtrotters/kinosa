@@ -113,10 +113,10 @@ export default function Footer({ data, menu, reviews }) {
     //     getFromInstagram();
     // }, []);
 
-    const horaires = {
-        titre: 'Horaires',
-        ouverture: 'Du lundi au vendredi de 10h à 15h30',
-        joignable: 'Nous restons joignables : 9h-19h'
+    const traiteur = {
+        titre: 'Traiteur',
+        zone: 'Montpellier Métropole',
+        joignable: 'Joignable de 9h à 19h'
     };
 
     const changeHandler = (e: any, value: string) => {
@@ -391,8 +391,9 @@ export default function Footer({ data, menu, reviews }) {
                     />
                 </svg>
                 <HorairesSection>
-                    <HorairesText>{formatText(horaires.titre)}</HorairesText>
-                    <HorairesText>{formatText(horaires.ouverture)}</HorairesText>
+                    <HorairesText>{formatText(traiteur.titre)}</HorairesText>
+                    <HorairesText>{formatText(traiteur.zone)}</HorairesText>
+                    <HorairesText>{formatText(traiteur.joignable)}</HorairesText>
                 </HorairesSection>
                 <ContactSection>
                     <HorairesText>Contact</HorairesText>

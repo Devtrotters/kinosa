@@ -115,7 +115,7 @@ export default function Footer({ data, menu, reviews }) {
 
     const horaires = {
         titre: 'Horaires',
-        ouverture: '7jours/7 - 8h30 à 20h00',
+        ouverture: 'Du lundi au vendredi de 10h à 15h30',
         joignable: 'Nous restons joignables : 9h-19h'
     };
 

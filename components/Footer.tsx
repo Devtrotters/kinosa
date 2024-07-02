@@ -400,18 +400,11 @@ export default function Footer({ data, menu, reviews }) {
                     <ContactText href="mailto:contact@kinosa.fr">contact@kinosa.fr</ContactText>
                 </ContactSection>
                 <PdvSection>
-                    <HorairesText>Point de vente (Gare sud de France)</HorairesText>
+                    <HorairesText>Restaurant sur place ou à emporter</HorairesText>
                     <PdvText href="https://goo.gl/maps/rD6LGTSCuenwou9s9">
-                        1521, Rue de la Font de la Banquière <br /> 34000 Montpellier
+                        90, rue Maryam Mirzakhani <br /> 34000 Montpellier
                     </PdvText>
                 </PdvSection>
-                <SiegeSection>
-                    <HorairesText>Siège social</HorairesText>
-                    <SiegeText href="https://goo.gl/maps/qistqDkG24kNczPX7">
-                        42, rue de l’Aiguillerie
-                        <br /> 34000 Montpellier
-                    </SiegeText>
-                </SiegeSection>
                 <SocialSection>
                     <SocialLogoContainer>
                         {data.social.social.map((logo: any) => (

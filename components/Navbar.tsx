@@ -323,7 +323,7 @@ export default function Navbar({ data, social }) {
                                     fill="currentColor"
                                 />
                             </svg>
-                            <span>06 46 19 37 73</span>
+                            <span>04 67 65 94 04</span>
                         </NavButtonPhone>
                         <NavButton href="/contact">Commande & Contact</NavButton>
                     </NavButtonContainer>

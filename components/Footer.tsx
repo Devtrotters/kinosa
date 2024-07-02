@@ -401,10 +401,9 @@ export default function Footer({ data, menu, reviews }) {
                     <ContactText href="mailto:contact@kinosa.fr">contact@kinosa.fr</ContactText>
                 </ContactSection>
                 <PdvSection>
-                    <HorairesText>Restaurant sur place ou à emporter</HorairesText>
-                    <HorairesText> Du lundi au vendredi de 10h à 15h30
-                     href="https://goo.gl/maps/rD6LGTSCuenwou9s9">
-                       <br /> 90, rue Maryam Mirzakhani <br /> 34000 Montpellier
+                   <HorairesText>Restaurant sur place ou à emporter</HorairesText>
+                     <PdvText> href="https://goo.gl/maps/rD6LGTSCuenwou9s9">
+                     90, rue Maryam Mirzakhani <br /> 34000 Montpellier
                     </PdvText>
                 </PdvSection>
                 <SocialSection>

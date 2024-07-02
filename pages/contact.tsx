@@ -124,28 +124,30 @@ export default function contact({ data, reviews }) {
                 </TopSection>
                 <GridContainer>
                     <GridSection>
-                        <GridTitle>Point de vente (Gare sud de France)</GridTitle>
+                        <GridTitle>Restaurant ZAC Cambacérès</GridTitle>
                         <GridText>
-                            1521, Rue de la Font de la Banquière <br /> 34000 Montpellier
+                            90, rue Maryam Mirzkhani <br /> 34000 Montpellier
                         </GridText>
                     </GridSection>
                     <GridSection>
-                        <GridTitle>Siège social</GridTitle>
+                        <GridTitle>Traiteur</GridTitle>
                         <GridText>
-                            42, rue de l’Aiguillerie <br /> 34000 Montpellier
+                            Montpellier Métropole <br /> Toute demande étudiée !
                         </GridText>
                     </GridSection>
                     <GridSection>
                         <GridTitle>Contact</GridTitle>
                         <GridText>
-                            06 46 19 37 73
-                            <br />
-                            contact@kinosa.fr
+                            04 67 65 94 04 ou 06 46 19 37 73
+                            <br /> contact@kinosa.fr
                         </GridText>
                     </GridSection>
                     <GridSection>
                         <GridTitle>Horaires</GridTitle>
-                        <GridText>7jours/7 - 8h30 à 20h00</GridText>
+                        <GridText>
+                            Du lundi au vendredi 10h-15h30
+                            <br /> Prestations évenementielles sans restrictions
+                        </GridText>
                     </GridSection>
                 </GridContainer>
                 <Form onSubmit={(e) => submitHandler(e)}>

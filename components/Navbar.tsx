@@ -28,12 +28,16 @@ export default function Navbar({ data, social }) {
             <MobileMenu className={`${router.pathname === '/contact' ? 'contact' : ''}`}>
                 <Link href="/">
                     <a>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    version="1.1"
    id="svg2"
-   width="415.74667"
-   height="415.74667"
-   viewBox="0 0 415.74667 415.74667"
+   width="181"
+   height="181"
+   viewBox="0 0 181 181"
+   sodipodi:docname="@@@@@EXPORTFINAL_LOGOTYPEK&amp;R_KINOSA_LOGOTYPE_SECONDAIRE_LIGNE-08.eps"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"

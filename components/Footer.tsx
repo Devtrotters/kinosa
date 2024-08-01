@@ -402,7 +402,7 @@ export default function Footer({ data, menu, reviews }) {
                 </ContactSection>
                 <PdvSection>
                    <HorairesText>Restaurant sur place ou à emporter </HorairesText>
-                     <PdvText href="https://maps.app.goo.gl/Hj7JEjNkPnyGEFjQ8">
+                     <PdvText href="https://maps.app.goo.gl/Hj7JEjNkPnyGEFjQ8" target="_blank">
                      90, rue Maryam Mirzakhani <br /> 34000 Montpellier
                     </PdvText>
                 </PdvSection>

@@ -34,7 +34,6 @@ export default function Navbar({ data, social }) {
    width="415.74667"
    height="415.74667"
    viewBox="0 0 415.74667 415.74667"
-   sodipodi:docname="@@@@@EXPORTFINAL_LOGOTYPEK&amp;R_KINOSA_LOGOTYPE_SECONDAIRE_LIGNE-08.eps"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"

@@ -397,7 +397,7 @@ export default function Footer({ data, menu, reviews }) {
                 </HorairesSection>
                 <ContactSection>
                     <HorairesText>Contact</HorairesText>
-                    <ContactText href="tel:+33646193773">06 46 19 37 73</ContactText>
+                    <ContactText href="tel:+33467659404">04 67 65 94 04</ContactText>
                     <ContactText href="mailto:contact@kinosa.fr">contact@kinosa.fr</ContactText>
                 </ContactSection>
                 <PdvSection>

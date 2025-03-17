@@ -118,7 +118,7 @@ export default function Navbar({ data, social }) {
                     </SocialLogoContainer>
                 </NavContainer>
                 <MobileButtonContainer>
-                    <PhoneMobileButton href="tel:+33646193773">
+                    <PhoneMobileButton href="tel:+33467659404">
                         <DisplayMobileButton
                             width="22"
                             height="23"

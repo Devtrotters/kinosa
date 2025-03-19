@@ -107,7 +107,9 @@ export default function Navbar({ data, social }) {
                         }
                     })}
 
-                    <NavButton href="/contact">Commande & Contact</NavButton>
+                    <NavButton href="https://neoresto.shop/kinosa" target="_blank">
+                        Commande à emporter
+                    </NavButton>
                     <SocialLogoContainer>
                         {/* display : grid */}
                         {social.map((el: any) => (
@@ -391,7 +393,9 @@ export default function Navbar({ data, social }) {
                             </svg>
                             <span>04 67 65 94 04</span>
                         </NavButtonPhone>
-                        <NavButton href="/contact">Commande & Contact</NavButton>
+                        <NavButton href="https://neoresto.shop/kinosa/" target="_blank">
+                            Commande à emporter
+                        </NavButton>
                     </NavButtonContainer>
                 </NavContainer>
             </MenuContainer>

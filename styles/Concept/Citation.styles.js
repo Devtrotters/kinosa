@@ -3,7 +3,13 @@ import breakpoint from 'styles/breakpoints';
 import { Subtitle, Text } from 'styles/UI/Texts.style';
 
 export const CitationContainer = styled.article`
-    margin: 60px 30px 0 30px;
+    padding: 30px 30px 100px 30px;
+    background-color: ${(props) => props.theme.color.beige};
+`;
+
+export const CitationWrapper = styled.div`
+    margin: 60px 0 0 0;
+
     padding: 30px 0 0 20px;
     position: relative;
 

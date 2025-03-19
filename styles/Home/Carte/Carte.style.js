@@ -5,22 +5,21 @@ import { Text } from 'styles/UI/Texts.style';
 
 export const CarteSection = styled.section`
     padding: 60px 15px 60px 15px;
-    margin-top: 100px;
 
     position: relative;
     background-color: ${(props) => props.theme.color.beige};
 
     @media screen and (${breakpoint.device.s}) {
-        padding: 100px 40px 100px 40px;
+        padding: 0px 40px 100px 40px;
     }
 
     @media screen and (${breakpoint.device.m}) {
-        padding: 100px 230px 100px 230px;
-        margin: 100px 0px 0 0px;
+        padding: 0px 230px 100px 230px;
+        margin: 0px 0px 0 0px;
     }
 
     @media screen and (${breakpoint.device.lg}) {
-        padding: 100px 260px 100px 260px;
+        padding: 0px 260px 100px 260px;
     }
 `;
 

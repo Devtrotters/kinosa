@@ -28,15 +28,15 @@ export default function Home({ data, reviews }) {
             <Header data={data.homeHeader} />
             <>
                 <Citation data={data.conceptCitation} />
-                <Services data={data.homeConcept} />
-                <ExternalLinks data={data.partenaire} displayLine={false} />
-                <Slider data={data.conceptSlider.images} />
                 <Carte
                     data={data.homeCarte}
                     allTypeProduits={data.allTypeProduits}
                     products={data.allProduits}
                     categories={data.allCategorieProduits}
                 />
+                <Services data={data.homeConcept} />
+                <ExternalLinks data={data.partenaire} displayLine={false} />
+                <Slider data={data.conceptSlider.images} />
                 {/*<Command*/}
                 {/*    data={data.homeCommande}*/}
                 {/*    command={data.commande}*/}

@@ -115,8 +115,7 @@ export default function Footer({ data, menu, reviews }) {
 
     const traiteur = {
         titre: 'Traiteur',
-        zone: 'Montpellier Métropole',
-        joignable: 'Joignable de 9h à 19h'
+        zone: 'Montpellier Métropole'
     };
 
     const changeHandler = (e: any, value: string) => {
@@ -393,7 +392,6 @@ export default function Footer({ data, menu, reviews }) {
                 <HorairesSection>
                     <HorairesText>{formatText(traiteur.titre)}</HorairesText>
                     <HorairesText>{formatText(traiteur.zone)}</HorairesText>
-                    <HorairesText>{formatText(traiteur.joignable)}</HorairesText>
                 </HorairesSection>
                 <ContactSection>
                     <HorairesText>Contact</HorairesText>
@@ -401,10 +399,11 @@ export default function Footer({ data, menu, reviews }) {
                     <ContactText href="mailto:contact@kinosa.fr">contact@kinosa.fr</ContactText>
                 </ContactSection>
                 <PdvSection>
-                   <HorairesText>Restaurant sur place ou à emporter </HorairesText>
-                     <PdvText href="https://maps.app.goo.gl/Hj7JEjNkPnyGEFjQ8" target="_blank">
-                     90, rue Maryam Mirzakhani <br /> 34000 Montpellier
+                    <HorairesText>Restaurant sur place ou à emporter </HorairesText>
+                    <PdvText href="https://maps.app.goo.gl/Hj7JEjNkPnyGEFjQ8" target="_blank">
+                        90, rue Maryam Mirzakhani <br /> 34000 Montpellier
                     </PdvText>
+                    <HorairesText>Du lundi au vendredi 11h - 14h</HorairesText>
                 </PdvSection>
                 <SocialSection>
                     <SocialLogoContainer>
@@ -417,7 +416,7 @@ export default function Footer({ data, menu, reviews }) {
                 </SocialSection>
                 <MenuContainer>
                     <Link href="/contact">
-                        <MenuText>Commandes / Contact</MenuText>
+                        <MenuText>Contact</MenuText>
                     </Link>
                     <Link href="/legals">
                         <MenuText>Mentions Légales</MenuText>

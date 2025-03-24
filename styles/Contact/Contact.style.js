@@ -73,8 +73,8 @@ export const GridContainer = styled.div`
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        column-gap: normal;
-        row-gap: normal;
+        column-gap: 30px;
+        row-gap: 30px;
     }
 `;
 

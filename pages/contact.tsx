@@ -138,7 +138,7 @@ export default function contact({ data, reviews }) {
                     <GridSection>
                         <GridTitle>Contact</GridTitle>
                         <GridText>
-                            04 67 65 94 04 ou 06 46 19 37 73
+                            04 67 65 94 04
                             <br /> contact@kinosa.fr
                         </GridText>
                     </GridSection>

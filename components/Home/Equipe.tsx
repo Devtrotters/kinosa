@@ -19,7 +19,7 @@ export default function Equipe({ data }) {
     return (
         <>
             <PresentationWrapper>
-                <Title as="h2">Kin&apos;Equipe</Title>
+                <Title as="h2">Notre histoire</Title>
                 <PresentationContainer>
                     {data.map((gerant: any) => (
                         <GerantContainer key={gerant.id}>

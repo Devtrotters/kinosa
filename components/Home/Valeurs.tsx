@@ -47,7 +47,7 @@ export default function Valeurs({ data }) {
     return (
         <div>
             <ConceptSection>
-                <ConceptTitle as="h2">Kin&apos;Valeurs</ConceptTitle>
+                <ConceptTitle as="h2">Nos Valeurs</ConceptTitle>
                 <div>
                     <Menu>
                         {data.map((bloc: any) => (

@@ -134,7 +134,10 @@ export default function menu({ data, reviews }) {
                                             type={data.allProduits}
                                         />
                                     </article>
-                                    <Command command={data.commande.typeCommand} />
+                                    <Command
+                                        command={data.commande.typeCommand}
+                                        data={data.homeCommande}
+                                    />
                                 </div>
                             );
                         } else if (type.slug === 'creations') {
@@ -353,6 +356,13 @@ export async function getStaticProps() {
                         nom
                         image
                         altImage
+                    }
+                }
+                homeCommande {
+                    titre
+                    texte {
+                        id
+                        texte
                     }
                 }
                 commande {

@@ -22,3 +22,15 @@ export const CommandSection = styled.section`
 export const CommandText = styled(BigText)`
     color: ${(props) => props.theme.color.green.default};
 `;
+
+export const SubtitleGrid = styled.article`
+    display: none;
+
+    @media screen and (${breakpoint.device.menu}) {
+        margin-top: 20px;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+`;
